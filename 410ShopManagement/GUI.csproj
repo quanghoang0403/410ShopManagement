@@ -63,10 +63,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="401UC\iNotifier.xaml.cs">
+      <DependentUpon>iNotifier.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="401UC\iNotifierOKCancel.xaml.cs">
+      <DependentUpon>iNotifierOKCancel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\TempWindow.xaml.cs">
       <DependentUpon>TempWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="401UC\CloseButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="401UC\iNotifier.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="401UC\iNotifierOKCancel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

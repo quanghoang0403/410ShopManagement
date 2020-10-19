@@ -24,6 +24,9 @@ namespace _410ShopManagement
     /// </summary>
     public partial class MainWindow : Window
     {
+        //Windows
+        _401UC.iNotifier notify = new _401UC.iNotifier();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -48,6 +51,8 @@ namespace _410ShopManagement
                 //Setting Docker's panels background to lightBG
             }
 
+            notify.Text = "Change application's theme successfully !";
+            notify.ShowDialog();
         }
 
         private static void ModifyTheme(Action<ITheme> modificationAction)
@@ -61,10 +66,60 @@ namespace _410ShopManagement
         }
         #endregion
 
+        #region Left Panel
+
+        private void TestBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = sender as Button;
+            notify.Text = "You clicked " + btn.Tag;
+            notify.ShowDialog();
+        }
+
+        private void FirstTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            if (FirstTreeView.SelectedItem != null)
+            {
+                if (((TreeViewItem)e.NewValue).Tag != null)
+                {
+                    switch (((TreeViewItem)e.NewValue).Tag.ToString())
+                    {
+                        case "Child 1":
+                            notify.Text = "You clicked " + ((TreeViewItem)e.NewValue).Tag.ToString();
+                            notify.ShowDialog();
+                            break;
+                        case "Child 2":
+                            notify.Text = "You clicked " + ((TreeViewItem)e.NewValue).Tag.ToString();
+                            notify.ShowDialog();
+                            break;
+                        case "Child 3":
+                            notify.Text = "You clicked " + ((TreeViewItem)e.NewValue).Tag.ToString();
+                            notify.ShowDialog();
+                            break;
+                        case "Child 4":
+                            notify.Text = "You clicked " + ((TreeViewItem)e.NewValue).Tag.ToString();
+                            notify.ShowDialog();
+                            break;
+                    }
+
+                    //Release selected item
+                    ((TreeViewItem)FirstTreeView.SelectedItem).IsSelected = false;
+                }
+            }
+        }
+        #endregion
+
         #region Commands Execute
         private void ExitCmd_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            _401UC.iNotifierOKCancel finalConfirmation = new _401UC.iNotifierOKCancel();
+
+            finalConfirmation.Text = "Do you sure to quit the application ?";
+            finalConfirmation.ShowDialog();
+
+            if(finalConfirmation.result == _401UC.iNotifierOKCancel.Result.OK)
+            {
+                Application.Current.Shutdown();
+            }
         }
 
         private void LogOutCmd_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -78,6 +133,7 @@ namespace _410ShopManagement
             this.Close();
         }
         #endregion
+
     }
 
     //Custom Commands for the whole app (in this namespace)

@@ -28,18 +28,97 @@
     <Grid>
         <materialDesign:DialogHost Identifier="RootDialog" 
                                    SnackbarMessageQueue="{Binding ElementName=MainSnackbar, Path=MessageQueue}">
-            <materialDesign:DrawerHost>
+            <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}">
+                <materialDesign:DrawerHost.LeftDrawerContent>
+                    <DockPanel x:Name="MenuPanel" 
+                               MinWidth="350"
+                               Background="{StaticResource darkBackgroundThemeColor}">
+                        <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" 
+                                      DockPanel.Dock="Top"
+                                      HorizontalAlignment="Right" 
+                                      Margin="20"
+                                      IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}" />
+
+                        <!--<Image x:Name="LogoTeam"/>-->
+
+                        <ListBox 
+                        x:Name="ListBox" 
+                        Margin="0 20 0 20"
+                        SelectedIndex="0"
+                        SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}">
+                            <ListBox.Resources>
+                                <Style TargetType="ScrollBar" 
+                                       BasedOn="{StaticResource MaterialDesignScrollBarMinimal}"/>
+                            </ListBox.Resources>
+                            <Button x:Name="TestBtn"
+                                    Content="Hola"
+                                    Tag="Hola"
+                                    FontSize="26"
+                                    Height="auto"
+                                    VerticalAlignment="Center"
+                                    Margin="22 0 0 0"
+                                    Background="{x:Null}" 
+                                    Foreground="{StaticResource mainThemeColor}"
+                                    BorderThickness="0"
+                                    Click="TestBtn_Click"/>
+                            <TreeView x:Name="FirstTreeView"
+                                      MinWidth="300"
+                                      SelectedItemChanged="FirstTreeView_SelectedItemChanged">
+                                <TreeViewItem Header="Daddy 1" FontSize="26">
+                                    <TreeViewItem Header="Baby 1" Tag="Child 1" FontSize="26"/>
+                                    <TreeViewItem Header="Baby 2" Tag="Child 2" FontSize="26"/>
+                                    <TreeViewItem Header="Baby 3" Tag="Child 3" FontSize="26"/>
+                                    <TreeViewItem Header="Baby 4" Tag="Child 4" FontSize="26"/>
+                                </TreeViewItem>
+                            </TreeView>
+                            <Button x:Name="TestBtn2"
+                                    Content="PressMe"
+                                    Tag="PressMe"
+                                    FontSize="26"
+                                    Height="auto"
+                                    VerticalAlignment="Center"
+                                    Margin="22 0 0 0"
+                                    Background="{x:Null}" 
+                                    Foreground="{StaticResource mainThemeColor}"
+                                    BorderThickness="0"
+                                    Click="TestBtn_Click"/>
+                            <!--Dấu gạch ngang-->
+                            <Separator/>
+                            <TreeView MinWidth="300">
+                                <TreeViewItem Header="Authors" FontSize="26">
+                                    <TreeViewItem Header="Luong Kim Phuong" ToolTip="Application's UI/UX" FontSize="26"/>
+                                    <TreeViewItem Header="Nguyen Minh Thang" ToolTip="Application's UI/UX" FontSize="26"/>
+                                    <TreeViewItem Header="Dinh Quang Hoang" ToolTip="Data Driver Business" FontSize="26"/>
+                                    <TreeViewItem Header="Bui Trong Khanh Duy" ToolTip="Database's Manager" FontSize="26"/>
+                                </TreeViewItem>
+                            </TreeView>
+                            <StackPanel Orientation="Horizontal"
+                                        DockPanel.Dock="Bottom">
+                                <materialDesign:PackIcon Kind="CommentQuestion" 
+                                                         Width="45.5"
+                                                         Height="45.5"/>
+
+                                <Button Content="FeedBackUs"  
+                                        FontSize="22"
+                                        Margin="20 0 0 10"
+                                        Style="{StaticResource MaterialDesignOutlinedButton}"/>
+                            </StackPanel>
+                            <!--<materialDesign:RatingBar Value="3"
+                                                      x:Name="BasicRatingBar"/>-->
+                        </ListBox>
+                    </DockPanel>
+                </materialDesign:DrawerHost.LeftDrawerContent>
                 <DockPanel>
                     <materialDesign:ColorZone Mode="Dark"
                                               Padding="21"
                                               materialDesign:ShadowAssist.ShadowDepth="Depth3" 
                                               DockPanel.Dock="Top">
                         <DockPanel>
-                            <!--<ToggleButton
+                            <ToggleButton
                             x:Name="MenuToggleButton"
                             Style="{StaticResource MaterialDesignHamburgerToggleButton}"
                             IsChecked="False"
-                            AutomationProperties.Name="HamburgerToggleButton"/>-->
+                            AutomationProperties.Name="HamburgerToggleButton"/>
 
                             <materialDesign:PopupBox DockPanel.Dock="Right" 
                                                      PlacementMode="BottomAndAlignRightEdges" 
