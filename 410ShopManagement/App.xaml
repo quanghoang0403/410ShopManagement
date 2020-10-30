@@ -8,13 +8,17 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Blue.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <SolidColorBrush x:Key="mainThemeColor" Color="SkyBlue"/>
+            <SolidColorBrush x:Key="mainThemeColor" Color="CornflowerBlue"/>
             <SolidColorBrush x:Key="secondaryThemeColor" Color="SeaShell"/>
             <SolidColorBrush x:Key="backgroundThemeColor" Color="Azure"/>
             <SolidColorBrush x:Key="darkBackgroundThemeColor" Color="#303030"/>
+            <SolidColorBrush x:Key="mainTextForeground" Color="DimGray"/>
+            <SolidColorBrush x:Key="quickAccessButtonBackground" Color="Azure"/>
+            <SolidColorBrush x:Key="shopInfoBackground" Color="NavajoWhite"/>
+            <SolidColorBrush x:Key="staffStatisticalInfoBackground" Color="Bisque"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
