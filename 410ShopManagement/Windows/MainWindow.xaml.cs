@@ -51,14 +51,11 @@ namespace _410ShopManagement
         {
             //Show Login window
 
-            //This is for testing
-            Windows.TempWindow temp = new Windows.TempWindow();
-            temp.Show();
-
             this.Close();
         }
         #endregion
 
+        #region Menu Panel
         private void OpenMenuButton_Click(object sender, RoutedEventArgs e)
         {
             OpenMenuButton.Visibility = Visibility.Collapsed;
@@ -100,6 +97,8 @@ namespace _410ShopManagement
             MenuChoiceTransitioning.OnApplyTemplate();
             CursorGrid.Margin = new Thickness(0, 60 * index, 0, 0);
         }
+        #endregion
+
     }
 
     //Custom Commands for the whole app (in this namespace)

@@ -6,13 +6,14 @@
              xmlns:local="clr-namespace:_410ShopManagement._401UC"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             Height="618" Width="1066">
+             TextElement.Foreground="{StaticResource mainTextForeground}"
+             Height="580" Width="1030">
     <Grid>
         <materialDesign:TransitioningContent x:Name="Transitioner" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="70"/>
-                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="180"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
@@ -88,7 +89,7 @@
 
                 <Grid Grid.Row="2">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Grid Margin="20" Width="450" Height="300">
+                        <Grid Margin="20" Width="450" Height="290">
                             <Border CornerRadius="30" BorderThickness="5" Background="{StaticResource shopInfoBackground}">
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                                     <Grid>
@@ -98,18 +99,18 @@
                                             <ColumnDefinition Width="100"/>
                                         </Grid.ColumnDefinitions>
                                         <StackPanel Grid.Column="0" Margin="20" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                            <TextBlock Text="300" Foreground="{StaticResource mainTextForeground}"
+                                            <TextBlock Text="300"
                                                        FontSize="30" FontWeight="Bold"
                                                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                            <TextBlock Text="Days" Foreground="{StaticResource mainTextForeground}"
+                                            <TextBlock Text="Days"
                                                        FontSize="30"
                                                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                         </StackPanel>
                                         <StackPanel Grid.Column="2" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                            <TextBlock Text="Work" Foreground="{StaticResource mainTextForeground}"
+                                            <TextBlock Text="Work"
                                                        FontSize="25"
                                                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                            <TextBlock Text="Together" Foreground="{StaticResource mainTextForeground}"
+                                            <TextBlock Text="Together"
                                                        FontSize="25"
                                                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                         </StackPanel>
@@ -117,10 +118,10 @@
                                                Width="150" Height="150"/>
                                     </Grid>
                                     <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                        <TextBlock Text="410 Boutique" Foreground="{StaticResource mainTextForeground}"
+                                        <TextBlock Text="410 Boutique"
                                                    FontSize="30" FontWeight="Bold"
                                                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                        <TextBlock Text="Thanks for your contribution" Foreground="{StaticResource mainTextForeground}"
+                                        <TextBlock Text="Thanks for your contribution"
                                                    FontSize="25"
                                                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </StackPanel>
@@ -133,27 +134,27 @@
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                                         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                                <TextBlock Text="Total hour" Foreground="{StaticResource mainTextForeground}"
+                                                <TextBlock Text="Total hour"
                                                        FontSize="25"
                                                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                <TextBlock Text="18h52" Foreground="{StaticResource mainTextForeground}"
+                                                <TextBlock Text="18h52"
                                                        FontSize="35" FontWeight="Bold"
                                                        Margin="20 0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                             </StackPanel>
                                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                                                 <Image Source="/410ShopManagement;component/Assets/firstColorNoBG.png" Stretch="UniformToFill"
                                                        Margin="5 0" Width="auto" Height="30"/>
-                                                <TextBlock Text="Today" Foreground="{StaticResource mainTextForeground}"
+                                                <TextBlock Text="Today"
                                                        FontSize="15"
                                                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                 <Image Source="/410ShopManagement;component/Assets/secondColorNoBG.png" Stretch="UniformToFill"
                                                        Margin="15 0 5 0" Width="auto" Height="30"/>
-                                                <TextBlock Text="Yesterday" Foreground="{StaticResource mainTextForeground}"
+                                                <TextBlock Text="Yesterday"
                                                        FontSize="15"
                                                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                 <Image Source="/410ShopManagement;component/Assets/thirdColorNoBG.png" Stretch="UniformToFill"
                                                        Margin="15 0 5 0" Width="auto" Height="30"/>
-                                                <TextBlock Text="Highest" Foreground="{StaticResource mainTextForeground}"
+                                                <TextBlock Text="Highest"
                                                        FontSize="15"
                                                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                             </StackPanel>
@@ -168,29 +169,29 @@
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                                         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                                <TextBlock Text="Total bill" Foreground="{StaticResource mainTextForeground}"
+                                                <TextBlock Text="Total bill"
                                                        FontSize="25"
                                                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                <TextBlock Text="1396" Foreground="{StaticResource mainTextForeground}"
+                                                <TextBlock Text="1396"
                                                        FontSize="35" FontWeight="Bold"
                                                        Margin="20 0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                             </StackPanel>
                                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                                                 <Image Source="/410ShopManagement;component/Assets/firstColorNoBG.png" Stretch="UniformToFill"
                                                        Margin="5 0" Width="auto" Height="30"/>
-                                                <TextBlock Text="Today" Foreground="{StaticResource mainTextForeground}"
+                                                <TextBlock Text="Today"
                                                        FontSize="15"
                                                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                 <Image Source="/410ShopManagement;component/Assets/secondColorNoBG.png" Stretch="UniformToFill"
                                                        Margin="15 0 5 0" Width="auto" Height="30"/>
-                                                <TextBlock Text="Yesterday" Foreground="{StaticResource mainTextForeground}"
+                                                <TextBlock Text="Yesterday"
                                                        FontSize="15"
                                                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                 <Image Source="/410ShopManagement;component/Assets/thirdColorNoBG.png" Stretch="UniformToFill"
                                                        Margin="15 0 5 0" Width="auto" Height="30"/>
-                                                <TextBlock Text="Highest" Foreground="{StaticResource mainTextForeground}"
-                                                       FontSize="15"
-                                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                <TextBlock Text="Highest"
+                                                           FontSize="15"
+                                                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                             </StackPanel>
                                         </StackPanel>
                                         <Image Source="/410ShopManagement;component/Assets/tempColunmNoBG.png" Stretch="UniformToFill"
