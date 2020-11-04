@@ -17,7 +17,7 @@
     <Border BorderThickness="4" CornerRadius="15" Background="{StaticResource backgroundThemeColor}">
         <StackPanel Height="auto" Width="300">
             <DockPanel Background="Transparent" LastChildFill="False">
-                <uc:CloseButton DockPanel.Dock="Right" 
+                <uc:AppInteractButton DockPanel.Dock="Right" 
                                     Margin="10"
                                     Click="CloseButton_Click"/>
             </DockPanel>

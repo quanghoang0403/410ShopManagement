@@ -74,6 +74,12 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="MenuChoiceTransitioning">
+                <DiscreteObjectKeyFrame KeyTime="0:0:1.5" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="RightPanel">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="CloseMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="MainPanel">
@@ -88,6 +94,12 @@
                 <EasingDoubleKeyFrame KeyTime="0" Value="250"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="MenuChoiceTransitioning">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="RightPanel">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="Loading">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="grid">
@@ -105,6 +117,9 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.2"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="MenuChoiceTransitioning">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>
     <Window.Triggers>
@@ -134,11 +149,10 @@
             </TransformGroup>
         </Grid.RenderTransform>
         <StackPanel Orientation="Horizontal" Margin="0 0 20 0" VerticalAlignment="Top" HorizontalAlignment="Right" Height="40">
-            <uc:CloseButton Margin="10 0 0 0"/>
-            <uc:CloseButton Margin="10 0 0 0"/>
-            <uc:CloseButton Margin="10 0 0 0"/>
+            <uc:AppInteractButton x:Name="minimizeButton" Margin="10 0 0 0" Click="minimizeButton_Click" ToolTip="Minimize"/>
+            <uc:AppInteractButton x:Name="closeButton" Margin="10 0 0 0" Click="closeButton_Click" ToolTip="Close"/>
         </StackPanel>
-        <Grid Height="730" Width="1330" VerticalAlignment="Bottom">
+        <Grid Height="730" Width="1366" VerticalAlignment="Bottom">
             <Border CornerRadius="30" Background="{StaticResource secondaryThemeColor}">
                 <Grid>
                     <StackPanel x:Name="MenuPanel" Width="250" HorizontalAlignment="Left" Margin="-250 0 0 0" RenderTransformOrigin="0.5,0.5">
@@ -330,18 +344,27 @@
 
                                 <Grid x:Name="RightPanel"
                                   Grid.Column="1">
-                                    <Grid Width="225" HorizontalAlignment="Left"
-                                      Background="{StaticResource secondaryThemeColor}">
-                                        <Image Margin="0 50 0 0" Height="150" VerticalAlignment="Top" Source="/410ShopManagement;component/Assets/Joystick 4kHD.jpg" Stretch="UniformToFill" />
-                                        <Ellipse Height="100" Width="100" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="20 150">
-                                            <Ellipse.Fill>
-                                                <ImageBrush ImageSource="/410ShopManagement;component/Assets/DiscordAvt.jpg" Stretch="UniformToFill"/>
-                                            </Ellipse.Fill>
-                                        </Ellipse>
-                                        <StackPanel Margin="0 150">
-
-                                        </StackPanel>
-                                    </Grid>
+                                    <Border CornerRadius="0 30 30 0"
+                                            Background="{StaticResource secondaryThemeColor}">
+                                        <Grid>
+                                            <Image Margin="0 30 0 0" Height="150" VerticalAlignment="Top" Source="/410ShopManagement;component/Assets/Joystick 4kHD.jpg" Stretch="UniformToFill" />
+                                            <Ellipse Height="100" Width="100" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="20 135">
+                                                <Ellipse.Fill>
+                                                    <ImageBrush ImageSource="/410ShopManagement;component/Assets/DiscordAvt.jpg" Stretch="UniformToFill"/>
+                                                </Ellipse.Fill>
+                                            </Ellipse>
+                                            <Grid Margin="10 200 10 35">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="60"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid Grid.Row="0">
+                                                    
+                                                </Grid>
+                                                <uc:AppInteractButton x:Name="logoutButton" Grid.Row="1" HorizontalAlignment="Right" ToolTip="Log Out" Click="logoutButton_Click"/>
+                                            </Grid>
+                                        </Grid>
+                                    </Border>
                                 </Grid>
 
                                 <Grid >

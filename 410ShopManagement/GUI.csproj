@@ -78,7 +78,7 @@
     <Compile Include="401UC\ProductUC.xaml.cs">
       <DependentUpon>ProductUC.xaml</DependentUpon>
     </Compile>
-    <Page Include="401UC\CloseButton.xaml">
+    <Page Include="401UC\AppInteractButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -110,8 +110,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="401UC\CloseButton.xaml.cs">
-      <DependentUpon>CloseButton.xaml</DependentUpon>
+    <Compile Include="401UC\AppInteractButton.xaml.cs">
+      <DependentUpon>AppInteractButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>

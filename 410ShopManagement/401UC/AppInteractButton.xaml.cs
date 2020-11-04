@@ -18,11 +18,17 @@ namespace _410ShopManagement._401UC
     /// <summary>
     /// Interaction logic for CloseButton.xaml
     /// </summary>
-    public partial class CloseButton : UserControl
+    public partial class AppInteractButton : UserControl
     {
-        public CloseButton()
+        public AppInteractButton()
         {
             InitializeComponent();
+        }
+
+        public MaterialDesignThemes.Wpf.PackIconKind Icon
+        {
+            get { return icon.Kind; }
+            set { icon.Kind = value; }
         }
 
         //EventClick below will be defined by the owner form 

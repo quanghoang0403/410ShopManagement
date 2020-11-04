@@ -26,11 +26,14 @@ namespace _410ShopManagement
     {
         //Windows
         _401UC.iNotifier notify = new _401UC.iNotifier();
+        Windows.LoginWindow loginWindow;
 
         public MainWindow()
         {
             InitializeComponent();
             CloseMenuButton.Visibility = Visibility.Collapsed;
+            minimizeButton.Icon = PackIconKind.WindowMinimize;
+            logoutButton.Icon = PackIconKind.Logout;
         }
 
         #region Commands Execute
@@ -99,6 +102,22 @@ namespace _410ShopManagement
         }
         #endregion
 
+        private void minimizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void closeButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void logoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            loginWindow = new Windows.LoginWindow();
+            loginWindow.Show();
+        }
     }
 
     //Custom Commands for the whole app (in this namespace)

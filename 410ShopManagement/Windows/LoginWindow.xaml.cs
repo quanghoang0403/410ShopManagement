@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MaterialDesignThemes.Wpf;
 
 namespace _410ShopManagement.Windows
 {
@@ -26,6 +27,7 @@ namespace _410ShopManagement.Windows
         public LoginWindow()
         {
             InitializeComponent();
+            minimizeButton.Icon = PackIconKind.WindowMinimize;
         }
 
         private void loginBtn_Click(object sender, RoutedEventArgs e)
@@ -41,6 +43,16 @@ namespace _410ShopManagement.Windows
                 notify.Text = "Please fill all the insert boxes";
                 notify.ShowDialog();
             }
+        }
+
+        private void minimizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void closeButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
