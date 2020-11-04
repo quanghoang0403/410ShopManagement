@@ -153,7 +153,7 @@
             <uc:AppInteractButton x:Name="closeButton" Margin="10 0 0 0" Click="closeButton_Click" ToolTip="Close"/>
         </StackPanel>
         <Grid Height="730" Width="1366" VerticalAlignment="Bottom">
-            <Border CornerRadius="30" Background="{StaticResource secondaryThemeColor}">
+            <Border CornerRadius="30 30 0 0" Background="{StaticResource secondaryThemeColor}">
                 <Grid>
                     <StackPanel x:Name="MenuPanel" Width="250" HorizontalAlignment="Left" Margin="-250 0 0 0" RenderTransformOrigin="0.5,0.5">
                         <StackPanel.RenderTransform>
@@ -165,7 +165,7 @@
                             </TransformGroup>
                         </StackPanel.RenderTransform>
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Height="200">
-                            <Button x:Name="LogoButton" Style="{StaticResource MaterialDesignFloatingActionAccentButton}" BorderBrush="{x:Null}" Padding="0" Width="70" Height="70" RenderTransformOrigin="0.5,0.5">
+                            <Button x:Name="LogoButton" Style="{StaticResource MaterialDesignFloatingActionAccentButton}" BorderBrush="{x:Null}" Padding="0" Width="100" Height="100" RenderTransformOrigin="0.5,0.5">
                                 <Button.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -175,7 +175,7 @@
                                     </TransformGroup>
                                 </Button.RenderTransform>
                                 <Button.Background>
-                                    <ImageBrush ImageSource="/410ShopManagement;component/Assets/DiscordAvt.jpg" Stretch="UniformToFill"/>
+                                    <ImageBrush ImageSource="/410ShopManagement;component/Assets/LogoFinal.png" Stretch="UniformToFill"/>
                                 </Button.Background>
                             </Button>
                         </StackPanel>
@@ -334,7 +334,7 @@
                                 <TranslateTransform/>
                             </TransformGroup>
                         </Grid.RenderTransform>
-                        <Border CornerRadius="30" 
+                        <Border CornerRadius="30 30 0 0" 
                         Background="{StaticResource mainThemeColor}">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -344,7 +344,7 @@
 
                                 <Grid x:Name="RightPanel"
                                   Grid.Column="1">
-                                    <Border CornerRadius="0 30 30 0"
+                                    <Border CornerRadius="0 30 0 0"
                                             Background="{StaticResource secondaryThemeColor}">
                                         <Grid>
                                             <Image Margin="0 30 0 0" Height="150" VerticalAlignment="Top" Source="/410ShopManagement;component/Assets/Joystick 4kHD.jpg" Stretch="UniformToFill" />

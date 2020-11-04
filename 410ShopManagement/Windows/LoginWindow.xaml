@@ -113,13 +113,13 @@
                             <DropShadowEffect Color="Cyan"/>
                         </Border.Effect>
                         <StackPanel>
-                            <Image x:Name="image" Source="/410ShopManagement;component/Assets/DiscordAvt.jpg" Stretch="UniformToFill"
-                                       Width="120" Height="120" 
-                                       Margin="0 -50 0 0" HorizontalAlignment="Center"
-                                       Panel.ZIndex="1" />
+                            <Image x:Name="image" Source="/410ShopManagement;component/Assets/LogoFinal.png" Stretch="UniformToFill"
+                                       Width="180" Height="180" 
+                                       Margin="0 -70 0 0" HorizontalAlignment="Center"
+                                       Panel.ZIndex="2" />
 
                             <TextBlock Text="Sign In" 
-                                           Width="200" Height="75" Margin="0 20"
+                                           Width="200" Height="75" Margin="0 0"
                                            FontSize="48" FontWeight="Bold" TextAlignment="Center" 
                                            Foreground="{StaticResource mainTextForeground}"/>
 

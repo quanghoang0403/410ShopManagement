@@ -52,7 +52,7 @@ namespace _410ShopManagement.Windows
 
         private void closeButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Application.Current.Shutdown();
         }
     }
 }

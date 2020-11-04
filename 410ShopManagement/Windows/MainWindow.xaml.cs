@@ -109,7 +109,7 @@ namespace _410ShopManagement
 
         private void closeButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Application.Current.Shutdown();
         }
 
         private void logoutButton_Click(object sender, RoutedEventArgs e)
