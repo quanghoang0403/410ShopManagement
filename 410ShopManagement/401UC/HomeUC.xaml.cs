@@ -20,9 +20,30 @@ namespace _410ShopManagement._401UC
     /// </summary>
     public partial class HomeUC : UserControl
     {
+        //Windows
+        _401UC.iNotifier notify = new _401UC.iNotifier();
+
         public HomeUC()
         {
             InitializeComponent();
+        }
+
+        private void product_QAButton_Click(object sender, RoutedEventArgs e)
+        {
+            notify.Text = "Product...";
+            notify.ShowDialog();
+        }
+
+        private void payment_QAButton_Click(object sender, RoutedEventArgs e)
+        {
+            notify.Text = "Payment...";
+            notify.ShowDialog();
+        }
+
+        private void import_QAButton_Click(object sender, RoutedEventArgs e)
+        {
+            notify.Text = "Import...";
+            notify.ShowDialog();
         }
     }
 }

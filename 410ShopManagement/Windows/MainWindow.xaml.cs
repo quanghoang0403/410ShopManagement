@@ -32,8 +32,6 @@ namespace _410ShopManagement
         {
             InitializeComponent();
             CloseMenuButton.Visibility = Visibility.Collapsed;
-            minimizeButton.Icon = PackIconKind.WindowMinimize;
-            logoutButton.Icon = PackIconKind.Logout;
         }
 
         #region Commands Execute

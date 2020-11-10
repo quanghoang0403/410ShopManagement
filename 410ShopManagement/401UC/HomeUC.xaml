@@ -20,7 +20,8 @@
                 <Grid Grid.Row="0">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <ComboBox VerticalAlignment="Center"
-                                  FontSize="20">
+                                  FontSize="20"
+                                  Foreground="{StaticResource secondTextForeground}">
                             <ComboBoxItem IsSelected="True">
                                 All Resources
                             </ComboBoxItem>
@@ -38,7 +39,7 @@
                                  Width="500"
                                  FontSize="20" TextAlignment="Left"
                                  Background="{x:Null}"
-                                 Foreground="{StaticResource mainTextForeground}"
+                                 Foreground="{StaticResource secondTextForeground}"
                                  materialDesign:HintAssist.Hint="    Search"
                                  materialDesign:TextFieldAssist.HasClearButton="True"
                                  materialDesign:TextFieldAssist.TextBoxViewMargin="20 0 0 0"/>
@@ -47,157 +48,42 @@
                                 Background="{x:Null}" BorderBrush="{x:Null}"
                                 Width="50" Height="50"
                                 Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left">
-                            <materialDesign:PackIcon Kind="Magnify" Foreground="White" Width="30" Height="30"/>
+                            <materialDesign:PackIcon Kind="Magnify" Foreground="{StaticResource secondTextForeground}" Width="30" Height="30"/>
                         </Button>
                     </StackPanel>
                 </Grid>
 
                 <Grid Grid.Row="1">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Grid Margin="10" Width="180" Height="130">
-                            <Button x:Name="QuickProductButton"
-                                    Style="{StaticResource MaterialDesignRaisedButton}"
-                                    Background="{StaticResource quickAccessButtonBackground}" BorderBrush="{x:Null}" BorderThickness="0"
-                                    Height="auto"
-                                    materialDesign:ButtonAssist.CornerRadius="30">
-                                <TextBlock Text="PRODUCT" Foreground="{StaticResource mainTextForeground}"
-                                           FontSize="30"/>
-                            </Button>
-                        </Grid>
-                        <Grid Margin="10" Width="180" Height="130">
-                            <Button x:Name="QuickPaymentutton"
-                                    Style="{StaticResource MaterialDesignRaisedButton}"
-                                    Background="{StaticResource quickAccessButtonBackground}" BorderBrush="{x:Null}"
-                                    Height="auto"
-                                    materialDesign:ButtonAssist.CornerRadius="30">
-                                <TextBlock Text="PAYMENT" Foreground="{StaticResource mainTextForeground}"
-                                           FontSize="30"/>
-                            </Button>
-                        </Grid>
-                        <Grid Margin="10" Width="180" Height="130">
-                            <Button x:Name="QuickImportButton"
-                                    Style="{StaticResource MaterialDesignRaisedButton}"
-                                    Background="{StaticResource quickAccessButtonBackground}" BorderBrush="{x:Null}"
-                                    Height="auto"
-                                    materialDesign:ButtonAssist.CornerRadius="30">
-                                <TextBlock Text="IMPORT" Foreground="{StaticResource mainTextForeground}"
-                                           FontSize="30"/>
-                            </Button>
-                        </Grid>
+                        <local:QuickAccessButton x:Name="product_QAButton" 
+                                                 ImageSource="/410ShopManagement;component/Assets/Product_Button.png"
+                                                 Click="product_QAButton_Click"/>
+                        <local:QuickAccessButton x:Name="payment_QAButton"
+                                                 ImageSource="/410ShopManagement;component/Assets/Payment_Button.png"
+                                                 Click="payment_QAButton_Click"/>
+                        <local:QuickAccessButton x:Name="import_QAButton"
+                                                 ImageSource="/410ShopManagement;component/Assets/Import_Button.png"
+                                                 Click="import_QAButton_Click"/>
                     </StackPanel>
                 </Grid>
 
                 <Grid Grid.Row="2">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Grid Margin="20" Width="450" Height="290">
-                            <Border CornerRadius="30" BorderThickness="5" Background="{StaticResource shopInfoBackground}">
-                                <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="100"/>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="100"/>
-                                        </Grid.ColumnDefinitions>
-                                        <StackPanel Grid.Column="0" Margin="20" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                            <TextBlock Text="300"
-                                                       FontSize="30" FontWeight="Bold"
-                                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                            <TextBlock Text="Days"
-                                                       FontSize="30"
-                                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                        </StackPanel>
-                                        <StackPanel Grid.Column="2" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                            <TextBlock Text="Work"
-                                                       FontSize="25"
-                                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                            <TextBlock Text="Together"
-                                                       FontSize="25"
-                                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                        </StackPanel>
-                                        <Image Grid.Column="1" Margin="20" Source="/410ShopManagement;component/Assets/DiscordAvt.jpg" Stretch="UniformToFill"
-                                               Width="150" Height="150"/>
-                                    </Grid>
-                                    <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                        <TextBlock Text="410 Boutique"
-                                                   FontSize="30" FontWeight="Bold"
-                                                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                        <TextBlock Text="Thanks for your contribution"
-                                                   FontSize="25"
-                                                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    </StackPanel>
-                                </StackPanel>
-                            </Border>
+                        <Grid Width="300" Height="280">
+                            <Grid.Background>
+                                <ImageBrush ImageSource="/410ShopManagement;component/Assets/Shop_s Ava.png"/>
+                            </Grid.Background>
                         </Grid>
                         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                             <Grid Margin="20" Width="500" Height="120">
-                                <Border CornerRadius="30" BorderThickness="5" Background="{StaticResource staffStatisticalInfoBackground}">
-                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                                <TextBlock Text="Total hour"
-                                                       FontSize="25"
-                                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                <TextBlock Text="18h52"
-                                                       FontSize="35" FontWeight="Bold"
-                                                       Margin="20 0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                            </StackPanel>
-                                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                                <Image Source="/410ShopManagement;component/Assets/firstColorNoBG.png" Stretch="UniformToFill"
-                                                       Margin="5 0" Width="auto" Height="30"/>
-                                                <TextBlock Text="Today"
-                                                       FontSize="15"
-                                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                <Image Source="/410ShopManagement;component/Assets/secondColorNoBG.png" Stretch="UniformToFill"
-                                                       Margin="15 0 5 0" Width="auto" Height="30"/>
-                                                <TextBlock Text="Yesterday"
-                                                       FontSize="15"
-                                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                <Image Source="/410ShopManagement;component/Assets/thirdColorNoBG.png" Stretch="UniformToFill"
-                                                       Margin="15 0 5 0" Width="auto" Height="30"/>
-                                                <TextBlock Text="Highest"
-                                                       FontSize="15"
-                                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                            </StackPanel>
-                                        </StackPanel>
-                                        <Image Source="/410ShopManagement;component/Assets/tempColunmNoBG.png" Stretch="UniformToFill"
-                                                   Width="auto" Height="100"/>
-                                    </StackPanel>
-                                </Border>
+                                <Grid.Background>
+                                    <ImageBrush ImageSource="/410ShopManagement;component/Assets/Total hours.png" Stretch="UniformToFill"/>
+                                </Grid.Background>
                             </Grid>
                             <Grid Margin="20" Width="500" Height="120">
-                                <Border CornerRadius="30" BorderThickness="5" Background="{StaticResource staffStatisticalInfoBackground}">
-                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                                <TextBlock Text="Total bill"
-                                                       FontSize="25"
-                                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                <TextBlock Text="1396"
-                                                       FontSize="35" FontWeight="Bold"
-                                                       Margin="20 0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                            </StackPanel>
-                                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                                <Image Source="/410ShopManagement;component/Assets/firstColorNoBG.png" Stretch="UniformToFill"
-                                                       Margin="5 0" Width="auto" Height="30"/>
-                                                <TextBlock Text="Today"
-                                                       FontSize="15"
-                                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                <Image Source="/410ShopManagement;component/Assets/secondColorNoBG.png" Stretch="UniformToFill"
-                                                       Margin="15 0 5 0" Width="auto" Height="30"/>
-                                                <TextBlock Text="Yesterday"
-                                                       FontSize="15"
-                                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                <Image Source="/410ShopManagement;component/Assets/thirdColorNoBG.png" Stretch="UniformToFill"
-                                                       Margin="15 0 5 0" Width="auto" Height="30"/>
-                                                <TextBlock Text="Highest"
-                                                           FontSize="15"
-                                                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                            </StackPanel>
-                                        </StackPanel>
-                                        <Image Source="/410ShopManagement;component/Assets/tempColunmNoBG.png" Stretch="UniformToFill"
-                                                   Width="auto" Height="100"/>
-                                    </StackPanel>
-                                </Border>
+                                <Grid.Background>
+                                    <ImageBrush ImageSource="/410ShopManagement;component/Assets/Total bills.png" Stretch="UniformToFill"/>
+                                </Grid.Background>
                             </Grid>
                         </StackPanel>
                     </StackPanel>

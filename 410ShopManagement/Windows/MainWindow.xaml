@@ -139,7 +139,8 @@
         <CommandBinding Command="local:CustomCommands.LogOut"
                         Executed="LogOutCmd_Executed"/>
     </Window.CommandBindings>
-    <Grid x:Name="grid" RenderTransformOrigin="0.5,0.5">
+    <Grid x:Name="grid" RenderTransformOrigin="0.5,0.5"
+          Background="{StaticResource backgroundThemeColor}">
         <Grid.RenderTransform>
             <TransformGroup>
                 <ScaleTransform/>
@@ -149,11 +150,24 @@
             </TransformGroup>
         </Grid.RenderTransform>
         <StackPanel Orientation="Horizontal" Margin="0 0 20 0" VerticalAlignment="Top" HorizontalAlignment="Right" Height="40">
-            <uc:AppInteractButton x:Name="minimizeButton" Margin="10 0 0 0" Click="minimizeButton_Click" ToolTip="Minimize"/>
-            <uc:AppInteractButton x:Name="closeButton" Margin="10 0 0 0" Click="closeButton_Click" ToolTip="Close"/>
+            <uc:AppInteractButton x:Name="minimizeButton" Margin="10 0 0 0" Click="minimizeButton_Click" ToolTip="Minimize">
+                <uc:AppInteractButton.Background>
+                    <ImageBrush ImageSource="/410ShopManagement;component/Assets/Minimize_Button.png" Stretch="Uniform"/>
+                </uc:AppInteractButton.Background>
+            </uc:AppInteractButton>
+            <uc:AppInteractButton x:Name="closeButton" Margin="10 0 0 0" Click="closeButton_Click" ToolTip="Close">
+                <uc:AppInteractButton.Background>
+                    <ImageBrush ImageSource="/410ShopManagement;component/Assets/Close_Button.png" Stretch="Uniform"/>
+                </uc:AppInteractButton.Background>
+            </uc:AppInteractButton>
         </StackPanel>
+        <TextBlock Text="401 BOUTIQUE" FontSize="25" FontWeight="Bold" 
+                   FontFamily="Bauhaus 93" Foreground="{StaticResource mainTextForeground}"
+                   Margin="50 0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <Grid Height="730" Width="1366" VerticalAlignment="Bottom">
-            <Border CornerRadius="30 30 0 0" Background="{StaticResource secondaryThemeColor}">
+            <Border CornerRadius="30 30 0 0" 
+                    Background="{StaticResource secondaryThemeColor}"
+                    BorderThickness="3" BorderBrush="{StaticResource borderBrushMainColor}">
                 <Grid>
                     <StackPanel x:Name="MenuPanel" Width="250" HorizontalAlignment="Left" Margin="-250 0 0 0" RenderTransformOrigin="0.5,0.5">
                         <StackPanel.RenderTransform>
@@ -165,7 +179,7 @@
                             </TransformGroup>
                         </StackPanel.RenderTransform>
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Height="200">
-                            <Button x:Name="LogoButton" Style="{StaticResource MaterialDesignFloatingActionAccentButton}" BorderBrush="{x:Null}" Padding="0" Width="100" Height="100" RenderTransformOrigin="0.5,0.5">
+                            <Button x:Name="LogoButton" Style="{StaticResource MaterialDesignFloatingActionAccentButton}" BorderBrush="{x:Null}" Padding="0" Width="150" Height="150" RenderTransformOrigin="0.5,0.5">
                                 <Button.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -183,7 +197,7 @@
                         <Grid>
                             <materialDesign:TransitioningContent x:Name="MenuChoiceTransitioning" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.2}">
                                 <Grid x:Name="CursorGrid" Width="255" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top">
-                                    <Border CornerRadius="25 0 0 25" Background="{StaticResource mainThemeColor}"/>
+                                    <Border CornerRadius="25 0 0 25" Background="{StaticResource reverseMainGradientColor}"/>
                                 </Grid>
                             </materialDesign:TransitioningContent>
                             <ListView x:Name="MenuListView" SelectionChanged="MenuListView_SelectionChanged">
@@ -196,14 +210,7 @@
                                             <TranslateTransform/>
                                         </TransformGroup>
                                     </ListViewItem.RenderTransform>
-                                    <StackPanel Orientation="Horizontal" Margin="10 0">
-                                        <materialDesign:PackIcon Kind="Home" Foreground="{StaticResource mainTextForeground}"
-                                                     Width="30" Height="30" 
-                                                     Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                        <TextBlock Text="Dash Board" Foreground="{StaticResource mainTextForeground}"
-                                       FontSize="20"
-                                       Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </StackPanel>
+                                    <uc:MenuViewItem IconKind="Home" Text="Dash Board"/>
                                 </ListViewItem>
                                 <ListViewItem x:Name="ProductListView" Height="60" RenderTransformOrigin="0.5,0.5">
                                     <ListViewItem.RenderTransform>
@@ -214,14 +221,7 @@
                                             <TranslateTransform/>
                                         </TransformGroup>
                                     </ListViewItem.RenderTransform>
-                                    <StackPanel Orientation="Horizontal" Margin="10 0">
-                                        <materialDesign:PackIcon Kind="TshirtCrew" Foreground="{StaticResource mainTextForeground}"
-                                                     Width="30" Height="30" 
-                                                     Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                        <TextBlock Text="Product" Foreground="{StaticResource mainTextForeground}"
-                                       FontSize="20"
-                                       Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </StackPanel>
+                                    <uc:MenuViewItem IconKind="TshirtCrew" Text="Product"/>
                                 </ListViewItem>
                                 <ListViewItem x:Name="PaymentListView" Height="60" RenderTransformOrigin="0.5,0.5">
                                     <ListViewItem.RenderTransform>
@@ -232,14 +232,7 @@
                                             <TranslateTransform/>
                                         </TransformGroup>
                                     </ListViewItem.RenderTransform>
-                                    <StackPanel Orientation="Horizontal" Margin="10 0">
-                                        <materialDesign:PackIcon Kind="CashUsd" Foreground="{StaticResource mainTextForeground}"
-                                                     Width="30" Height="30" 
-                                                     Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                        <TextBlock Text="Payment" Foreground="{StaticResource mainTextForeground}"
-                                       FontSize="20"
-                                       Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </StackPanel>
+                                    <uc:MenuViewItem IconKind="CashUsd" Text="Payment"/>
                                 </ListViewItem>
                                 <ListViewItem x:Name="StorageListView" Height="60" RenderTransformOrigin="0.5,0.5">
                                     <ListViewItem.RenderTransform>
@@ -250,14 +243,7 @@
                                             <TranslateTransform/>
                                         </TransformGroup>
                                     </ListViewItem.RenderTransform>
-                                    <StackPanel Orientation="Horizontal" Margin="10 0">
-                                        <materialDesign:PackIcon Kind="StoreOutline" Foreground="{StaticResource mainTextForeground}"
-                                                     Width="30" Height="30" 
-                                                     Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                        <TextBlock Text="Storage" Foreground="{StaticResource mainTextForeground}"
-                                       FontSize="20"
-                                       Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </StackPanel>
+                                    <uc:MenuViewItem IconKind="StoreOutline" Text="Storage"/>
                                 </ListViewItem>
                                 <ListViewItem x:Name="RevenueListView" Height="60" RenderTransformOrigin="0.5,0.5">
                                     <ListViewItem.RenderTransform>
@@ -268,14 +254,7 @@
                                             <TranslateTransform/>
                                         </TransformGroup>
                                     </ListViewItem.RenderTransform>
-                                    <StackPanel Orientation="Horizontal" Margin="10 0">
-                                        <materialDesign:PackIcon Kind="GoogleAnalytics" Foreground="{StaticResource mainTextForeground}"
-                                                     Width="30" Height="30" 
-                                                     Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                        <TextBlock Text="Revenue" Foreground="{StaticResource mainTextForeground}"
-                                       FontSize="20"
-                                       Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </StackPanel>
+                                    <uc:MenuViewItem IconKind="GoogleAnalytics" Text="Revenue"/>
                                 </ListViewItem>
                                 <ListViewItem x:Name="StaffListView" Height="60" RenderTransformOrigin="0.5,0.5">
                                     <ListViewItem.RenderTransform>
@@ -286,14 +265,7 @@
                                             <TranslateTransform/>
                                         </TransformGroup>
                                     </ListViewItem.RenderTransform>
-                                    <StackPanel Orientation="Horizontal" Margin="10 0">
-                                        <materialDesign:PackIcon Kind="AccountBox" Foreground="{StaticResource mainTextForeground}"
-                                                     Width="30" Height="30" 
-                                                     Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                        <TextBlock Text="Staff" Foreground="{StaticResource mainTextForeground}"
-                                       FontSize="20"
-                                       Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </StackPanel>
+                                    <uc:MenuViewItem IconKind="AccountBox" Text="Staff"/>
                                 </ListViewItem>
                                 <ListViewItem x:Name="SettingListView" Height="60" RenderTransformOrigin="0.5,0.5">
                                     <ListViewItem.RenderTransform>
@@ -304,15 +276,15 @@
                                             <TranslateTransform/>
                                         </TransformGroup>
                                     </ListViewItem.RenderTransform>
-                                    <StackPanel Orientation="Horizontal" Margin="10 0">
-                                        <materialDesign:PackIcon Kind="Settings" Foreground="{StaticResource mainTextForeground}"
-                                                     Width="30" Height="30" 
-                                                     Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                        <TextBlock Text="Setting" Foreground="{StaticResource mainTextForeground}"
-                                       FontSize="20"
-                                       Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </StackPanel>
+                                    <uc:MenuViewItem IconKind="Settings" Text="Settings"/>
                                 </ListViewItem>
+                                <Style TargetType="{x:Type ListViewItem}">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter Property="Background" Value="Red"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
                             </ListView>
                         </Grid>
 
@@ -335,7 +307,7 @@
                             </TransformGroup>
                         </Grid.RenderTransform>
                         <Border CornerRadius="30 30 0 0" 
-                        Background="{StaticResource mainThemeColor}">
+                        Background="{StaticResource mainGradientColor}">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -348,6 +320,11 @@
                                             Background="{StaticResource secondaryThemeColor}">
                                         <Grid>
                                             <Image Margin="0 30 0 0" Height="150" VerticalAlignment="Top" Source="/410ShopManagement;component/Assets/Joystick 4kHD.jpg" Stretch="UniformToFill" />
+                                            <Ellipse Height="130" Width="130" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5 120" Fill="CornflowerBlue">
+                                                <Ellipse.Effect>
+                                                    <BlurEffect Radius="50"/>
+                                                </Ellipse.Effect>
+                                            </Ellipse>
                                             <Ellipse Height="100" Width="100" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="20 135">
                                                 <Ellipse.Fill>
                                                     <ImageBrush ImageSource="/410ShopManagement;component/Assets/DiscordAvt.jpg" Stretch="UniformToFill"/>

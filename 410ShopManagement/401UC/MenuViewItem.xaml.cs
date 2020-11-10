@@ -12,29 +12,30 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MaterialDesignThemes.Wpf;
 
 namespace _410ShopManagement._401UC
 {
     /// <summary>
-    /// Interaction logic for CloseButton.xaml
+    /// Interaction logic for MenuViewItem.xaml
     /// </summary>
-    public partial class AppInteractButton : UserControl
+    public partial class MenuViewItem : UserControl
     {
-        public AppInteractButton()
+        public MenuViewItem()
         {
             InitializeComponent();
         }
 
-        //EventClick below will be defined by the owner form 
-        public event RoutedEventHandler Click;
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public PackIconKind IconKind
         {
-            //If form defined Click event, we will use that Click event
-            if (this.Click != null)
-            {
-                this.Click(this, e);
-            }
+            get { return icon.Kind; }
+            set { icon.Kind = value; }
+        }
+
+        public string Text
+        {
+            get { return text.Text; }
+            set { text.Text = value; }
         }
     }
 }

@@ -27,7 +27,6 @@ namespace _410ShopManagement.Windows
         public LoginWindow()
         {
             InitializeComponent();
-            minimizeButton.Icon = PackIconKind.WindowMinimize;
         }
 
         private void loginBtn_Click(object sender, RoutedEventArgs e)
