@@ -41,8 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="AccountDAL.cs" />
+    <Compile Include="BillDAL.cs" />
+    <Compile Include="BillDetailDAL.cs" />
+    <Compile Include="DataProvider.cs" />
+    <Compile Include="ProductDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShipmentDAL.cs" />
+    <Compile Include="ShipmentDetailDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DTO\DTO.csproj">
