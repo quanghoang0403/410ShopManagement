@@ -10,23 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace _410ShopManagement.Windows
+namespace _410ShopManagement._401UC
 {
     /// <summary>
-    /// Interaction logic for TempWindow.xaml
+    /// Interaction logic for ProductUC.xaml
     /// </summary>
-    public partial class TempWindow : Window
+    public partial class ProductUC : UserControl
     {
-        public TempWindow()
+        public ProductUC()
         {
             InitializeComponent();
-        }
-
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Hide();
         }
     }
 }

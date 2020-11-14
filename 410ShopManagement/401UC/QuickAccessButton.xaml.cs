@@ -16,13 +16,19 @@ using System.Windows.Shapes;
 namespace _410ShopManagement._401UC
 {
     /// <summary>
-    /// Interaction logic for CloseButton.xaml
+    /// Interaction logic for QuickAccessButton.xaml
     /// </summary>
-    public partial class CloseButton : UserControl
+    public partial class QuickAccessButton : UserControl
     {
-        public CloseButton()
+        public QuickAccessButton()
         {
             InitializeComponent();
+        }
+
+        public ImageSource ImageSource
+        {
+            get { return image.ImageSource; }
+            set { image.ImageSource = value; }
         }
 
         //EventClick below will be defined by the owner form 

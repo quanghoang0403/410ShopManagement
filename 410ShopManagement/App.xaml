@@ -2,19 +2,35 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:_410ShopManagement"
-             StartupUri="Windows/MainWindow.xaml">
+             StartupUri="Windows/LoginWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Blue.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <SolidColorBrush x:Key="mainThemeColor" Color="SkyBlue"/>
-            <SolidColorBrush x:Key="secondaryThemeColor" Color="SeaShell"/>
-            <SolidColorBrush x:Key="backgroundThemeColor" Color="Azure"/>
+            <SolidColorBrush x:Key="mainThemeColor" Color="CornflowerBlue"/>
+            <SolidColorBrush x:Key="secondaryThemeColor" Color="#DBFBEF"/>
+            <SolidColorBrush x:Key="backgroundThemeColor" Color="#CCFFE7"/>
             <SolidColorBrush x:Key="darkBackgroundThemeColor" Color="#303030"/>
+            <SolidColorBrush x:Key="borderBrushMainColor" Color="#4DE9AF"/>
+            <SolidColorBrush x:Key="firstMainGradientColor" Color="#00F988"/>
+            <SolidColorBrush x:Key="secondMainGradientColor" Color="#00D7D3"/>
+            <LinearGradientBrush x:Key="mainGradientColor" StartPoint="0,0" EndPoint="1,0">
+                <GradientStop Color="#00F988" Offset="0"/>
+                <GradientStop Color="#00D7D3" Offset="1"/>
+            </LinearGradientBrush>
+            <LinearGradientBrush x:Key="reverseMainGradientColor" StartPoint="1,0" EndPoint="0,0">
+                <GradientStop Color="#00F988" Offset="0"/>
+                <GradientStop Color="#00D7D3" Offset="1"/>
+            </LinearGradientBrush>
+            <SolidColorBrush x:Key="mainTextForeground" Color="#4DE9AF"/>
+            <SolidColorBrush x:Key="secondTextForeground" Color="#7E8580"/>
+            <SolidColorBrush x:Key="quickAccessButtonBackground" Color="Azure"/>
+            <SolidColorBrush x:Key="shopInfoBackground" Color="NavajoWhite"/>
+            <SolidColorBrush x:Key="staffStatisticalInfoBackground" Color="Bisque"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

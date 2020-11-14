@@ -26,87 +26,13 @@ namespace _410ShopManagement
     {
         //Windows
         _401UC.iNotifier notify = new _401UC.iNotifier();
+        Windows.LoginWindow loginWindow;
 
         public MainWindow()
         {
             InitializeComponent();
+            CloseMenuButton.Visibility = Visibility.Collapsed;
         }
-
-        #region ThemeButton
-        private void MenuDarkModeButton_Click(object sender, RoutedEventArgs e)
-        {
-            ModifyTheme(theme => theme.SetBaseTheme(DarkModeToggleButton.IsChecked == true ? Theme.Dark : Theme.Light));
-
-            //This with hard-setting Background from Owner make Binding of SearchBar's background works smoother
-            if (DarkModeToggleButton.IsChecked == true)
-            {
-                Brush darkBG = (Brush)Application.Current.Resources["darkBackgroundThemeColor"];
-                
-                //Setting Docker's panels background to darkBG
-            }
-            else
-            {
-                Brush lightBG = (Brush)Application.Current.Resources["backgroundThemeColor"];
-
-                //Setting Docker's panels background to lightBG
-            }
-
-            notify.Text = "Change application's theme successfully !";
-            notify.ShowDialog();
-        }
-
-        private static void ModifyTheme(Action<ITheme> modificationAction)
-        {
-            PaletteHelper paletteHelper = new PaletteHelper();
-            ITheme theme = paletteHelper.GetTheme();
-
-            modificationAction?.Invoke(theme);
-
-            paletteHelper.SetTheme(theme);
-        }
-        #endregion
-
-        #region Left Panel
-
-        private void TestBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Button btn = sender as Button;
-            notify.Text = "You clicked " + btn.Tag;
-            notify.ShowDialog();
-        }
-
-        private void FirstTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
-        {
-            if (FirstTreeView.SelectedItem != null)
-            {
-                if (((TreeViewItem)e.NewValue).Tag != null)
-                {
-                    switch (((TreeViewItem)e.NewValue).Tag.ToString())
-                    {
-                        case "Child 1":
-                            notify.Text = "You clicked " + ((TreeViewItem)e.NewValue).Tag.ToString();
-                            notify.ShowDialog();
-                            break;
-                        case "Child 2":
-                            notify.Text = "You clicked " + ((TreeViewItem)e.NewValue).Tag.ToString();
-                            notify.ShowDialog();
-                            break;
-                        case "Child 3":
-                            notify.Text = "You clicked " + ((TreeViewItem)e.NewValue).Tag.ToString();
-                            notify.ShowDialog();
-                            break;
-                        case "Child 4":
-                            notify.Text = "You clicked " + ((TreeViewItem)e.NewValue).Tag.ToString();
-                            notify.ShowDialog();
-                            break;
-                    }
-
-                    //Release selected item
-                    ((TreeViewItem)FirstTreeView.SelectedItem).IsSelected = false;
-                }
-            }
-        }
-        #endregion
 
         #region Commands Execute
         private void ExitCmd_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -126,14 +52,70 @@ namespace _410ShopManagement
         {
             //Show Login window
 
-            //This is for testing
-            Windows.TempWindow temp = new Windows.TempWindow();
-            temp.Show();
-
             this.Close();
         }
         #endregion
 
+        #region Menu Panel
+        private void OpenMenuButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenMenuButton.Visibility = Visibility.Collapsed;
+            CloseMenuButton.Visibility = Visibility.Visible;
+        }
+
+        private void CloseMenuButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenMenuButton.Visibility = Visibility.Visible;
+            CloseMenuButton.Visibility = Visibility.Collapsed;
+        }
+
+        private void MenuListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int index = MenuListView.SelectedIndex;
+            MoveCursorMenu(index);
+
+            switch (index)
+            {
+                case 0:
+                    HomePanel.Children.Clear();
+                    HomePanel.Children.Add(new _401UC.HomeUC());
+                    break;
+                case 1:
+                    HomePanel.Children.Clear();
+                    HomePanel.Children.Add(new _401UC.ProductUC());
+                    break;
+                case 2:
+                    HomePanel.Children.Clear();
+                    HomePanel.Children.Add(new _401UC.PaymentUC());
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void MoveCursorMenu(int index)
+        {
+            MenuChoiceTransitioning.OnApplyTemplate();
+            CursorGrid.Margin = new Thickness(0, 60 * index, 0, 0);
+        }
+        #endregion
+
+        private void minimizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void closeButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void logoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            loginWindow = new Windows.LoginWindow();
+            loginWindow.Show();
+        }
     }
 
     //Custom Commands for the whole app (in this namespace)
