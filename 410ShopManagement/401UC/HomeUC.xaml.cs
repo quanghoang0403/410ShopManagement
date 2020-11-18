@@ -30,20 +30,17 @@ namespace _410ShopManagement._401UC
 
         private void product_QAButton_Click(object sender, RoutedEventArgs e)
         {
-            notify.Text = "Product...";
-            notify.ShowDialog();
+            MainWindow.MenuListView_QuickAccess(1);
         }
 
         private void payment_QAButton_Click(object sender, RoutedEventArgs e)
         {
-            notify.Text = "Payment...";
-            notify.ShowDialog();
+            MainWindow.MenuListView_QuickAccess(2);
         }
 
         private void import_QAButton_Click(object sender, RoutedEventArgs e)
         {
-            notify.Text = "Import...";
-            notify.ShowDialog();
+            MainWindow.MenuListView_QuickAccess(3);
         }
     }
 }

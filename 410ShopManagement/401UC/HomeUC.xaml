@@ -56,13 +56,13 @@
                 <Grid Grid.Row="1">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <local:QuickAccessButton x:Name="product_QAButton" 
-                                                 ImageSource="/410ShopManagement;component/Assets/Product_Button.png"
+                                                 ImageSource="/410ShopManagement;component/Assets/MainWindow/Product_Button.png"
                                                  Click="product_QAButton_Click"/>
                         <local:QuickAccessButton x:Name="payment_QAButton"
-                                                 ImageSource="/410ShopManagement;component/Assets/Payment_Button.png"
+                                                 ImageSource="/410ShopManagement;component/Assets/MainWindow/Payment_Button.png"
                                                  Click="payment_QAButton_Click"/>
                         <local:QuickAccessButton x:Name="import_QAButton"
-                                                 ImageSource="/410ShopManagement;component/Assets/Import_Button.png"
+                                                 ImageSource="/410ShopManagement;component/Assets/MainWindow/Import_Button.png"
                                                  Click="import_QAButton_Click"/>
                     </StackPanel>
                 </Grid>
@@ -71,18 +71,18 @@
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <Grid Width="300" Height="280">
                             <Grid.Background>
-                                <ImageBrush ImageSource="/410ShopManagement;component/Assets/Shop_s Ava.png"/>
+                                <ImageBrush ImageSource="/410ShopManagement;component/Assets/MainWindow/Shop_s Ava.png"/>
                             </Grid.Background>
                         </Grid>
                         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                             <Grid Margin="20" Width="500" Height="120">
                                 <Grid.Background>
-                                    <ImageBrush ImageSource="/410ShopManagement;component/Assets/Total hours.png" Stretch="UniformToFill"/>
+                                    <ImageBrush ImageSource="/410ShopManagement;component/Assets/MainWindow/Total hours.png" Stretch="UniformToFill"/>
                                 </Grid.Background>
                             </Grid>
                             <Grid Margin="20" Width="500" Height="120">
                                 <Grid.Background>
-                                    <ImageBrush ImageSource="/410ShopManagement;component/Assets/Total bills.png" Stretch="UniformToFill"/>
+                                    <ImageBrush ImageSource="/410ShopManagement;component/Assets/MainWindow/Total bills.png" Stretch="UniformToFill"/>
                                 </Grid.Background>
                             </Grid>
                         </StackPanel>

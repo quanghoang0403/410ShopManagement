@@ -24,14 +24,25 @@ namespace _410ShopManagement
     /// </summary>
     public partial class MainWindow : Window
     {
+        //Yah, this is my type <3
+        private static MainWindow instance;
         //Windows
         _401UC.iNotifier notify = new _401UC.iNotifier();
         Windows.LoginWindow loginWindow;
 
         public MainWindow()
         {
+            if (instance == null)
+            {
+                instance = this;
+            }
             InitializeComponent();
             CloseMenuButton.Visibility = Visibility.Collapsed;
+        }
+
+        public static MainWindow GetInstance()
+        {
+            return instance;
         }
 
         #region Commands Execute
@@ -88,12 +99,16 @@ namespace _410ShopManagement
                     HomePanel.Children.Clear();
                     HomePanel.Children.Add(new _401UC.PaymentUC());
                     break;
+                case 3:
+                    HomePanel.Children.Clear();
+                    HomePanel.Children.Add(new _401UC.StorageUC());
+                    break;
                 default:
                     break;
             }
         }
 
-        private void MoveCursorMenu(int index)
+        public void MoveCursorMenu(int index)
         {
             MenuChoiceTransitioning.OnApplyTemplate();
             CursorGrid.Margin = new Thickness(0, 60 * index, 0, 0);
@@ -115,6 +130,12 @@ namespace _410ShopManagement
             this.Close();
             loginWindow = new Windows.LoginWindow();
             loginWindow.Show();
+        }
+
+        //Static func for HomeUC to select items from MainWindow's MenuListView 
+        public static void MenuListView_QuickAccess(int index)
+        {
+            MainWindow.GetInstance().MenuListView.SelectedIndex = index;
         }
     }
 

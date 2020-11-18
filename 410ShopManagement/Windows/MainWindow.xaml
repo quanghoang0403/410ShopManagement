@@ -105,17 +105,17 @@
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="grid">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0.1"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.1"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="grid">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0.1"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.1"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="grid">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0.2"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.2"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="MenuChoiceTransitioning">
                 <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
@@ -152,12 +152,12 @@
         <StackPanel Orientation="Horizontal" Margin="0 0 20 0" VerticalAlignment="Top" HorizontalAlignment="Right" Height="40">
             <uc:AppInteractButton x:Name="minimizeButton" Margin="10 0 0 0" Click="minimizeButton_Click" ToolTip="Minimize">
                 <uc:AppInteractButton.Background>
-                    <ImageBrush ImageSource="/410ShopManagement;component/Assets/Minimize_Button.png" Stretch="Uniform"/>
+                    <ImageBrush ImageSource="/410ShopManagement;component/Assets/MainWindow/Minimize_Button.png" Stretch="Uniform"/>
                 </uc:AppInteractButton.Background>
             </uc:AppInteractButton>
             <uc:AppInteractButton x:Name="closeButton" Margin="10 0 0 0" Click="closeButton_Click" ToolTip="Close">
                 <uc:AppInteractButton.Background>
-                    <ImageBrush ImageSource="/410ShopManagement;component/Assets/Close_Button.png" Stretch="Uniform"/>
+                    <ImageBrush ImageSource="/410ShopManagement;component/Assets/MainWindow/Close_Button.png" Stretch="Uniform"/>
                 </uc:AppInteractButton.Background>
             </uc:AppInteractButton>
         </StackPanel>
@@ -278,13 +278,15 @@
                                     </ListViewItem.RenderTransform>
                                     <uc:MenuViewItem IconKind="Settings" Text="Settings"/>
                                 </ListViewItem>
-                                <Style TargetType="{x:Type ListViewItem}">
-                                    <Style.Triggers>
-                                        <Trigger Property="IsSelected" Value="True">
-                                            <Setter Property="Background" Value="Red"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
+                                <ListView.Resources>
+                                    <Style TargetType="ListViewItem">
+                                        <Style.Triggers>
+                                            <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                                                <Setter Property="IsSelected" Value="True"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ListView.Resources>
                             </ListView>
                         </Grid>
 
@@ -319,26 +321,31 @@
                                     <Border CornerRadius="0 30 0 0"
                                             Background="{StaticResource secondaryThemeColor}">
                                         <Grid>
-                                            <Image Margin="0 30 0 0" Height="150" VerticalAlignment="Top" Source="/410ShopManagement;component/Assets/Joystick 4kHD.jpg" Stretch="UniformToFill" />
-                                            <Ellipse Height="130" Width="130" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5 120" Fill="CornflowerBlue">
-                                                <Ellipse.Effect>
-                                                    <BlurEffect Radius="50"/>
-                                                </Ellipse.Effect>
-                                            </Ellipse>
-                                            <Ellipse Height="100" Width="100" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="20 135">
+                                            <Image Margin="-3 30 0 0" Height="150" VerticalAlignment="Top" Source="/410ShopManagement;component/Assets/MainWindow/AvatarCover.png" Stretch="UniformToFill" />
+
+                                            <Ellipse Height="120" Width="120" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10 100 0 0">
                                                 <Ellipse.Fill>
-                                                    <ImageBrush ImageSource="/410ShopManagement;component/Assets/DiscordAvt.jpg" Stretch="UniformToFill"/>
+                                                    <ImageBrush ImageSource="/410ShopManagement;component/Assets/MainWindow/UserAvatar.png" Stretch="Uniform"/>
                                                 </Ellipse.Fill>
                                             </Ellipse>
-                                            <Grid Margin="10 200 10 35">
+                                            <Grid Margin="10 200 10 0">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="*"/>
-                                                    <RowDefinition Height="60"/>
+                                                    <RowDefinition Height="20"/>
                                                 </Grid.RowDefinitions>
-                                                <Grid Grid.Row="0">
-                                                    
-                                                </Grid>
-                                                <uc:AppInteractButton x:Name="logoutButton" Grid.Row="1" HorizontalAlignment="Right" ToolTip="Log Out" Click="logoutButton_Click"/>
+                                                <StackPanel Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                    <TextBlock Text="DuyDeo" FontSize="28" FontFamily="Bauhaus 93"
+                                                               Margin="15 0 0 0" HorizontalAlignment="Center"/>
+                                                    <Image Source="/410ShopManagement;component/Assets/MainWindow/UserProfile.png"/>
+                                                </StackPanel>
+                                                <uc:AppInteractButton x:Name="logoutButton" Grid.Row="1" HorizontalAlignment="Right" ToolTip="Log Out" 
+                                                                      Click="logoutButton_Click" 
+                                                                      Margin="0 -50 -10 0"
+                                                                      Width="70" Height="70">
+                                                    <uc:AppInteractButton.Background>
+                                                        <ImageBrush ImageSource="/410ShopManagement;component/Assets/MainWindow/LogoutButton.png" Stretch="Uniform"/>
+                                                    </uc:AppInteractButton.Background>
+                                                </uc:AppInteractButton>
                                             </Grid>
                                         </Grid>
                                     </Border>
