@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    class BillDetailDTO
+    public class BillDetailDTO
     {
     }
 }
