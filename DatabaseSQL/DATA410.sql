@@ -1,4 +1,4 @@
-﻿-- PRODUCT	(table)		:
+-- PRODUCT	(table)		:
 -- Id_Product
 -- Name_Product
 -- Image
@@ -80,14 +80,13 @@ CREATE TABLE PRODUCT
 )
 GO
 
-ALTER TABLE PRODUCT
-	ALTER COLUMN Export_Price INT NOT NULL
+
 
 CREATE TABLE STAFF
 (
 	Id_Staff			INT IDENTITY PRIMARY KEY,
 	Name_Staff			NVARCHAR(50) NOT NULL,
-	Position			NVARCHAR(50) IDENTITY PRIMARY KEY,
+	Position			NVARCHAR(50) NOT NULL,
 )
 GO
 
@@ -261,7 +260,7 @@ GO
 -- Position
 -- id_Staff
 
-ALTER PROC USP_Insert_Update_Account_AllDetail(@Username NVARCHAR(20),@Passwordd VARCHAR(40),@Permision NVARCHAR(20),@Id_Staff INT, @StatementType NVARCHAR(20) = '', @Id_Account INT )
+create PROC USP_Insert_Update_Account_AllDetail(@Username NVARCHAR(20),@Passwordd VARCHAR(40),@Permision NVARCHAR(20),@Id_Staff INT, @StatementType NVARCHAR(20) = '', @Id_Account INT )
 AS
 	BEGIN
 			IF @StatementType = 'Insert' --Biến Id nhập số bất kì
@@ -295,7 +294,7 @@ GO
 -- Export_Date
 -- Total_Bill
 
-ALTER PROC USP_Insert_Update_Bill_AllDetail(@Id_Staff INT,@Export_Date DATE,@Total_Bill INT, @StatementType NVARCHAR(20) = '', @Id_Bill INT)
+CREATE PROC USP_Insert_Update_Bill_AllDetail(@Id_Staff INT,@Export_Date DATE,@Total_Bill INT, @StatementType NVARCHAR(20) = '', @Id_Bill INT)
 AS
 	BEGIN
 		IF @StatementType = 'Insert' --Biến Id nhập số bất kì
@@ -348,7 +347,7 @@ AS
 	END
 GO
 
-Alter PROC USP_Select_Shipment_AllDetail
+CREATE PROC USP_Select_Shipment_AllDetail
 AS
 	SELECT * FROM SHIPMENT
 GO
@@ -362,7 +361,7 @@ GO
 -- Total_Price
 
 
-ALTER PROC USP_Insert_Update_Bill_Detail_AllDetail(@Id_Bill INT,@Id_Product INT,@Quantity_Product INT, @StatementType NVARCHAR(20) = '', @Id_BillDetail INT) 
+CREATE PROC USP_Insert_Update_Bill_Detail_AllDetail(@Id_Bill INT,@Id_Product INT,@Quantity_Product INT, @StatementType NVARCHAR(20) = '', @Id_BillDetail INT) 
 AS
 
 begin
@@ -436,10 +435,3 @@ CREATE PROC USP_Select_Shipment_Detail_AllDetail
 AS
 	SELECT * FROM SHIPMENT_DETAIL
 GO
-
-
-
-
-
-
-
