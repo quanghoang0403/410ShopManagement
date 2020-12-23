@@ -28,6 +28,8 @@ namespace _410ShopManagement
         private static MainWindow instance;
         //Windows
         _401UC.iNotifier notify = new _401UC.iNotifier();
+        _401UC.iNotifierOKCancel confirmer = new _401UC.iNotifierOKCancel();
+
         Windows.LoginWindow loginWindow;
 
         public MainWindow()
@@ -48,12 +50,10 @@ namespace _410ShopManagement
         #region Commands Execute
         private void ExitCmd_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            _401UC.iNotifierOKCancel finalConfirmation = new _401UC.iNotifierOKCancel();
+            confirmer.Text = "Do you sure to quit the application ?";
+            confirmer.ShowDialog();
 
-            finalConfirmation.Text = "Do you sure to quit the application ?";
-            finalConfirmation.ShowDialog();
-
-            if(finalConfirmation.result == _401UC.iNotifierOKCancel.Result.OK)
+            if(confirmer.result == _401UC.iNotifierOKCancel.Result.OK)
             {
                 Application.Current.Shutdown();
             }
@@ -115,6 +115,7 @@ namespace _410ShopManagement
         }
         #endregion
 
+        #region App Navigator
         private void minimizeButton_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
@@ -127,16 +128,23 @@ namespace _410ShopManagement
 
         private void logoutButton_Click(object sender, RoutedEventArgs e)
         {
+            //release this instance to create new one
+            //if not do this, can GetInstance to the right one
+            //exp: login -> click any QuickAccess -> logout -> login -> cant QuickAccess if not create new instance
+            instance = null;
             this.Close();
             loginWindow = new Windows.LoginWindow();
             loginWindow.Show();
         }
+        #endregion
 
+        #region Other windows use
         //Static func for HomeUC to select items from MainWindow's MenuListView 
         public static void MenuListView_QuickAccess(int index)
         {
             MainWindow.GetInstance().MenuListView.SelectedIndex = index;
         }
+        #endregion
     }
 
     //Custom Commands for the whole app (in this namespace)
