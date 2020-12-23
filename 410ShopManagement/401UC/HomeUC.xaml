@@ -57,7 +57,7 @@
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <local:QuickAccessButton x:Name="product_QAButton" 
                                                  ImageSource="/410ShopManagement;component/Assets/MainWindow/Product_Button.png"
-                                                 Click="product_QAButton_Click"/>
+                                                 Click="product_QAButton_Click" Loaded="product_QAButton_Loaded"/>
                         <local:QuickAccessButton x:Name="payment_QAButton"
                                                  ImageSource="/410ShopManagement;component/Assets/MainWindow/Payment_Button.png"
                                                  Click="payment_QAButton_Click"/>

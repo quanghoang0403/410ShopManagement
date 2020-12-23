@@ -42,5 +42,15 @@ namespace _410ShopManagement._401UC
         {
             MainWindow.MenuListView_QuickAccess(3);
         }
+
+        private void product_QAButton_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void payment_QAButton_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
