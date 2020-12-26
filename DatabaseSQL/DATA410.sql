@@ -92,11 +92,10 @@ CREATE TABLE ACCOUNT
 (
 	Id_Account			INT IDENTITY PRIMARY KEY,
 	Username			NVARCHAR(20) NOT NULL,
-	Passwordd			VARCHAR(40) NOT NULL,
+	Passwordd			VARCHAR(1000) NOT NULL,
 	Permision			NVARCHAR(20) NOT NULL,
 	Id_Staff			INT,
 	FOREIGN KEY (Id_Staff) REFERENCES STAFF(Id_Staff) ON UPDATE CASCADE,
-	
 )
 GO
 
@@ -149,8 +148,8 @@ GO
 CREATE PROC USP_Insert_Update_Product_AllDetail(
 							@Name_Product		NVARCHAR(100),
 							@Images				NVARCHAR(100),
-							@Import_Price		MONEY,
-							@Export_Price		MONEY,
+							@Import_Price		INT,
+							@Export_Price		INT,
 							@Material			NVARCHAR(20), --Chất liệu
 							@Origin				NVARCHAR(20), --Nguồn gốc
 							@Product_Category	NVARCHAR(20), --Loại sản phẩm
@@ -411,7 +410,7 @@ AS
 
 GO
 
-CREATE PROC USP_Select_Shipment_Detail_AllDetail
+CREATE PROC USP_Select_Shipment_Detail_AllDetail(@Id_Shipment INT)
 AS
-	SELECT * FROM SHIPMENT_DETAIL
+	SELECT * FROM SHIPMENT_DETAIL WHERE Id_Shipment = @Id_Shipment
 GO
