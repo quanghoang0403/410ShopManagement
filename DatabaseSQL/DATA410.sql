@@ -267,6 +267,15 @@ AS
 	SELECT * FROM ACCOUNT
 GO
 
+CREATE PROC USP_LOGIN
+(@Username nvarchar(20),
+@Passwordd varchar(40))
+as
+begin
+	SELECT * FROM ACCOUNT WHERE Username = @Username and Passwordd= @Passwordd
+end 
+go
+
 -- BILL (table)
 -- Id_Bill
 -- Id_Staff
@@ -370,9 +379,9 @@ end
 
 GO
 
-CREATE PROC USP_Select_Bill_Detail_AllDetail
+CREATE PROC USP_Select_Bill_Detail_AllDetail(@Id_Bill INT)
 AS
-	SELECT * FROM BILL_DETAIL
+	SELECT * FROM BILL_DETAIL WHERE Id_Bill = @Id_Bill
 GO
 
 -- SHIPMENT_DETAIL	(table)
