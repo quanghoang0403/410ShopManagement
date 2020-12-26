@@ -1,5 +1,8 @@
-﻿using System;
+﻿using DAL;
+using DTO;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,38 +11,38 @@ namespace BLL
 {
     public class ShipmentDetailBLL
     {
-        private static BillDetailBLL instance;
+        private static ShipmentDetailBLL instance;
 
-        public static BillDetailBLL Instance
+        public static ShipmentDetailBLL Instance
         {
-            get { if (instance == null) instance = new BillDetailBLL(); return BillDetailBLL.instance; }
-            private set { BillDetailBLL.instance = value; }
+            get { if (instance == null) instance = new ShipmentDetailBLL(); return ShipmentDetailBLL.instance; }
+            private set { ShipmentDetailBLL.instance = value; }
         }
 
-        private BillDetailBLL() { }
+        private ShipmentDetailBLL() { }
 
-        public List<BillDetailDTO> GetListBillDetail(int id_Bill)
+        public List<ShipmentDetailDTO> GetListShipmentDetail(int id_Shipment)
         {
-            List<BillDetailDTO> listBillInfo = new List<BillDetailDTO>();
+            List<ShipmentDetailDTO> listBillInfo = new List<ShipmentDetailDTO>();
 
-            DataTable data = BillDetailDAL.Instance.GetListBillDetail(id_Bill);
+            DataTable data = ShipmentDetailDAL.Instance.GetListShipmentDetail(id_Shipment);
 
             foreach (DataRow item in data.Rows)
             {
-                BillDetailDTO info = new BillDetailDTO(item);
+                ShipmentDetailDTO info = new ShipmentDetailDTO(item);
                 listBillInfo.Add(info);
             }
             return listBillInfo;
         }
 
-        public bool UpdateBillDetail(int id_Bill, int id_Product, int quantity_Product, int id_BillDetail)
+        public bool UpdateShipmentDetail(int id_Shipment, int id_Product, int quantity_Product, int id_ShipmentDetail)
         {
-            return BillDetailDAL.Instance.UpdateBillDetail(id_Bill, id_Product, quantity_Product, id_BillDetail);
+            return ShipmentDetailDAL.Instance.UpdateShipmentDetail(id_Shipment, id_Product, quantity_Product, id_ShipmentDetail);
         }
 
-        public bool InsertBillDetail(int id_Bill, int id_Product, int quantity_Product)
+        public bool InsertShipmentDetail(int id_Shipment, int id_Product, int quantity_Product)
         {
-            return BillDetailDAL.Instance.InsertBillDetail(id_Bill, id_Product, quantity_Product);
+            return ShipmentDetailDAL.Instance.InsertShipmentDetail(id_Shipment, id_Product, quantity_Product);
         }
     }
 }

@@ -1,5 +1,8 @@
-﻿using System;
+﻿using DAL;
+using DTO;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,38 +11,38 @@ namespace BLL
 {
     public class StaffBLL
     {
-        private static BillDetailBLL instance;
+        private static StaffBLL instance;
 
-        public static BillDetailBLL Instance
+        public static StaffBLL Instance
         {
-            get { if (instance == null) instance = new BillDetailBLL(); return BillDetailBLL.instance; }
-            private set { BillDetailBLL.instance = value; }
+            get { if (instance == null) instance = new StaffBLL(); return StaffBLL.instance; }
+            private set { StaffBLL.instance = value; }
         }
 
-        private BillDetailBLL() { }
+        private StaffBLL() { }
 
-        public List<BillDetailDTO> GetListBillDetail(int id_Bill)
+        public List<StaffDTO> GetListStaff()
         {
-            List<BillDetailDTO> listBillInfo = new List<BillDetailDTO>();
+            List<StaffDTO> listBillInfo = new List<StaffDTO>();
 
-            DataTable data = BillDetailDAL.Instance.GetListBillDetail(id_Bill);
+            DataTable data = StaffDAL.Instance.GetListStaff();
 
             foreach (DataRow item in data.Rows)
             {
-                BillDetailDTO info = new BillDetailDTO(item);
+                StaffDTO info = new StaffDTO(item);
                 listBillInfo.Add(info);
             }
             return listBillInfo;
         }
 
-        public bool UpdateBillDetail(int id_Bill, int id_Product, int quantity_Product, int id_BillDetail)
+        public bool UpdateStaff(string name_Staff, string position, int id_Staff)
         {
-            return BillDetailDAL.Instance.UpdateBillDetail(id_Bill, id_Product, quantity_Product, id_BillDetail);
+            return StaffDAL.Instance.UpdateStaff(name_Staff, position, id_Staff);
         }
 
-        public bool InsertBillDetail(int id_Bill, int id_Product, int quantity_Product)
+        public bool InsertStaff(string name_Staff, string position)
         {
-            return BillDetailDAL.Instance.InsertBillDetail(id_Bill, id_Product, quantity_Product);
+            return StaffDAL.Instance.InsertStaff(name_Staff, position);
         }
     }
 }
