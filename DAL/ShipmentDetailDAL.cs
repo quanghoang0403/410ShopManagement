@@ -38,5 +38,6 @@ namespace DAL
             int result = DataProvider.Instance.ExecuteNonQuery("exec USP_Insert_Update_Bill_AllDetail @id_Staff , @date , @total_Bill , @statement , @id_Bill ", new object[] { id_Shipment, id_Product, quantity_Product, statement, id_ShipmentDetail });
             return result > 0;
         }
+
     }
 }
