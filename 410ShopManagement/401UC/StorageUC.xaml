@@ -6,10 +6,122 @@
              xmlns:local="clr-namespace:_410ShopManagement._401UC"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             Height="auto" Width="auto">
+             TextElement.Foreground="{StaticResource mainTextForeground}"
+             Height="580" Width="1066">
     <Grid>
         <materialDesign:TransitioningContent x:Name="Transitioner" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
-            <Image Margin="10" Width="500" Height="500" Source="/410ShopManagement;component/Assets/Phựn.jpg" Stretch="UniformToFill" />
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid Width="200" Height="200"
+                          VerticalAlignment="Center" HorizontalAlignment="Center"
+                          Margin="0 40 0 0">
+                        <Border CornerRadius="180 180 35 35" 
+                                BorderThickness="0"
+                                Background="{StaticResource quickAccessButtonBackground}">
+                            <Button x:Name="importBtn" 
+                                    Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                    Width="auto" Height="auto"
+                                    BorderBrush="{x:Null}"
+                                    Click="importBtn_Click">
+                                <Button.Content>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Grid.Row="0" Text="IMPORT" TextWrapping="Wrap"
+                                                   FontSize="36" FontFamily="Bauhaus 93" 
+                                                   TextElement.Foreground="{StaticResource mainTextForeground}"
+                                                   HorizontalAlignment="Center"/>
+                                        
+                                        <TextBlock Grid.Row="1" Text="PRODUCT" TextWrapping="Wrap"
+                                                   FontSize="36" FontFamily="Bauhaus 93" 
+                                                   TextElement.Foreground="{StaticResource mainTextForeground}"
+                                                   HorizontalAlignment="Center"/>
+                                    </Grid>
+                                </Button.Content>
+                            </Button>
+                        </Border>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                Margin="0 0 0 40">
+                        <Grid Width="200" Height="200"
+                              VerticalAlignment="Center" HorizontalAlignment="Center"
+                              Margin="0 0 15 0">
+                            <Border CornerRadius="35 35 180 180" 
+                                    BorderThickness="0"
+                                    Background="{StaticResource quickAccessButtonBackground}">
+                                <Button x:Name="updateBtn" 
+                                        Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                        Width="auto" Height="auto"
+                                        BorderBrush="{x:Null}"
+                                        Click="updateBtn_Click">
+                                    <Button.Content>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Grid.Row="0" Text="UPDATE" TextWrapping="Wrap"
+                                                   FontSize="36" FontFamily="Bauhaus 93" 
+                                                   TextElement.Foreground="{StaticResource mainTextForeground}"
+                                                   HorizontalAlignment="Center"/>
+
+                                            <TextBlock Grid.Row="1" Text="PRODUCT" TextWrapping="Wrap"
+                                                   FontSize="36" FontFamily="Bauhaus 93" 
+                                                   TextElement.Foreground="{StaticResource mainTextForeground}"
+                                                   HorizontalAlignment="Center"
+                                                       Margin="0 0 0 40"/>
+                                        </Grid>
+                                    </Button.Content>
+                                </Button>
+                            </Border>
+                        </Grid>
+                        <Grid Width="200" Height="200"
+                              VerticalAlignment="Center" HorizontalAlignment="Center"
+                              Margin="15 0 0 0">
+                            <Border CornerRadius="180 180 35 35" 
+                                    BorderThickness="0"
+                                    Background="{StaticResource quickAccessButtonBackground}">
+                                <Button x:Name="cancelBtn" 
+                                        Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                        Width="auto" Height="auto"
+                                        BorderBrush="{x:Null}"
+                                        Click="cancelBtn_Click">
+                                    <Button.Content>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Grid.Row="0" Text="CANCEL" TextWrapping="Wrap"
+                                                       FontSize="36" FontFamily="Bauhaus 93" 
+                                                       TextElement.Foreground="{StaticResource mainTextForeground}"
+                                                       HorizontalAlignment="Center"/>
+
+                                            <TextBlock Grid.Row="1" Text="PRODUCT" TextWrapping="Wrap"
+                                                       FontSize="36" FontFamily="Bauhaus 93" 
+                                                       TextElement.Foreground="{StaticResource mainTextForeground}"
+                                                       HorizontalAlignment="Center"/>
+                                        </Grid>
+                                    </Button.Content>
+                                </Button>
+                            </Border>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+            </Grid>
         </materialDesign:TransitioningContent>
     </Grid>
 </UserControl>
