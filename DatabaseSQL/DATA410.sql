@@ -80,8 +80,6 @@ CREATE TABLE PRODUCT
 )
 GO
 
-
-
 CREATE TABLE STAFF
 (
 	Id_Staff			INT IDENTITY PRIMARY KEY,
@@ -90,20 +88,16 @@ CREATE TABLE STAFF
 )
 GO
 
-
 CREATE TABLE ACCOUNT
 (
 	Id_Account			INT IDENTITY PRIMARY KEY,
 	Username			NVARCHAR(20) NOT NULL,
-	Passwordd			VARCHAR(40) NOT NULL,
+	Passwordd			VARCHAR(1000) NOT NULL,
 	Permision			NVARCHAR(20) NOT NULL,
 	Id_Staff			INT,
 	FOREIGN KEY (Id_Staff) REFERENCES STAFF(Id_Staff) ON UPDATE CASCADE,
-	
 )
 GO
-
-
 
 CREATE TABLE SHIPMENT
 (
@@ -125,7 +119,6 @@ CREATE TABLE BILL
 )
 GO
 
-
 CREATE TABLE SHIPMENT_DETAIL
 (
 	Id_ShipmentDetail	INT IDENTITY PRIMARY KEY,
@@ -137,7 +130,6 @@ CREATE TABLE SHIPMENT_DETAIL
 
 )
 GO
-
 
 CREATE TABLE BILL_DETAIL
 (
@@ -152,15 +144,12 @@ CREATE TABLE BILL_DETAIL
 )
 GO
 
-
-
 -- USP cho Product
-
 CREATE PROC USP_Insert_Update_Product_AllDetail(
 							@Name_Product		NVARCHAR(100),
 							@Images				NVARCHAR(100),
-							@Import_Price		MONEY,
-							@Export_Price		MONEY,
+							@Import_Price		INT,
+							@Export_Price		INT,
 							@Material			NVARCHAR(20), --Chất liệu
 							@Origin				NVARCHAR(20), --Nguồn gốc
 							@Product_Category	NVARCHAR(20), --Loại sản phẩm
@@ -212,16 +201,12 @@ AS
 
 GO
 
-
-
-
 -- USP cho Staff
 
 -- STAFF	(table)
 -- Id_Staff
 -- Name_Staff
 -- Position
-
 Create PROC USP_Insert_Update_Staff_AllDetail(@Name_Staff NVARCHAR(50),	@Position NVARCHAR(50),@StatementType NVARCHAR(20) = '', @Id_Staff INT)
 AS
 	BEGIN
@@ -248,10 +233,6 @@ AS
 	
 GO
 
-
-
-
-
 -- USP cho ACCOUNT
 -- ACCOUNT	(table)
 -- Id_Account
@@ -259,7 +240,6 @@ GO
 -- Password
 -- Position
 -- id_Staff
-
 create PROC USP_Insert_Update_Account_AllDetail(@Username NVARCHAR(20),@Passwordd VARCHAR(40),@Permision NVARCHAR(20),@Id_Staff INT, @StatementType NVARCHAR(20) = '', @Id_Account INT )
 AS
 	BEGIN
@@ -286,14 +266,20 @@ AS
 	SELECT * FROM ACCOUNT
 GO
 
-
+CREATE PROC USP_LOGIN
+(@Username nvarchar(20),
+@Passwordd varchar(40))
+as
+begin
+	SELECT * FROM ACCOUNT WHERE Username = @Username and Passwordd= @Passwordd
+end 
+go
 
 -- BILL (table)
 -- Id_Bill
 -- Id_Staff
 -- Export_Date
 -- Total_Bill
-
 CREATE PROC USP_Insert_Update_Bill_AllDetail(@Id_Staff INT,@Export_Date DATE,@Total_Bill INT, @StatementType NVARCHAR(20) = '', @Id_Bill INT)
 AS
 	BEGIN
@@ -325,8 +311,6 @@ GO
 -- Id_Shipment
 -- Import_date
 -- Id_Staff
-
-
 CREATE PROC USP_Insert_Update_Shipment_AllDetail(@Import_date DATE,@Id_Staff INT, @StatementType NVARCHAR(20) = '', @Id_Shipment INT)
 AS
 	BEGIN
@@ -359,8 +343,6 @@ GO
 -- Price
 -- Quantity
 -- Total_Price
-
-
 CREATE PROC USP_Insert_Update_Bill_Detail_AllDetail(@Id_Bill INT,@Id_Product INT,@Quantity_Product INT, @StatementType NVARCHAR(20) = '', @Id_BillDetail INT) 
 AS
 
@@ -396,10 +378,9 @@ end
 
 GO
 
-
-CREATE PROC USP_Select_Bill_Detail_AllDetail
+CREATE PROC USP_Select_Bill_Detail_AllDetail(@Id_Bill INT)
 AS
-	SELECT * FROM BILL_DETAIL
+	SELECT * FROM BILL_DETAIL WHERE Id_Bill = @Id_Bill
 GO
 
 -- SHIPMENT_DETAIL	(table)
@@ -407,8 +388,6 @@ GO
 -- Id_Shipment
 -- ID_Product
 -- Quantity
-
-
 CREATE PROC	USP_Insert_Update_Shipment_Detail_AllDetail(@Id_Shipment INT,@Id_Product INT,@Quantity_Product INT, @StatementType NVARCHAR(20) = '', @Id_ShipmentDetail INT)
 AS
 	BEGIN
@@ -431,7 +410,7 @@ AS
 
 GO
 
-CREATE PROC USP_Select_Shipment_Detail_AllDetail
+CREATE PROC USP_Select_Shipment_Detail_AllDetail(@Id_Shipment INT)
 AS
-	SELECT * FROM SHIPMENT_DETAIL
+	SELECT * FROM SHIPMENT_DETAIL WHERE Id_Shipment = @Id_Shipment
 GO

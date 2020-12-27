@@ -20,9 +20,27 @@ namespace _410ShopManagement._401UC
     /// </summary>
     public partial class StorageUC : UserControl
     {
+        ShipmentWindow shipmentWindow = new ShipmentWindow();
+        ImportWindow importWindow = new ImportWindow();
+
         public StorageUC()
         {
             InitializeComponent();
         }
+
+        private void importBtn_Click(object sender, RoutedEventArgs e)
+        {
+            importWindow.ShowDialog();
+        }
+        private void updateBtn_Click(object sender, RoutedEventArgs e)
+        {
+            shipmentWindow.ShowDialog();
+            shipmentWindow.OnOpen();
+        }
+        private void cancelBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }

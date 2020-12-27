@@ -9,48 +9,48 @@ namespace DTO
 {
     public class BillDTO
     {
-        public BillDTO(int id_bill, string bill_name, string bill_address, string total_money)
+        public BillDTO(int id_Bill, int id_Staff, string export_Date, int total_Bill)
         {
-            this.Id_bill = id_bill;
-            this.Bill_address = bill_address;
-            this.Bill_name = bill_name;
-            this.Total_money = total_money;
+            this.Id_Bill = id_Bill;
+            this.Id_Staff = id_Staff;
+            this.Export_Date = export_Date;
+            this.Total_Bill = total_Bill;
         }
 
         public BillDTO(DataRow row)
         {
-            this.Id_bill = Convert.ToInt32(row["id_bill"].ToString());
-            this.Bill_name = row["bill_name"].ToString();
-            this.Bill_address = row["bill_address"].ToString();
-            this.Total_money = row["total_money"].ToString();
+            this.Id_Bill = (int)Convert.ToInt32(row["Id_Bill"].ToString());
+            this.Id_Staff = (int)Convert.ToInt32(row["Id_Staff"].ToString());
+            this.Export_Date = Convert.ToDateTime(row["Export_Date"]).ToString("d");
+            this.Total_Bill = (int)Convert.ToInt32(row["Total_Bill"].ToString());
         }
 
-        private int id_bill;
-        private string bill_name;
-        private string bill_address;
-        private string total_money;
+        private int id_Bill;
+        private int id_Staff;
+        private string export_Date;
+        private int total_Bill;
 
-        public int Id_bill
+
+        public int Id_Bill
         {
-            get { return id_bill; }
-            set { id_bill = value; }
+            get { return id_Bill; }
+            set { id_Bill = value; }
         }
 
-        public string Bill_name
+        public int Id_Staff
         {
-            get { return bill_name; }
-            set { bill_name = value; }
+            get { return id_Staff; }
+            set { id_Staff = value; }
         }
-        public string Bill_address
+        public string Export_Date
         {
-            get { return bill_address; }
-            set { bill_address = value; }
+            get { return export_Date; }
+            set { export_Date = value; }
         }
-
-        public string Total_money
+        public int Total_Bill
         {
-            get { return total_money; }
-            set { total_money = value; }
+            get { return total_Bill; }
+            set { total_Bill = value; }
         }
     }
 }
