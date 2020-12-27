@@ -6,10 +6,27 @@
              xmlns:local="clr-namespace:_410ShopManagement._401UC"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             Height="auto" Width="auto">
+             TextElement.Foreground="{StaticResource mainTextForeground}"
+             Height="580" Width="1066">
     <Grid>
         <materialDesign:TransitioningContent x:Name="Transitioner" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
-            <Image Margin="10" Width="500" Height="500" Source="/410ShopManagement;component/Assets/Duyy.jpg" Stretch="UniformToFill" />
+            <ScrollViewer x:Name="MyScrollViewer" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                <WrapPanel Width="{Binding ElementName=MyScrollViewer, Path=ViewportWidth}"
+                           HorizontalAlignment="Center">
+                    <local:ProductPreview HorizontalAlignment="Center"/>
+                    <local:ProductPreview/>
+                    <local:ProductPreview/>
+                    <local:ProductPreview/>
+                    <local:ProductPreview ProductImageSource="/410ShopManagement;component/Assets/Products/Jacket_White_Fernweh.png"
+                                          ProductName="White Fernweh Jacket"
+                                          ProductPrice="500"
+                                          ProductStatus="Red"/>
+                    <local:ProductPreview/>
+                    <local:ProductPreview/>
+                    <local:ProductPreview/>
+                    <local:ProductPreview/>
+                </WrapPanel>
+            </ScrollViewer>
         </materialDesign:TransitioningContent>
     </Grid>
 </UserControl>

@@ -78,6 +78,9 @@
     <Compile Include="401UC\PaymentUC.xaml.cs">
       <DependentUpon>PaymentUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="401UC\ProductPreview.xaml.cs">
+      <DependentUpon>ProductPreview.xaml</DependentUpon>
+    </Compile>
     <Compile Include="401UC\ProductUC.xaml.cs">
       <DependentUpon>ProductUC.xaml</DependentUpon>
     </Compile>
@@ -102,6 +105,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="401UC\PaymentUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="401UC\ProductPreview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -252,6 +259,12 @@
     <Resource Include="Assets\LoginWindow\Stair.png" />
     <Resource Include="Assets\LoginWindow\Store.png" />
     <Resource Include="Assets\LoginWindow\UsernameIFFrame.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Products\Shirt_GameOver_Tokago.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Products\Jacket_White_Fernweh.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets')" />
