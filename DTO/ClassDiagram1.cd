@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DTO.AccountDTO" Collapsed="true">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAEAAAABAQAAAAEAAAAAAAACAAAAAgCAAAA=</HashCode>
+      <FileName>AccountDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.BillDetailDTO" Collapsed="true">
+    <Position X="3.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAABACAAAQAAAAAAAABBAAABQAAAAEEAAABAAAABAAA=</HashCode>
+      <FileName>BillDetailDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.BillDTO" Collapsed="true">
+    <Position X="1.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAMABAAAAAAAAAAAAAMAAAABAAAAAQAA=</HashCode>
+      <FileName>BillDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.ProductDTO" Collapsed="true">
+    <Position X="5.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GECBCDABAAgkhAAAIIRAAAAAUAAAABCBIAABgAxAgAA=</HashCode>
+      <FileName>ProductDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.ShipmentDetailDTO" Collapsed="true">
+    <Position X="3.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgiAAAAAAAAAAAAAABBAAAAQAAAAAEAAAAAAAAAAgA=</HashCode>
+      <FileName>ShipmentDetailDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.ShipmentDTO" Collapsed="true">
+    <Position X="1.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIACAAAAAAEAAAABAIAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>ShipmentDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.StaffDTO" Collapsed="true">
+    <Position X="5.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAEAAAAhAAAAIAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>StaffDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
