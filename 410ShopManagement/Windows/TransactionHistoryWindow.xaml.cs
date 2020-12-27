@@ -112,7 +112,7 @@ namespace _410ShopManagement
             this.Hide();
         }
 
-        private void historyInsightBtn_Click(object sender, RoutedEventArgs e)
+        private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
 
         }

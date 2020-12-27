@@ -41,6 +41,7 @@ namespace _410ShopManagement
             editBtn.Visibility = Visibility.Collapsed;
             applyBtn.Visibility = Visibility.Visible;
 
+            productBasePriceTbl.IsEnabled = true;
             saleTxb.IsEnabled = true;
             materialTxb.IsEnabled = true;
             originalTxb.IsEnabled = true;
@@ -59,6 +60,7 @@ namespace _410ShopManagement
             editBtn.Visibility = Visibility.Visible;
             applyBtn.Visibility = Visibility.Collapsed;
 
+            productBasePriceTbl.IsEnabled = false;
             saleTxb.IsEnabled = false;
             materialTxb.IsEnabled = false;
             originalTxb.IsEnabled = false;
@@ -99,6 +101,8 @@ namespace _410ShopManagement
 
         private void saleTxb_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if (productBasePriceTbl.Text == "") return;
+
             double basePrice = Convert.ToDouble(productBasePriceTbl.Text);
             double salePercent;
 
@@ -113,5 +117,34 @@ namespace _410ShopManagement
 
             productPriceTxb.Text = (basePrice - basePrice * salePercent).ToString();
         }
+
+        private void NumberTxb_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            //only allows number (above QWERTY and right-side numberpad and del,backspace,tab key)
+            e.Handled = !IsNumberKey(e.Key) && !IsDelOrBackspaceOrTabKey(e.Key);
+        }
+
+        private void productBasePriceTbl_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            productPriceTxb.Text = productBasePriceTbl.Text;
+        }
+
+        private bool IsNumberKey(Key inKey)
+        {
+            if (inKey < Key.D0 || inKey > Key.D9)
+            {
+                if (inKey < Key.NumPad0 || inKey > Key.NumPad9)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private bool IsDelOrBackspaceOrTabKey(Key inKey)
+        {
+            return inKey == Key.Delete || inKey == Key.Back || inKey == Key.Tab;
+        }
+
     }
 }

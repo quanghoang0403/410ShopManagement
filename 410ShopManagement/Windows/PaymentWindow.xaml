@@ -1,4 +1,4 @@
-﻿<Window x:Class="_410ShopManagement.ImportWindow"
+﻿<Window x:Class="_410ShopManagement.PaymentWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -18,9 +18,8 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
-                <RowDefinition Height="2*"/>
-                <RowDefinition/>
                 <RowDefinition Height="200"/>
+                <RowDefinition/>
                 <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
             <DockPanel Grid.Row="0" Background="Transparent" LastChildFill="False">
@@ -33,64 +32,7 @@
                 </uc:AppInteractButton>
             </DockPanel>
 
-            <Grid Grid.Row="1"
-                  Background="{StaticResource backgroundThemeColor}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="200"/>
-                </Grid.ColumnDefinitions>
-
-                <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center">
-                    <TextBlock
-                         Text="Importer's Name" FontSize="18" FontFamily="Calibri" 
-                         TextElement.Foreground="{StaticResource secondTextForeground}"
-                         Width="450"
-                         Margin="25 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"
-                         Background="{x:Null}"/>
-                    <TextBlock x:Name="importerNameTbl"
-                         Text="DuyDeo" FontSize="36" FontFamily="Calibri" 
-                         TextElement.Foreground="{StaticResource secondTextForeground}"
-                         Width="450"
-                         Margin="25 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"
-                         Background="{x:Null}"/>
-
-                    <TextBlock
-                         Text="Import Date" FontSize="18" FontFamily="Calibri" 
-                         TextElement.Foreground="{StaticResource secondTextForeground}"
-                         Width="450"
-                         Margin="25 50 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"
-                         Background="{x:Null}"/>
-                    <TextBlock x:Name="importDateTbl"
-                         FontSize="36" FontFamily="Calibri" 
-                         TextElement.Foreground="{StaticResource secondTextForeground}"
-                         Width="450" 
-                         Margin="25 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"
-                         Background="{x:Null}"/>
-                </StackPanel>
-
-                <Button x:Name="createProductBtn" Grid.Column="1"
-                        Style="{StaticResource MaterialDesignIconButton}"
-                        Width="100" Height="100"
-                        Margin="0 0 25 0"
-                        BorderBrush="{x:Null}" Background="{x:Null}"
-                        Click="CreateProductButton_Click">
-                    <materialDesign:PackIcon Kind="PlusCircle" Width="90" Height="90" Foreground="#00F988"/>
-                    <Button.Triggers>
-                        <EventTrigger RoutedEvent="Button.MouseEnter">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <DoubleAnimation
-                                Storyboard.TargetProperty="Opacity"
-                                Duration="0:0:1" 
-                                From="0.25" To="1"/>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-                    </Button.Triggers>
-                </Button>
-            </Grid>
-
-            <StackPanel Orientation="Horizontal" Grid.Row="2"
+            <StackPanel Orientation="Horizontal" Grid.Row="1"
                         Background="{StaticResource backgroundThemeColor}">
                 <TextBox x:Name="searchProductNameTxb"
                          FontSize="36" FontFamily="Calibri" 
@@ -102,7 +44,7 @@
                          materialDesign:HintAssist.Hint="Search Product Name"
                          materialDesign:HintAssist.IsFloating="True"
                          materialDesign:HintAssist.FloatingScale=".5"/>
-                
+
                 <TextBox x:Name="importQuantityTxb"
                          FontSize="36" FontFamily="Calibri" 
                          TextElement.Foreground="{StaticResource secondTextForeground}"
@@ -135,23 +77,38 @@
                     </Button.Triggers>
                 </Button>
             </StackPanel>
-            
+
             <ScrollViewer x:Name="wrapViewer" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"
-                          Grid.Row="3"
-                          Height="200">
+                          Grid.Row="2"
+                          Height="auto">
                 <WrapPanel Name="reviewPanel" Width="1000"
                            Height="{Binding ElementName=MyScrollViewer, Path=ViewportHeight}"
                            Background="{StaticResource backgroundThemeColor}">
                 </WrapPanel>
             </ScrollViewer>
 
-            <Grid Grid.Row="4"
+            <Grid Grid.Row="3"
                   Background="{StaticResource backgroundThemeColor}">
+                <StackPanel Orientation="Horizontal" 
+                            Margin="50 0 0 0" HorizontalAlignment="Left">
+                    <TextBlock
+                         Text="Total: " FontSize="36" FontFamily="Calibri" 
+                         TextElement.Foreground="{StaticResource secondTextForeground}"
+                         Width="auto"
+                         HorizontalAlignment="Right" VerticalAlignment="Center"
+                         Background="{x:Null}"/>
+                    <TextBlock x:Name="totalTbl"
+                         Text="0" FontSize="36" FontFamily="Calibri" 
+                         TextElement.Foreground="{StaticResource secondTextForeground}"
+                         Width="auto"
+                         Margin="25 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"
+                         Background="{x:Null}"/>
+                </StackPanel>
                 <Button x:Name="completeBtn"  
-                    Style="{StaticResource MaterialDesignIconButton}"
+                        Style="{StaticResource MaterialDesignIconButton}"
                         Width="150" Height="80"
                         BorderBrush="{x:Null}" Background="{x:Null}"
-                        Margin="0 0 50 0" HorizontalAlignment="Right"
+                        Margin="0 0 50 0" HorizontalAlignment="Right" VerticalAlignment="Center"
                         Click="CompleteButton_Click">
                     <Button.Content>
                         <TextBlock Text="Apply" FontSize="36" FontFamily="Baugause 93" 

@@ -11,34 +11,36 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using BLL;
 
 namespace _410ShopManagement
 {
     /// <summary>
-    /// Interaction logic for ImportWindow.xaml
+    /// Interaction logic for PaymentWindow.xaml
     /// </summary>
-    public partial class ImportWindow : Window
+    public partial class PaymentWindow : Window
     {
         //Windows
         _401UC.iNotifier notify = new _401UC.iNotifier();
         _401UC.iNotifierOKCancel confirmer = new _401UC.iNotifierOKCancel();
-        CreateProductWindow createProductWnd = new CreateProductWindow();
-        public ImportWindow()
+
+        public PaymentWindow()
         {
             InitializeComponent();
 
             this.Left = SystemParameters.PrimaryScreenWidth / 2 - this.Width * 0.63;
             this.Top = SystemParameters.PrimaryScreenHeight / 2 - this.Height * 0.475;
 
-            importDateTbl.Text = DateTime.Now.ToShortDateString();
-            //importDateTbl.Text = DateTime.Now.ToShortTimeString();
+        }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
             if (searchProductNameTxb.Text != "" &&
-                importQuantityTxb.Text != "")
+                   importQuantityTxb.Text != "")
             {
                 if (!InputTester.IsANumber(importQuantityTxb.Text, 4))
                 {
@@ -59,6 +61,7 @@ namespace _410ShopManagement
 
                 searchProductNameTxb.Text = "";
                 importQuantityTxb.Text = "";
+                totalTbl.Text = (Convert.ToInt32(totalTbl.Text) + Convert.ToInt32(unit.productQuantityTbl.Text)).ToString();
             }
             else
             {
@@ -73,9 +76,12 @@ namespace _410ShopManagement
             int index = Convert.ToInt32(unit.Tag);
             reviewPanel.Children.RemoveAt(index);
 
+            totalTbl.Text = "0";
             foreach (UIElement child in reviewPanel.Children)
             {
                 _401UC.ImportUnit importUnit = child as _401UC.ImportUnit;
+                totalTbl.Text = (Convert.ToInt32(totalTbl.Text) + Convert.ToInt32(importUnit.productQuantityTbl.Text)).ToString();
+            
                 //tag++ per add. Insert 1, 2, 3, 4,...
                 //if remove a child with tag not at the end (exp: 2)
                 //Children: 1, 3, 4,...
@@ -87,28 +93,19 @@ namespace _410ShopManagement
             }
         }
 
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Hide();
-        }
-
-        private void CreateProductButton_Click(object sender, RoutedEventArgs e)
-        {
-            createProductWnd.ShowDialog();
-        }
-
         private void CompleteButton_Click(object sender, RoutedEventArgs e)
         {
-            confirmer.Text = "Import products confirm";
+            confirmer.Text = "Payment confirm";
             confirmer.ShowDialog();
 
             if (confirmer.result == _401UC.iNotifierOKCancel.Result.OK)
             {
-                notify.Text = "Import success !!";
+                notify.Text = "Payment success !!";
                 notify.ShowDialog();
 
                 searchProductNameTxb.Text = "";
                 importQuantityTxb.Text = "";
+                totalTbl.Text = "0";
                 reviewPanel.Children.RemoveRange(0, reviewPanel.Children.Count);
 
                 this.Hide();

@@ -110,6 +110,11 @@ namespace _410ShopManagement
             });
             billLv.ItemsSource = bills;
             billLv.SelectedValuePath = "Name";
+
+            foreach (TempBill bill in bills)
+            {
+                totalTbl.Text = (Convert.ToInt32(totalTbl.Text) + bill.Value).ToString();
+            }
         }
 
         class TempBill

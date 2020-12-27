@@ -90,7 +90,7 @@
                          Background="{x:Null}"/>
                     
                     <TextBlock x:Name="totalTbl"
-                         Text="999" FontSize="36" FontFamily="Calibri" 
+                         Text="0" FontSize="36" FontFamily="Calibri" 
                          TextElement.Foreground="{StaticResource secondTextForeground}"
                          Width="auto"
                          Margin="20 0"

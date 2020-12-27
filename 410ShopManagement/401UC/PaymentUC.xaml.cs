@@ -22,6 +22,7 @@ namespace _410ShopManagement._401UC
     {
         //windows
         TransactionHistoryWindow transactionHistoryWnd = new TransactionHistoryWindow();
+        PaymentWindow paymentWnd = new PaymentWindow();
 
         public PaymentUC()
         {
@@ -30,7 +31,7 @@ namespace _410ShopManagement._401UC
 
         private void paymentBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            paymentWnd.ShowDialog();
         }
 
         private void historyBtn_Click(object sender, RoutedEventArgs e)

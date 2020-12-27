@@ -33,6 +33,17 @@ namespace _410ShopManagement
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            productBasePriceTbl.Text = "";
+            productPriceTxb.Text = "";
+            saleTxb.Text = "";
+            productNameTxb.Text = "";
+            materialTxb.Text = "";
+            originalTxb.Text = "";
+            categoryTxb.Text = "";
+            sexTxb.Text = "";
+            sizeTxb.Text = "";
+            colorTxb.Text = "";
+            descriptionTxb.Text = "";
             this.Hide();
         }
 
@@ -67,6 +78,8 @@ namespace _410ShopManagement
 
         private void saleTxb_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if (productBasePriceTbl.Text == "") return;
+
             double basePrice = Convert.ToDouble(productBasePriceTbl.Text);
             double salePercent;
 
@@ -82,15 +95,15 @@ namespace _410ShopManagement
             productPriceTxb.Text = (basePrice - basePrice * salePercent).ToString();
         }
 
-        private void productBasePriceTbl_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            productPriceTxb.Text = productBasePriceTbl.Text;
-        }
-
-        private void productBasePriceTbl_PreviewKeyDown(object sender, KeyEventArgs e)
+        private void NumberTxb_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             //only allows number (above QWERTY and right-side numberpad and del,backspace,tab key)
             e.Handled = !IsNumberKey(e.Key) && !IsDelOrBackspaceOrTabKey(e.Key);
+        }
+
+        private void productBasePriceTbl_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            productPriceTxb.Text = productBasePriceTbl.Text;
         }
 
         private bool IsNumberKey(Key inKey)

@@ -44,6 +44,12 @@ namespace _410ShopManagement._401UC
             set { productQuantityTbl.Text = value; }
         }
 
+        public string ProductPrice
+        {
+            get { return productPriceTbl.Text; }
+            set { productPriceTbl.Text = value; }
+        }
+
         //EventClick below will be defined by the owner form 
         public event RoutedEventHandler Click;
 

@@ -49,20 +49,8 @@
                         <Button x:Name="findImageBtn" 
                                 Width="250" Height="250"
                                 Click="findImageBtn_Click"/>
-                        <StackPanel Orientation="Horizontal" Margin="0 25 0 0">
-                            <TextBlock Name="productPriceTxb"
-                                   FontSize="46" FontFamily="Calibri" 
-                                   TextElement.Foreground="#00F988"
-                                   TextTrimming="CharacterEllipsis"
-                                   TextAlignment="Left"
-                                   Width="155"
-                                   Margin="15 0 0 0"/>
-                            <TextBlock Text="VND"
-                                   FontSize="46" FontFamily="Calibri" 
-                                   TextElement.Foreground="#00F988"
-                                   TextAlignment="Right"
-                                   Width="85"
-                                   Margin="15 0 0 0"/>
+                        <StackPanel Orientation="Horizontal" 
+                                    Margin="0 10 0 0" HorizontalAlignment="Center">
                             <TextBlock Margin="0 3 0 0"
                                      Text="(" FontSize="26" FontFamily="Bauhaus 93" 
                                      TextElement.Foreground="#FFFF0C5A"
@@ -74,11 +62,29 @@
                                      Background="{x:Null}"
                                      materialDesign:TextFieldAssist.HasOutlinedTextField="False"
                                      materialDesign:TextFieldAssist.UnderlineBrush="{x:Null}"
-                                     TextChanged="saleTxb_TextChanged"/>
+                                     TextChanged="saleTxb_TextChanged"
+                                     PreviewKeyDown="NumberTxb_PreviewKeyDown"/>
                             <TextBlock Margin="0 3 0 0"
                                      Text="%)" FontSize="26" FontFamily="Bauhaus 93" 
                                      TextElement.Foreground="#FFFF0C5A"
                                      Width="auto"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center">
+                            <TextBlock Name="productPriceTxb"
+                                   FontSize="46" FontFamily="Calibri" 
+                                   TextElement.Foreground="#00F988"
+                                   TextTrimming="CharacterEllipsis"
+                                   TextAlignment="Right"
+                                   Width="auto" MaxWidth="220"
+                                   Margin="15 0 0 0"/>
+                            <TextBlock Text="VND"
+                                   FontSize="46" FontFamily="Calibri" 
+                                   TextElement.Foreground="#00F988"
+                                   TextAlignment="Left"
+                                   Width="85"
+                                   Margin="15 0 0 0"/>
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
@@ -86,21 +92,19 @@
                                    FontSize="30" FontFamily="Calibri" 
                                    TextElement.Foreground="DimGray"
                                    TextAlignment="Center"
-                                   Width="120"
+                                   Width="auto" MaxLength="9" 
                                    HorizontalAlignment="Center"
                                    Opacity=".7" TextDecorations="Strikethrough"
                                    materialDesign:HintAssist.Hint="Price"
-                                   materialDesign:HintAssist.IsFloating="True"
-                                   materialDesign:HintAssist.FloatingScale=".5"
                                      TextChanged="productBasePriceTbl_TextChanged"
-                                     PreviewKeyDown="productBasePriceTbl_PreviewKeyDown"/>
-                            <TextBlock Text="VND"
+                                     PreviewKeyDown="NumberTxb_PreviewKeyDown"/>
+                            <TextBlock Text=" VND"
                                    FontSize="30" FontFamily="Calibri" 
                                    TextElement.Foreground="DimGray"
                                    TextTrimming="CharacterEllipsis"
                                    TextAlignment="Left"
-                                   Width="60"
-                                   HorizontalAlignment="Center"
+                                   Width="auto"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center"
                                    Opacity=".7" TextDecorations="Strikethrough"/>
                         </StackPanel>
                     </StackPanel>
@@ -139,27 +143,47 @@
                                      materialDesign:HintAssist.IsFloating="True"
                                      materialDesign:HintAssist.FloatingScale=".5"/>
 
-                        <TextBox x:Name="sexTxb"
+                        <ComboBox x:Name="sexTxb"
                                      FontSize="26" FontFamily="Calibri" 
                                      TextElement.Foreground="{StaticResource secondTextForeground}"
-                                     TextAlignment="Left"
-                                     Width="450"
                                      HorizontalAlignment="Left"
-                                     Background="{x:Null}"
                                      materialDesign:HintAssist.Hint="Sex"
                                      materialDesign:HintAssist.IsFloating="True"
-                                     materialDesign:HintAssist.FloatingScale=".5"/>
+                                     materialDesign:HintAssist.FloatingScale=".5">
+                            <ComboBoxItem>
+                                Unisex
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Male
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Female
+                            </ComboBoxItem>
+                        </ComboBox>
 
-                        <TextBox x:Name="sizeTxb"
+                        <ComboBox x:Name="sizeTxb"
                                      FontSize="26" FontFamily="Calibri" 
                                      TextElement.Foreground="{StaticResource secondTextForeground}"
-                                     TextAlignment="Left"
-                                     Width="450"
                                      HorizontalAlignment="Left"
-                                     Background="{x:Null}"
                                      materialDesign:HintAssist.Hint="Size"
                                      materialDesign:HintAssist.IsFloating="True"
-                                     materialDesign:HintAssist.FloatingScale=".5"/>
+                                     materialDesign:HintAssist.FloatingScale=".5">
+                            <ComboBoxItem>
+                                S
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                M
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                L
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                XL
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                XXL
+                            </ComboBoxItem>
+                        </ComboBox>
 
                         <TextBox x:Name="colorTxb"
                                      FontSize="26" FontFamily="Calibri" 
