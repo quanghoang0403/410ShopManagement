@@ -20,9 +20,22 @@ namespace _410ShopManagement._401UC
     /// </summary>
     public partial class PaymentUC : UserControl
     {
+        //windows
+        TransactionHistoryWindow transactionHistoryWnd = new TransactionHistoryWindow();
+
         public PaymentUC()
         {
             InitializeComponent();
+        }
+
+        private void paymentBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void historyBtn_Click(object sender, RoutedEventArgs e)
+        {
+            transactionHistoryWnd.ShowDialog();
         }
     }
 }

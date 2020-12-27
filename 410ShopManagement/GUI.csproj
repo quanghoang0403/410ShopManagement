@@ -87,6 +87,9 @@
     <Compile Include="401UC\ProductUC.xaml.cs">
       <DependentUpon>ProductUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\BillDetailWindow.xaml.cs">
+      <DependentUpon>BillDetailWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\CancelProductWindow.xaml.cs">
       <DependentUpon>CancelProductWindow.xaml</DependentUpon>
     </Compile>
@@ -101,6 +104,9 @@
     </Compile>
     <Compile Include="Windows\SearchProductWindow.xaml.cs">
       <DependentUpon>SearchProductWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\TransactionHistoryWindow.xaml.cs">
+      <DependentUpon>TransactionHistoryWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="401UC\AppInteractButton.xaml">
       <SubType>Designer</SubType>
@@ -143,6 +149,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="401UC\StorageUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\BillDetailWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -191,6 +201,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\SearchProductWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\TransactionHistoryWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

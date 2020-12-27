@@ -1,0 +1,102 @@
+﻿<Window x:Class="_410ShopManagement.BillDetailWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_410ShopManagement.Windows"
+        xmlns:uc="clr-namespace:_410ShopManagement._401UC"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        WindowStartupLocation="Manual"
+        Title="Bill Detail" 
+        Height="750" Width="550" 
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        AllowsTransparency="True"
+        Background="Transparent">
+    <Border BorderThickness="4" CornerRadius="15" Background="{StaticResource quickAccessButtonBackground}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <DockPanel Grid.Row="0" Background="Transparent" LastChildFill="False">
+                <uc:AppInteractButton DockPanel.Dock="Right" 
+                                    Margin="10"
+                                    Click="CloseButton_Click">
+                    <uc:AppInteractButton.Background>
+                        <ImageBrush ImageSource="/410ShopManagement;component/Assets/LoginWindow/CloseButton.png" Stretch="Uniform"/>
+                    </uc:AppInteractButton.Background>
+                </uc:AppInteractButton>
+            </DockPanel>
+
+            <StackPanel Orientation="Vertical" Grid.Row="1"
+                        Background="{StaticResource backgroundThemeColor}">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock
+                         Text="ID Bill: " FontSize="48" FontFamily="Calibri" 
+                         TextElement.Foreground="{StaticResource secondTextForeground}"
+                         TextAlignment="Center"
+                         Width="auto"
+                         HorizontalAlignment="Center" VerticalAlignment="Center"
+                         Background="{x:Null}"/>
+
+                    <TextBlock x:Name="idBillTbl"
+                         FontSize="48" FontFamily="Calibri" 
+                         TextElement.Foreground="{StaticResource secondTextForeground}"
+                         TextAlignment="Center"
+                         Width="auto"
+                         HorizontalAlignment="Center" VerticalAlignment="Center"
+                         Background="{x:Null}"/>
+                </StackPanel>
+
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <ListView x:Name="billLv"
+                                      MinHeight="480"
+                                      MaxHeight="480"
+                                      HorizontalAlignment="Center"
+                                                              Foreground="{StaticResource secondTextForeground}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Name}">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Foreground="{StaticResource secondTextForeground}" FontSize="26"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                    <!--Content phai giong voi ten binding de con sort duoc-->
+                                    <GridViewColumnHeader Content="Name" Width="auto" FontSize="26"
+                                                              Foreground="{StaticResource secondTextForeground}"/>
+                                </GridViewColumn>
+                                <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Value}">
+                                    <GridViewColumnHeader Content="Value" Width="auto" FontSize="26"
+                                                              Foreground="{StaticResource secondTextForeground}"/>
+                                </GridViewColumn>
+                                <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Quantity}">
+                                    <GridViewColumnHeader Content="Quantity" Width="auto" FontSize="26"
+                                                              Foreground="{StaticResource secondTextForeground}"/>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </ScrollViewer>
+
+                <StackPanel Orientation="Horizontal" 
+                            Margin="0 70 0 0" HorizontalAlignment="Right">
+                    <TextBlock
+                         Text="Total:" FontSize="36" FontFamily="Calibri" 
+                         TextElement.Foreground="{StaticResource secondTextForeground}"
+                         Width="auto"
+                         Background="{x:Null}"/>
+                    
+                    <TextBlock x:Name="totalTbl"
+                         Text="999" FontSize="36" FontFamily="Calibri" 
+                         TextElement.Foreground="{StaticResource secondTextForeground}"
+                         Width="auto"
+                         Margin="20 0"
+                         Background="{x:Null}"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

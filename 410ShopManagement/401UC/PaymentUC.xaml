@@ -9,7 +9,75 @@
              Height="auto" Width="auto">
     <Grid>
         <materialDesign:TransitioningContent x:Name="Transitioner" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
-            <Image Margin="10" Width="500" Height="500" Source="/410ShopManagement;component/Assets/Hoàn.jpg" Stretch="UniformToFill" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                Margin="0 0 0 40">
+                <Grid Width="200" Height="200"
+                              VerticalAlignment="Center" HorizontalAlignment="Center"
+                              Margin="0 0 15 0">
+                    <Border CornerRadius="35 35 180 180" 
+                                    BorderThickness="0"
+                                    Background="{StaticResource quickAccessButtonBackground}">
+                        <Button x:Name="historyBtn" 
+                                        Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                        Width="auto" Height="auto"
+                                        BorderBrush="{x:Null}"
+                                Click="historyBtn_Click">
+                            <Button.Content>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Text="TRANSACTION" TextWrapping="Wrap"
+                                                   FontSize="30" FontFamily="Bauhaus 93" 
+                                                   TextElement.Foreground="{StaticResource mainTextForeground}"
+                                                   HorizontalAlignment="Center"/>
+
+                                    <TextBlock Grid.Row="1" Text="HISTORY" TextWrapping="Wrap"
+                                                   FontSize="30" FontFamily="Bauhaus 93" 
+                                                   TextElement.Foreground="{StaticResource mainTextForeground}"
+                                                   HorizontalAlignment="Center"
+                                                       Margin="0 0 0 40"/>
+                                </Grid>
+                            </Button.Content>
+                        </Button>
+                    </Border>
+                </Grid>
+                <Grid Width="200" Height="200"
+                              VerticalAlignment="Center" HorizontalAlignment="Center"
+                              Margin="15 0 0 0">
+                    <Border CornerRadius="180 180 35 35" 
+                                    BorderThickness="0"
+                                    Background="{StaticResource quickAccessButtonBackground}">
+                        <Button x:Name="paymentBtn" 
+                                        Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                        Width="auto" Height="auto"
+                                        BorderBrush="{x:Null}"
+                                Click="paymentBtn_Click">
+                            <Button.Content>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Text="CUSTOMER" TextWrapping="Wrap"
+                                                       FontSize="30" FontFamily="Bauhaus 93" 
+                                                       TextElement.Foreground="{StaticResource mainTextForeground}"
+                                                       HorizontalAlignment="Center"/>
+
+                                    <TextBlock Grid.Row="1" Text="PAYMENT" TextWrapping="Wrap"
+                                                       FontSize="30" FontFamily="Bauhaus 93" 
+                                                       TextElement.Foreground="{StaticResource mainTextForeground}"
+                                                       HorizontalAlignment="Center"/>
+                                </Grid>
+                            </Button.Content>
+                        </Button>
+                    </Border>
+                </Grid>
+            </StackPanel>
+
         </materialDesign:TransitioningContent>
     </Grid>
 </UserControl>

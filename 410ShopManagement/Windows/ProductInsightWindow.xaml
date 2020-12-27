@@ -30,7 +30,8 @@
                 </uc:AppInteractButton>
             </DockPanel>
 
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="1"
+                  Background="{StaticResource backgroundThemeColor}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="350"/>

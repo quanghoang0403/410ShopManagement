@@ -33,7 +33,8 @@
                 </uc:AppInteractButton>
             </DockPanel>
 
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="1"
+                  Background="{StaticResource backgroundThemeColor}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="200"/>
@@ -89,7 +90,8 @@
                 </Button>
             </Grid>
 
-            <StackPanel Orientation="Horizontal" Grid.Row="2">
+            <StackPanel Orientation="Horizontal" Grid.Row="2"
+                        Background="{StaticResource backgroundThemeColor}">
                 <TextBox x:Name="searchProductNameTxb"
                          FontSize="36" FontFamily="Calibri" 
                          TextElement.Foreground="{StaticResource secondTextForeground}"
@@ -143,32 +145,34 @@
                 </WrapPanel>
             </ScrollViewer>
 
-            <Button x:Name="completeBtn" Grid.Row="4" 
+            <Grid Grid.Row="4"
+                  Background="{StaticResource backgroundThemeColor}">
+                <Button x:Name="completeBtn"  
                     Style="{StaticResource MaterialDesignIconButton}"
                         Width="150" Height="80"
                         BorderBrush="{x:Null}" Background="{x:Null}"
                         Margin="700 0 0 0"
                         Click="CompleteButton_Click">
-                <Button.Content>
-                    <TextBlock Text="Apply" FontSize="36" FontFamily="Baugause 93" 
+                    <Button.Content>
+                        <TextBlock Text="Apply" FontSize="36" FontFamily="Baugause 93" 
                          TextElement.Foreground="#00F988"
                          HorizontalAlignment="Center" VerticalAlignment="Center"
                          Background="{x:Null}"/>
-                </Button.Content>
-                <Button.Triggers>
-                    <EventTrigger RoutedEvent="Button.MouseEnter">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation
+                    </Button.Content>
+                    <Button.Triggers>
+                        <EventTrigger RoutedEvent="Button.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
                                 Storyboard.TargetProperty="Opacity"
                                 Duration="0:0:1" 
                                 From="0.25" To="1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                </Button.Triggers>
-
-            </Button>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Button.Triggers>
+                </Button>
+            </Grid>
         </Grid>
     </Border>
 </Window>
