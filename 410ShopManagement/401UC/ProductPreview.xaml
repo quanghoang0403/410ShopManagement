@@ -39,7 +39,7 @@
                                    Source="/410ShopManagement;component/Assets/Products/Shirt_GameOver_Tokago.png" Stretch="Fill" />
                     </Grid>
                     <Grid>
-                        <TextBlock x:Name="productName"
+                        <TextBlock x:Name="productNameTbl"
                                        Text="Name"
                                        FontSize="30"
                                        Margin="0 10 0 0"
@@ -47,7 +47,7 @@
                                        TextTrimming="CharacterEllipsis"/>
                     </Grid>
                     <Grid>
-                        <TextBlock x:Name="productPrice"
+                        <TextBlock x:Name="productPriceTbl"
                                        Text="410.410"
                                        FontSize="20"
                                        HorizontalAlignment="Center"

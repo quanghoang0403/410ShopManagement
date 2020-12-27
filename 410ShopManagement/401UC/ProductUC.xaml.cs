@@ -20,9 +20,23 @@ namespace _410ShopManagement._401UC
     /// </summary>
     public partial class ProductUC : UserControl
     {
+        //Windows
+        ProductInsightWindow productInsightWnd = new ProductInsightWindow();
+
         public ProductUC()
         {
             InitializeComponent();
+        }
+
+        private void ProductPreview_Click(object sender, RoutedEventArgs e)
+        {
+            ProductPreview preview = sender as ProductPreview;
+            productInsightWnd.productNameTxb.Text = preview.ProductName;
+            productInsightWnd.productBasePriceTbl.Text = preview.ProductPrice;
+            productInsightWnd.productImg.Source = preview.ProductImageSource;
+
+            productInsightWnd.OnOpen();
+            productInsightWnd.ShowDialog();
         }
     }
 }

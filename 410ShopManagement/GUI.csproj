@@ -87,14 +87,20 @@
     <Compile Include="401UC\ProductUC.xaml.cs">
       <DependentUpon>ProductUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\CancelProductWindow.xaml.cs">
+      <DependentUpon>CancelProductWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\CreateProductWindow.xaml.cs">
       <DependentUpon>CreateProductWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\ImportWindow.xaml.cs">
       <DependentUpon>ImportWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\ShipmentWindow.xaml.cs">
-      <DependentUpon>ShipmentWindow.xaml</DependentUpon>
+    <Compile Include="Windows\ProductInsightWindow.xaml.cs">
+      <DependentUpon>ProductInsightWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\SearchProductWindow.xaml.cs">
+      <DependentUpon>SearchProductWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="401UC\AppInteractButton.xaml">
       <SubType>Designer</SubType>
@@ -140,6 +146,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\CancelProductWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\CreateProductWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -176,7 +186,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Windows\ShipmentWindow.xaml">
+    <Page Include="Windows\ProductInsightWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\SearchProductWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -20,7 +20,8 @@
                     <local:ProductPreview ProductImageSource="/410ShopManagement;component/Assets/Products/Jacket_White_Fernweh.png"
                                           ProductName="White Fernweh Jacket"
                                           ProductPrice="500"
-                                          ProductStatus="Red"/>
+                                          ProductStatus="Red"
+                                          Click="ProductPreview_Click"/>
                     <local:ProductPreview/>
                     <local:ProductPreview/>
                     <local:ProductPreview/>

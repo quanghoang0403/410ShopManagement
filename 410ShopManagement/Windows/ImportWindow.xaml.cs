@@ -38,6 +38,13 @@ namespace _410ShopManagement
             if (searchProductNameTxb.Text != "" &&
                 importQuantityTxb.Text != "")
             {
+                if (!InputTester.IsANumber(importQuantityTxb.Text, 4))
+                {
+                    notify.Text = "Quantity Textbox inserted incorrect format";
+                    notify.ShowDialog();
+                    return;
+                }
+
                 _401UC.ImportUnit unit = new _401UC.ImportUnit();
                 unit.Margin = new Thickness(15, 20, 15, 20);
                 unit.productNameTbl.Text = searchProductNameTxb.Text;
