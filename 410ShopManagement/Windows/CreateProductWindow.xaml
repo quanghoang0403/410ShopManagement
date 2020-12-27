@@ -37,29 +37,29 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0" Orientation="Vertical">
-                        <TextBlock Name="productNameTxb"
-                                   Text="Product Name"
+                        <TextBox Name="productNameTxb"
                                    FontSize="46" FontFamily="Calibri" 
                                    TextElement.Foreground="#00F988"
-                                   TextTrimming="CharacterEllipsis"
                                    Width="325"
-                                   Margin="15 10 0 15" HorizontalAlignment="Center" />
+                                   Margin="15 10 0 15" HorizontalAlignment="Center"
+                                   materialDesign:HintAssist.Hint="Product Name"
+                                   materialDesign:HintAssist.IsFloating="True"
+                                   materialDesign:HintAssist.FloatingScale=".5" />
                         <Button x:Name="findImageBtn" 
                                 Width="250" Height="250"
                                 Click="findImageBtn_Click"/>
                         <StackPanel Orientation="Horizontal" Margin="0 25 0 0">
                             <TextBlock Name="productPriceTxb"
-                                Text="300.000"
                                    FontSize="46" FontFamily="Calibri" 
                                    TextElement.Foreground="#00F988"
                                    TextTrimming="CharacterEllipsis"
-                                   TextAlignment="Center"
+                                   TextAlignment="Left"
                                    Width="155"
                                    Margin="15 0 0 0"/>
                             <TextBlock Text="VND"
                                    FontSize="46" FontFamily="Calibri" 
                                    TextElement.Foreground="#00F988"
-                                   TextAlignment="Center"
+                                   TextAlignment="Right"
                                    Width="85"
                                    Margin="15 0 0 0"/>
                             <TextBlock Margin="0 3 0 0"
@@ -72,20 +72,36 @@
                                      Width="35" MaxWidth="35" MaxLength="2" TextAlignment="Left"
                                      Background="{x:Null}"
                                      materialDesign:TextFieldAssist.HasOutlinedTextField="False"
-                                     materialDesign:TextFieldAssist.UnderlineBrush="{x:Null}"/>
+                                     materialDesign:TextFieldAssist.UnderlineBrush="{x:Null}"
+                                     TextChanged="saleTxb_TextChanged"/>
                             <TextBlock Margin="0 3 0 0"
                                      Text="%)" FontSize="26" FontFamily="Bauhaus 93" 
                                      TextElement.Foreground="#FFFF0C5A"
                                      Width="auto"/>
                         </StackPanel>
-                        <TextBlock Text="Base Price VND"
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBox x:Name="productBasePriceTbl"
+                                   FontSize="30" FontFamily="Calibri" 
+                                   TextElement.Foreground="DimGray"
+                                   TextAlignment="Center"
+                                   Width="120"
+                                   HorizontalAlignment="Center"
+                                   Opacity=".7" TextDecorations="Strikethrough"
+                                   materialDesign:HintAssist.Hint="Price"
+                                   materialDesign:HintAssist.IsFloating="True"
+                                   materialDesign:HintAssist.FloatingScale=".5"
+                                     TextChanged="productBasePriceTbl_TextChanged"
+                                     PreviewKeyDown="productBasePriceTbl_PreviewKeyDown"/>
+                            <TextBlock Text="VND"
                                    FontSize="30" FontFamily="Calibri" 
                                    TextElement.Foreground="DimGray"
                                    TextTrimming="CharacterEllipsis"
-                                   TextAlignment="Center"
-                                   Width="300"
-                                   Margin="15 0 0 0" HorizontalAlignment="Center"
-                                   Opacity=".7"/>
+                                   TextAlignment="Left"
+                                   Width="60"
+                                   HorizontalAlignment="Center"
+                                   Opacity=".7" TextDecorations="Strikethrough"/>
+                        </StackPanel>
                     </StackPanel>
 
                     <StackPanel Grid.Column="1" Orientation="Vertical" Margin="15 0 0 0">

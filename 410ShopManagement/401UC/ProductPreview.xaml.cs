@@ -33,20 +33,20 @@ namespace _410ShopManagement._401UC
 
         public string ProductName
         {
-            get { return productName.Text; }
-            set { productName.Text = value; }
+            get { return productNameTbl.Text; }
+            set { productNameTbl.Text = value; }
         }
 
         public Brush ProductStatus
         {
-            get { return productName.Foreground; }
-            set { productName.Foreground = value; }
+            get { return productNameTbl.Foreground; }
+            set { productNameTbl.Foreground = value; }
         }
 
         public string ProductPrice
         {
-            get { return productPrice.Text; }
-            set { productPrice.Text = value; }
+            get { return productPriceTbl.Text; }
+            set { productPriceTbl.Text = value; }
         }
 
         public event RoutedEventHandler Click;

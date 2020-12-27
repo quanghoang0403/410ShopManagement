@@ -17,10 +17,10 @@ namespace _410ShopManagement
     /// <summary>
     /// Interaction logic for ShipmentWindow.xaml
     /// </summary>
-    public partial class ShipmentWindow : Window
+    public partial class ProductInsightWindow : Window
     {
         _401UC.iNotifierOKCancel confirmer = new _401UC.iNotifierOKCancel();
-        public ShipmentWindow()
+        public ProductInsightWindow()
         {
             InitializeComponent();
 
@@ -69,6 +69,20 @@ namespace _410ShopManagement
             storageTxb.IsEnabled = false;
             soldTxb.IsEnabled = false;
             cancelledTxb.IsEnabled = false;
+
+            double basePrice = Convert.ToDouble(productBasePriceTbl.Text);
+            double salePercent;
+
+            if (saleTxb.Text == "")
+            {
+                salePercent = 0;
+            }
+            else
+            {
+                salePercent = Convert.ToDouble(saleTxb.Text) / 100;
+            }
+
+            productPriceTxb.Text = (basePrice - basePrice * salePercent).ToString();
         }
 
         private void applyBtn_Click(object sender, RoutedEventArgs e)
@@ -80,6 +94,23 @@ namespace _410ShopManagement
             {
                 OnOpen();
             }
+        }
+
+        private void saleTxb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            double basePrice = Convert.ToDouble(productBasePriceTbl.Text);
+            double salePercent;
+
+            if (saleTxb.Text == "")
+            {
+                salePercent = 0;
+            }
+            else
+            {
+                salePercent = Convert.ToDouble(saleTxb.Text) / 100;
+            }
+
+            productPriceTxb.Text = (basePrice - basePrice * salePercent).ToString();
         }
     }
 }

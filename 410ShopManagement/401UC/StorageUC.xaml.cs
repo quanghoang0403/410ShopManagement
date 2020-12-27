@@ -20,8 +20,9 @@ namespace _410ShopManagement._401UC
     /// </summary>
     public partial class StorageUC : UserControl
     {
-        ShipmentWindow shipmentWindow = new ShipmentWindow();
-        ImportWindow importWindow = new ImportWindow();
+        //Windows
+        ImportWindow importWnd = new ImportWindow();
+        SearchProductWindow searchProductWnd = new SearchProductWindow();
 
         public StorageUC()
         {
@@ -30,16 +31,19 @@ namespace _410ShopManagement._401UC
 
         private void importBtn_Click(object sender, RoutedEventArgs e)
         {
-            importWindow.ShowDialog();
+            importWnd.ShowDialog();
         }
+
         private void updateBtn_Click(object sender, RoutedEventArgs e)
         {
-            shipmentWindow.ShowDialog();
-            shipmentWindow.OnOpen();
+            searchProductWnd.tag = SearchProductWindow.TransferTag.UpdateProduct;
+            searchProductWnd.ShowDialog();
         }
+
         private void cancelBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            searchProductWnd.tag = SearchProductWindow.TransferTag.CancelProduct;
+            searchProductWnd.ShowDialog();
         }
 
     }
