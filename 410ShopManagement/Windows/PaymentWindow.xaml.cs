@@ -19,6 +19,7 @@ namespace _410ShopManagement
     /// </summary>
     public partial class PaymentWindow : Window
     {
+        public List<string> comboboxChild;
         //Windows
         _401UC.iNotifier notify = new _401UC.iNotifier();
         _401UC.iNotifierOKCancel confirmer = new _401UC.iNotifierOKCancel();
@@ -29,6 +30,10 @@ namespace _410ShopManagement
 
             this.Left = SystemParameters.PrimaryScreenWidth / 2 - this.Width * 0.63;
             this.Top = SystemParameters.PrimaryScreenHeight / 2 - this.Height * 0.475;
+
+            comboboxChild = new List<string>()
+            { "Fernweh White Jacket", "Fernweh Black Jacket", "Cumeo Black Ring"};
+            searchProductNameTxb.ItemsSource = comboboxChild;
 
         }
 
@@ -53,7 +58,8 @@ namespace _410ShopManagement
                 unit.Margin = new Thickness(15, 20, 15, 20);
                 unit.productNameTbl.Text = searchProductNameTxb.Text;
                 unit.productQuantityTbl.Text = importQuantityTxb.Text;
-                unit.productPriceTbl.Text = searchProductNameTxb.Text;
+                unit.productPriceTbl.Text = importQuantityTxb.Text;
+                unit.border.ToolTip = (Convert.ToInt32(unit.productQuantityTbl.Text) * Convert.ToInt32(unit.productPriceTbl.Text));
                 unit.RemoveUnitBtn.Tag = reviewPanel.Children.Count.ToString();
                 unit.RemoveUnitBtn.Click += WrapUnitCloseButton_Click;
 
@@ -61,7 +67,7 @@ namespace _410ShopManagement
 
                 searchProductNameTxb.Text = "";
                 importQuantityTxb.Text = "";
-                totalTbl.Text = (Convert.ToInt32(totalTbl.Text) + Convert.ToInt32(unit.productQuantityTbl.Text)).ToString();
+                totalTbl.Text = (Convert.ToInt32(totalTbl.Text) + (Convert.ToInt32(unit.productQuantityTbl.Text) * Convert.ToInt32(unit.productPriceTbl.Text))).ToString();
             }
             else
             {
@@ -80,7 +86,7 @@ namespace _410ShopManagement
             foreach (UIElement child in reviewPanel.Children)
             {
                 _401UC.ImportUnit importUnit = child as _401UC.ImportUnit;
-                totalTbl.Text = (Convert.ToInt32(totalTbl.Text) + Convert.ToInt32(importUnit.productQuantityTbl.Text)).ToString();
+                totalTbl.Text = (Convert.ToInt32(totalTbl.Text) + (Convert.ToInt32(importUnit.productQuantityTbl.Text) * Convert.ToInt32(importUnit.productPriceTbl.Text))).ToString();
             
                 //tag++ per add. Insert 1, 2, 3, 4,...
                 //if remove a child with tag not at the end (exp: 2)
@@ -110,6 +116,12 @@ namespace _410ShopManagement
 
                 this.Hide();
             }
+        }
+
+        private void importQuantityTxb_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            //only allows number (above QWERTY and right-side numberpad and del,backspace,tab key)
+            e.Handled = !InputTester.IsNumberKey(e.Key) && !InputTester.IsDelOrBackspaceOrTabKey(e.Key);
         }
     }
 }

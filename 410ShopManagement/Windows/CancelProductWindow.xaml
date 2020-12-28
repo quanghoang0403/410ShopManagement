@@ -71,12 +71,13 @@
                                      TextAlignment="Left"
                                      Background="{x:Null}"
                                      Margin="15 0" HorizontalAlignment="Left"
-                                     MaxWidth="200"
+                                     MaxWidth="200" MaxLength="4"
                                      materialDesign:HintAssist.Hint="Cancelled Quantity"
                                      materialDesign:HintAssist.IsFloating="True"
                                      materialDesign:HintAssist.FloatingScale=".5"
                                      materialDesign:TextFieldAssist.HasOutlinedTextField="False"
-                                     materialDesign:TextFieldAssist.UnderlineBrush="{x:Null}"/>
+                                     materialDesign:TextFieldAssist.UnderlineBrush="{x:Null}"
+                                 PreviewKeyDown="cancelledTxb_PreviewKeyDown"/>
                         <Grid HorizontalAlignment="Right"
                               Margin="0 0 25 0">
                             <Button x:Name="applyBtn"

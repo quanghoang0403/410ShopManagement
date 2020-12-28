@@ -192,6 +192,25 @@ UùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶ�
             }
         }
 
+        //Use for Preview Keydown
+        public static bool IsNumberKey(Key inKey)
+        {
+            if (inKey < Key.D0 || inKey > Key.D9)
+            {
+                if (inKey < Key.NumPad0 || inKey > Key.NumPad9)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        //Use for Preview Keydown
+        public static bool IsDelOrBackspaceOrTabKey(Key inKey)
+        {
+            return inKey == Key.Delete || inKey == Key.Back || inKey == Key.Tab;
+        }
+
         public static bool IsANumber(string str, int maxDigit = 0)
         {
             //is number and less than maxDigit digits

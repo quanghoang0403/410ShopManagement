@@ -76,5 +76,12 @@ namespace _410ShopManagement
                 notify.ShowDialog();
             }
         }
+
+        private void cancelledTxb_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            //only allows number (above QWERTY and right-side numberpad and del,backspace,tab key)
+            e.Handled = !InputTester.IsNumberKey(e.Key) && !InputTester.IsDelOrBackspaceOrTabKey(e.Key);
+        }
+
     }
 }

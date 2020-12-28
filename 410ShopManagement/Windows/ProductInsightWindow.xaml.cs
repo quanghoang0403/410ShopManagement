@@ -121,30 +121,12 @@ namespace _410ShopManagement
         private void NumberTxb_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             //only allows number (above QWERTY and right-side numberpad and del,backspace,tab key)
-            e.Handled = !IsNumberKey(e.Key) && !IsDelOrBackspaceOrTabKey(e.Key);
+            e.Handled = !InputTester.IsNumberKey(e.Key) && !InputTester.IsDelOrBackspaceOrTabKey(e.Key);
         }
 
         private void productBasePriceTbl_TextChanged(object sender, TextChangedEventArgs e)
         {
             productPriceTxb.Text = productBasePriceTbl.Text;
         }
-
-        private bool IsNumberKey(Key inKey)
-        {
-            if (inKey < Key.D0 || inKey > Key.D9)
-            {
-                if (inKey < Key.NumPad0 || inKey > Key.NumPad9)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        private bool IsDelOrBackspaceOrTabKey(Key inKey)
-        {
-            return inKey == Key.Delete || inKey == Key.Back || inKey == Key.Tab;
-        }
-
     }
 }

@@ -90,35 +90,37 @@
                 </Button>
             </Grid>
 
-            <StackPanel Orientation="Horizontal" Grid.Row="2"
+            <Grid Grid.Row="2"
                         Background="{StaticResource backgroundThemeColor}">
-                <TextBox x:Name="searchProductNameTxb"
+                <ComboBox x:Name="searchProductNameTxb"
                          FontSize="36" FontFamily="Calibri" 
                          TextElement.Foreground="{StaticResource secondTextForeground}"
-                         TextAlignment="Left"
-                         Width="450"
+                         MaxWidth="450"
+                          IsEditable="True"
                          Margin="25 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"
                          Background="{x:Null}"
                          materialDesign:HintAssist.Hint="Search Product Name"
                          materialDesign:HintAssist.IsFloating="True"
-                         materialDesign:HintAssist.FloatingScale=".5"/>
+                         materialDesign:HintAssist.FloatingScale=".5">
+                </ComboBox>
                 
                 <TextBox x:Name="importQuantityTxb"
                          FontSize="36" FontFamily="Calibri" 
                          TextElement.Foreground="{StaticResource secondTextForeground}"
                          TextAlignment="Left"
                          Width="130" MaxLength="4"
-                         Margin="25 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"
+                         Margin="150 0 0 0" HorizontalAlignment="Center" VerticalAlignment="Center"
                          Background="{x:Null}"
                          materialDesign:HintAssist.Hint="Quantity"
                          materialDesign:HintAssist.IsFloating="True"
-                         materialDesign:HintAssist.FloatingScale=".5"/>
+                         materialDesign:HintAssist.FloatingScale=".5"
+                         PreviewKeyDown="importQuantityTxb_PreviewKeyDown"/>
 
                 <Button x:Name="applyBtn"
                         Style="{StaticResource MaterialDesignIconButton}"
                         Width="100" Height="100"
                         BorderBrush="{x:Null}" Background="{x:Null}"
-                        Margin="200 0 0 0"
+                        Margin="0 0 60 0" HorizontalAlignment="Right" VerticalAlignment="Center"
                         Click="ApplyButton_Click">
                     <materialDesign:PackIcon Kind="TickCircle" Width="90" Height="90" Foreground="#00F988"/>
                     <Button.Triggers>
@@ -134,7 +136,7 @@
                         </EventTrigger>
                     </Button.Triggers>
                 </Button>
-            </StackPanel>
+            </Grid>
             
             <ScrollViewer x:Name="wrapViewer" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"
                           Grid.Row="3"

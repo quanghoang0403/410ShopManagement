@@ -20,8 +20,10 @@ namespace _410ShopManagement
     /// </summary>
     public partial class ImportWindow : Window
     {
-        //Windows
         _401UC.iNotifier notify = new _401UC.iNotifier();
+        public List<string> comboboxChild;
+
+        //Windows
         _401UC.iNotifierOKCancel confirmer = new _401UC.iNotifierOKCancel();
         CreateProductWindow createProductWnd = new CreateProductWindow();
         public ImportWindow()
@@ -33,6 +35,11 @@ namespace _410ShopManagement
 
             importDateTbl.Text = DateTime.Now.ToShortDateString();
             //importDateTbl.Text = DateTime.Now.ToShortTimeString();
+
+            comboboxChild = new List<string>()
+            { "Fernweh White Jacket", "Fernweh Black Jacket", "Cumeo Black Ring"};
+            searchProductNameTxb.ItemsSource = comboboxChild;
+
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -51,7 +58,8 @@ namespace _410ShopManagement
                 unit.Margin = new Thickness(15, 20, 15, 20);
                 unit.productNameTbl.Text = searchProductNameTxb.Text;
                 unit.productQuantityTbl.Text = importQuantityTxb.Text;
-                unit.productPriceTbl.Text = searchProductNameTxb.Text;
+                unit.productPriceTbl.Text = importQuantityTxb.Text;
+                unit.border.ToolTip = (Convert.ToInt32(unit.productQuantityTbl.Text) * Convert.ToInt32(unit.productPriceTbl.Text));
                 unit.RemoveUnitBtn.Tag = reviewPanel.Children.Count.ToString();
                 unit.RemoveUnitBtn.Click += WrapUnitCloseButton_Click;
 
@@ -113,6 +121,12 @@ namespace _410ShopManagement
 
                 this.Hide();
             }
+        }
+
+        private void importQuantityTxb_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            //only allows number (above QWERTY and right-side numberpad and del,backspace,tab key)
+            e.Handled = !InputTester.IsNumberKey(e.Key) && !InputTester.IsDelOrBackspaceOrTabKey(e.Key);
         }
     }
 }

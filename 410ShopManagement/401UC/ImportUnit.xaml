@@ -8,8 +8,8 @@
              mc:Ignorable="d"
              Background="Transparent">
     <Grid Width="160" Height="180">
-        <Border CornerRadius="25 0 25 25"
-                Background="#00F988">
+        <Border x:Name="border" CornerRadius="25 0 25 25"
+                Background="#00D7D3">
             <StackPanel Orientation="Vertical"
                         Margin="0 5 0 0">
                 <Image x:Name="productImg" 

@@ -22,6 +22,9 @@ namespace _410ShopManagement
     {
         _401UC.iNotifier notify = new _401UC.iNotifier();
         _401UC.iNotifierOKCancel confirmer = new _401UC.iNotifierOKCancel();
+
+        double salePercent;
+
         public CreateProductWindow()
         {
             InitializeComponent();
@@ -29,6 +32,10 @@ namespace _410ShopManagement
             this.Left = SystemParameters.PrimaryScreenWidth / 2 - this.Width * 0.63;
             this.Top = SystemParameters.PrimaryScreenHeight / 2 - this.Height * 0.475;
 
+            if (saleTxb.Text == "")
+            {
+                salePercent = 0;
+            }
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -49,25 +56,43 @@ namespace _410ShopManagement
 
         private void applyBtn_Click(object sender, RoutedEventArgs e)
         {
-            confirmer.Text = "Do you sure to save these changes ?";
-            confirmer.ShowDialog();
-
-            if (confirmer.result == _401UC.iNotifierOKCancel.Result.OK)
+            if (productBasePriceTbl.Text != "" &&
+                productPriceTxb.Text != "" &&
+                saleTxb.Text != "" &&
+                productNameTxb.Text != "" &&
+                materialTxb.Text != "" &&
+                originalTxb.Text != "" &&
+                categoryTxb.Text != "" &&
+                sexTxb.Text != "" &&
+                sizeTxb.Text != "" &&
+                colorTxb.Text != "" &&
+                descriptionTxb.Text != "")
             {
-                notify.Text = "Change success !!";
+                confirmer.Text = "Do you sure to create this product ?";
+                confirmer.ShowDialog();
+
+                if (confirmer.result == _401UC.iNotifierOKCancel.Result.OK)
+                {
+                    notify.Text = "Create success !!";
+                    notify.ShowDialog();
+                    productBasePriceTbl.Text = "";
+                    productPriceTxb.Text = "";
+                    saleTxb.Text = "";
+                    productNameTxb.Text = "";
+                    materialTxb.Text = "";
+                    originalTxb.Text = "";
+                    categoryTxb.Text = "";
+                    sexTxb.Text = "";
+                    sizeTxb.Text = "";
+                    colorTxb.Text = "";
+                    descriptionTxb.Text = "";
+                    this.Hide();
+                }
+            }
+            else
+            {
+                notify.Text = "Please fill all the insert boxes";
                 notify.ShowDialog();
-                productBasePriceTbl.Text = "";
-                productPriceTxb.Text = "";
-                saleTxb.Text = "";
-                productNameTxb.Text = "";
-                materialTxb.Text = "";
-                originalTxb.Text = "";
-                categoryTxb.Text = "";
-                sexTxb.Text = "";
-                sizeTxb.Text = "";
-                colorTxb.Text = "";
-                descriptionTxb.Text = "";
-                this.Hide();
             }
         }
 
@@ -81,7 +106,6 @@ namespace _410ShopManagement
             if (productBasePriceTbl.Text == "") return;
 
             double basePrice = Convert.ToDouble(productBasePriceTbl.Text);
-            double salePercent;
 
             if (saleTxb.Text == "")
             {
@@ -98,29 +122,16 @@ namespace _410ShopManagement
         private void NumberTxb_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             //only allows number (above QWERTY and right-side numberpad and del,backspace,tab key)
-            e.Handled = !IsNumberKey(e.Key) && !IsDelOrBackspaceOrTabKey(e.Key);
+            e.Handled = !InputTester.IsNumberKey(e.Key) && !InputTester.IsDelOrBackspaceOrTabKey(e.Key);
         }
 
         private void productBasePriceTbl_TextChanged(object sender, TextChangedEventArgs e)
         {
-            productPriceTxb.Text = productBasePriceTbl.Text;
-        }
+            if (productBasePriceTbl.Text == "") return;
 
-        private bool IsNumberKey(Key inKey)
-        {
-            if (inKey < Key.D0 || inKey > Key.D9)
-            {
-                if (inKey < Key.NumPad0 || inKey > Key.NumPad9)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
+            double basePrice = Convert.ToDouble(productBasePriceTbl.Text);
 
-        private bool IsDelOrBackspaceOrTabKey(Key inKey)
-        {
-            return inKey == Key.Delete || inKey == Key.Back || inKey == Key.Tab;
+            productPriceTxb.Text = (basePrice - basePrice * salePercent).ToString();
         }
     }
 }

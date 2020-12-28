@@ -21,6 +21,8 @@ namespace _410ShopManagement
     public partial class SearchProductWindow : Window
     {
         public TransferTag tag;
+        public List<string> comboboxChild;
+
         _401UC.iNotifier notify = new _401UC.iNotifier();
         //Windows
         ProductInsightWindow productInsightWnd = new ProductInsightWindow();
@@ -33,10 +35,15 @@ namespace _410ShopManagement
             this.Left = SystemParameters.PrimaryScreenWidth / 2 - this.Width * 0.63;
             this.Top = SystemParameters.PrimaryScreenHeight / 2 - this.Height * 0.475;
 
+            comboboxChild = new List<string>()
+            { "Fernweh White Jacket", "Fernweh Black Jacket", "Cumeo Black Ring"};
+            searchProductNameTxb.ItemsSource = comboboxChild;
+
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            searchProductNameTxb.Text = "";
             this.Hide();
         }
 
