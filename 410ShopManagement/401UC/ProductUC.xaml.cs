@@ -34,23 +34,26 @@ namespace _410ShopManagement._401UC
         private void PanelLoad()
         {
             productPanel.Children.Clear();
+
             foreach (Product prod in DataField.Instance.products)
             {
                 ProductPreview preview = new ProductPreview();
-                //dun know why )):
+                #region Product Preview receive Product Detail to create
                 preview.idProduct = prod.idProduct;
+                //dun know why )):
                 preview.productNameTbl.Text = prod.nameProduct;
-                preview.ProductPrice = prod.exportPriceProduct.ToString();
+                preview.ProductPrice = prod.exportPrice.ToString();
                 if (prod.storageQuantity <= 0)
                 {
                     preview.ProductStatus = Brushes.Red;
                 }
                 BitmapImage bimage = new BitmapImage();
                 bimage.BeginInit();
-                bimage.UriSource = new Uri(prod.imageProduct, UriKind.Relative);
+                bimage.UriSource = new Uri(prod.imagePath, UriKind.Relative);
                 bimage.EndInit();
                 preview.productImage.Source = bimage;
                 preview.Click += ProductPreview_Click;
+                #endregion
 
                 productPanel.Children.Add(preview);
             }
@@ -59,18 +62,20 @@ namespace _410ShopManagement._401UC
         private void ProductPreview_Click(object sender, RoutedEventArgs e)
         {
             ProductPreview preview = sender as ProductPreview;
+
             foreach (Product prod in DataField.Instance.products)
             {
                 if (prod.idProduct == preview.idProduct)
                 {
+                    #region Receive Product's detail
                     productInsightWnd.productNameTxb.Text = prod.nameProduct;
                     BitmapImage bimage = new BitmapImage();
                     bimage.BeginInit();
-                    bimage.UriSource = new Uri(prod.imageProduct, UriKind.Relative);
+                    bimage.UriSource = new Uri(prod.imagePath, UriKind.Relative);
                     bimage.EndInit();
                     productInsightWnd.productImg.Source = bimage;
-                    productInsightWnd.productBasePriceTbl.Text = prod.importPriceProduct.ToString();
-                    productInsightWnd.productPriceTxb.Text = prod.exportPriceProduct.ToString();
+                    productInsightWnd.productBasePriceTbl.Text = prod.importPrice.ToString();
+                    productInsightWnd.productPriceTxb.Text = prod.exportPrice.ToString();
                     productInsightWnd.saleTxb.Text = prod.saleOffset.ToString();
                     productInsightWnd.materialTxb.Text = prod.material;
                     productInsightWnd.originalTxb.Text = prod.origin;
@@ -82,6 +87,8 @@ namespace _410ShopManagement._401UC
                     productInsightWnd.storageTxb.Text = prod.storageQuantity.ToString();
                     productInsightWnd.soldTxb.Text = prod.soldQuantity.ToString();
                     productInsightWnd.cancelledTxb.Text = prod.cancelQuantity.ToString();
+                    #endregion
+                    break;
                 }
             }
 
@@ -91,7 +98,7 @@ namespace _410ShopManagement._401UC
 
             if (productInsightWnd.isEditDone)
             {
-                //when edit done -> load again
+                //when edit done -> reload
                 PanelLoad();
             }
         }

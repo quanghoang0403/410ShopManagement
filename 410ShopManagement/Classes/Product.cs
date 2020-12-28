@@ -10,9 +10,9 @@ namespace _410ShopManagement.Classes
     {
         public int idProduct;
         public string nameProduct;
-        public string imageProduct;
-        public int importPriceProduct;
-        public int exportPriceProduct;
+        public string imagePath;
+        public int importPrice;
+        public int exportPrice;
         public int saleOffset;
         public string material;
         public string origin;

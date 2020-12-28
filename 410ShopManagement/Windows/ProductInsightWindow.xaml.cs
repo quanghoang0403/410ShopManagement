@@ -21,11 +21,14 @@ namespace _410ShopManagement
     /// </summary>
     public partial class ProductInsightWindow : Window
     {
+        //use for editting right product
         public int idProduct;
         //use for refresh productUC
         public bool isEditDone = false;
 
+        //windows
         _401UC.iNotifierOKCancel confirmer = new _401UC.iNotifierOKCancel();
+        
         public ProductInsightWindow()
         {
             InitializeComponent();
@@ -90,7 +93,7 @@ namespace _410ShopManagement
                 salePercent = Convert.ToDouble(saleTxb.Text) / 100;
             }
 
-            productPriceTxb.Text = (basePrice - basePrice * salePercent).ToString();
+            productPriceTxb.Text = (Convert.ToInt32(basePrice - basePrice * salePercent)).ToString();
         }
 
         private void applyBtn_Click(object sender, RoutedEventArgs e)
@@ -104,9 +107,10 @@ namespace _410ShopManagement
                 {
                     if (prod.idProduct == idProduct)
                     {
+                        #region Product receive new changes
                         prod.nameProduct = productNameTxb.Text;
-                        prod.importPriceProduct = Convert.ToInt32(productBasePriceTbl.Text);
-                        prod.exportPriceProduct = Convert.ToInt32(productPriceTxb.Text);
+                        prod.importPrice = Convert.ToInt32(productBasePriceTbl.Text);
+                        prod.exportPrice = Convert.ToInt32(productPriceTxb.Text);
                         prod.saleOffset = Convert.ToInt32(saleTxb.Text);
                         prod.material = materialTxb.Text;
                         prod.origin = originalTxb.Text;
@@ -118,9 +122,12 @@ namespace _410ShopManagement
                         prod.storageQuantity = Convert.ToInt32(storageTxb.Text);
                         prod.soldQuantity = Convert.ToInt32(soldTxb.Text);
                         prod.cancelQuantity = Convert.ToInt32(cancelledTxb.Text);
+                        #endregion
+                        break;
                     }
                 }
 
+                //for refresh productUC
                 isEditDone = true;
                 OnOpen();
             }
@@ -142,7 +149,7 @@ namespace _410ShopManagement
                 salePercent = Convert.ToDouble(saleTxb.Text) / 100;
             }
 
-            productPriceTxb.Text = (basePrice - basePrice * salePercent).ToString();
+            productPriceTxb.Text = (Convert.ToInt32(basePrice - basePrice * salePercent)).ToString();
         }
 
         private void NumberTxb_PreviewKeyDown(object sender, KeyEventArgs e)

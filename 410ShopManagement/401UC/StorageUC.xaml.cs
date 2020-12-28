@@ -31,6 +31,7 @@ namespace _410ShopManagement._401UC
 
         private void importBtn_Click(object sender, RoutedEventArgs e)
         {
+            importWnd.OnOpen();
             importWnd.ShowDialog();
         }
 

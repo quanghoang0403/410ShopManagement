@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using _410ShopManagement.Classes;
 using BLL;
 
 namespace _410ShopManagement
@@ -20,12 +21,13 @@ namespace _410ShopManagement
     /// </summary>
     public partial class ImportWindow : Window
     {
-        _401UC.iNotifier notify = new _401UC.iNotifier();
-        public List<string> comboboxChild;
+        public List<string> productNames = new List<string>();
 
         //Windows
+        _401UC.iNotifier notify = new _401UC.iNotifier();
         _401UC.iNotifierOKCancel confirmer = new _401UC.iNotifierOKCancel();
         CreateProductWindow createProductWnd = new CreateProductWindow();
+        
         public ImportWindow()
         {
             InitializeComponent();
@@ -36,10 +38,30 @@ namespace _410ShopManagement
             importDateTbl.Text = DateTime.Now.ToShortDateString();
             //importDateTbl.Text = DateTime.Now.ToShortTimeString();
 
-            comboboxChild = new List<string>()
-            { "Fernweh White Jacket", "Fernweh Black Jacket", "Cumeo Black Ring"};
-            searchProductNameTxb.ItemsSource = comboboxChild;
+            foreach (Product product in DataField.Instance.products)
+            {
+                productNames.Add(product.nameProduct);
+            }
+            searchProductNameTxb.ItemsSource = productNames;
 
+        }
+
+        public void OnOpen()
+        {
+            foreach (Account acc in DataField.Instance.accounts)
+            {
+                if (acc.idAccount == DataField.Instance.idCurrentAccountLogin)
+                {
+                    foreach (Staff staff in DataField.Instance.staffs)
+                    {
+                        if (staff.idStaff == acc.idStaff)
+                        {
+                            importerNameTbl.Text = staff.nameStaff;
+                            break;
+                        }
+                    }
+                }
+            }
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -47,24 +69,42 @@ namespace _410ShopManagement
             if (searchProductNameTxb.Text != "" &&
                 importQuantityTxb.Text != "")
             {
-                if (!InputTester.IsANumber(importQuantityTxb.Text, 4))
+                foreach (Product product in DataField.Instance.products)
                 {
-                    notify.Text = "Quantity Textbox inserted incorrect format";
-                    notify.ShowDialog();
-                    return;
+                    if (searchProductNameTxb.Text == product.nameProduct)
+                    {
+                        if (!InputTester.IsANumber(importQuantityTxb.Text, 4))
+                        {
+                            notify.Text = "Quantity Textbox inserted incorrect format";
+                            notify.ShowDialog();
+                            return;
+                        }
+
+                        #region Import Unit receive data to create
+                        _401UC.ImportUnit unit = new _401UC.ImportUnit();
+                        unit.Margin = new Thickness(15, 20, 15, 20);
+                        BitmapImage bimage = new BitmapImage();
+                        bimage.BeginInit();
+                        bimage.UriSource = new Uri(product.imagePath, UriKind.Relative);
+                        bimage.EndInit();
+                        unit.productImg.Source = bimage;
+                        unit.productNameTbl.Text = searchProductNameTxb.Text;
+                        unit.productQuantityTbl.Text = importQuantityTxb.Text;
+                        unit.productPriceTbl.Text = product.importPrice.ToString();
+                        unit.border.ToolTip = (Convert.ToInt32(unit.productQuantityTbl.Text) * Convert.ToInt32(unit.productPriceTbl.Text));
+                        unit.RemoveUnitBtn.Tag = reviewPanel.Children.Count.ToString();
+                        unit.RemoveUnitBtn.Click += WrapUnitCloseButton_Click;
+                        #endregion
+
+                        reviewPanel.Children.Add(unit);
+
+                        searchProductNameTxb.Text = "";
+                        importQuantityTxb.Text = "";
+                        return;
+                    }
                 }
-
-                _401UC.ImportUnit unit = new _401UC.ImportUnit();
-                unit.Margin = new Thickness(15, 20, 15, 20);
-                unit.productNameTbl.Text = searchProductNameTxb.Text;
-                unit.productQuantityTbl.Text = importQuantityTxb.Text;
-                unit.productPriceTbl.Text = importQuantityTxb.Text;
-                unit.border.ToolTip = (Convert.ToInt32(unit.productQuantityTbl.Text) * Convert.ToInt32(unit.productPriceTbl.Text));
-                unit.RemoveUnitBtn.Tag = reviewPanel.Children.Count.ToString();
-                unit.RemoveUnitBtn.Click += WrapUnitCloseButton_Click;
-
-                reviewPanel.Children.Add(unit);
-
+                notify.Text = "Incorrect Product's Name";
+                notify.ShowDialog();
                 searchProductNameTxb.Text = "";
                 importQuantityTxb.Text = "";
             }
@@ -112,6 +152,19 @@ namespace _410ShopManagement
 
             if (confirmer.result == _401UC.iNotifierOKCancel.Result.OK)
             {
+                foreach (UIElement child in reviewPanel.Children)
+                {
+                    _401UC.ImportUnit importUnit = child as _401UC.ImportUnit;
+
+                    foreach (Product prod in DataField.Instance.products)
+                    {
+                        if (prod.nameProduct == importUnit.productNameTbl.Text)
+                        {
+                            prod.storageQuantity += Convert.ToInt32(importUnit.ProductQuantity);
+                        }
+                    }
+                }
+
                 notify.Text = "Import success !!";
                 notify.ShowDialog();
 

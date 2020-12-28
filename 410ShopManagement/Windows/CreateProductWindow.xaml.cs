@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using _410ShopManagement.Classes;
 using BLL;
 using Microsoft.Win32;
 
@@ -21,11 +22,13 @@ namespace _410ShopManagement
     /// </summary>
     public partial class CreateProductWindow : Window
     {
+        double salePercent;
+        bool choosedImage = false;
+
+        //Windows
         _401UC.iNotifier notify = new _401UC.iNotifier();
         _401UC.iNotifierOKCancel confirmer = new _401UC.iNotifierOKCancel();
-
         GallaryWindow gallaryWnd = new GallaryWindow();
-        double salePercent;
 
         public CreateProductWindow()
         {
@@ -73,13 +76,34 @@ namespace _410ShopManagement
                 sexTxb.Text != "" &&
                 sizeTxb.Text != "" &&
                 colorTxb.Text != "" &&
-                descriptionTxb.Text != "")
+                descriptionTxb.Text != "" &&
+                choosedImage)
             {
                 confirmer.Text = "Do you sure to create this product ?";
                 confirmer.ShowDialog();
 
                 if (confirmer.result == _401UC.iNotifierOKCancel.Result.OK)
                 {
+                    DataField.Instance.products.Add(new Product()
+                    {
+                        idProduct = DataField.Instance.products.Count,
+                        nameProduct = productNameTxb.Text,
+                        imagePath = productImg.Source.ToString().Substring(22), //only get from index 22
+                        importPrice = Convert.ToInt32(productBasePriceTbl.Text),
+                        exportPrice = Convert.ToInt32(productPriceTxb.Text),
+                        saleOffset = Convert.ToInt32(saleTxb.Text),
+                        material = materialTxb.Text,
+                        origin = originalTxb.Text,
+                        category = categoryTxb.Text,
+                        sex = sexTxb.Text,
+                        size = sizeTxb.Text,
+                        color = colorTxb.Text,
+                        description = descriptionTxb.Text,
+                        storageQuantity = 0,
+                        soldQuantity = 0,
+                        cancelQuantity = 0
+                    });
+
                     notify.Text = "Create success !!";
                     notify.ShowDialog();
                     productBasePriceTbl.Text = "";
@@ -100,8 +124,16 @@ namespace _410ShopManagement
             }
             else
             {
-                notify.Text = "Please fill all the insert boxes";
-                notify.ShowDialog();
+                if (!choosedImage)
+                {
+                    notify.Text = "Please choose an image";
+                    notify.ShowDialog();
+                }
+                else
+                {
+                    notify.Text = "Please fill all the insert boxes";
+                    notify.ShowDialog();
+                }
             }
         }
 
@@ -115,6 +147,7 @@ namespace _410ShopManagement
             if (gallaryWnd.choosedSource != null)
             {
                 productImg.Source = gallaryWnd.choosedSource;
+                choosedImage = true;
             }
         }
 
@@ -133,7 +166,7 @@ namespace _410ShopManagement
                 salePercent = Convert.ToDouble(saleTxb.Text) / 100;
             }
 
-            productPriceTxb.Text = (basePrice - basePrice * salePercent).ToString();
+            productPriceTxb.Text = (Convert.ToInt32(basePrice - basePrice * salePercent)).ToString();
         }
 
         private void NumberTxb_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -148,7 +181,7 @@ namespace _410ShopManagement
 
             double basePrice = Convert.ToDouble(productBasePriceTbl.Text);
 
-            productPriceTxb.Text = (basePrice - basePrice * salePercent).ToString();
+            productPriceTxb.Text = (Convert.ToInt32(basePrice - basePrice * salePercent)).ToString();
         }
     }
 }

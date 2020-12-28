@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MaterialDesignThemes.Wpf;
 using BLL;
+using _410ShopManagement.Classes;
 
 namespace _410ShopManagement.Windows
 {
@@ -21,6 +22,8 @@ namespace _410ShopManagement.Windows
     /// </summary>
     public partial class LoginWindow : Window
     {
+        //use for notify when insert incorrect info
+        bool isLoginSuccess = false;
         //Windows
         _401UC.iNotifier notify = new _401UC.iNotifier();
         MainWindow mwd = new MainWindow();
@@ -35,8 +38,29 @@ namespace _410ShopManagement.Windows
             if (txbUser.Text != "" &&
                 txbPassword.Password.ToString() != "")
             {
-                mwd.Show();
-                this.Close();
+                foreach (Account acc in DataField.Instance.accounts)
+                {
+                    if (txbUser.Text == acc.userName)
+                    {
+                        if (txbPassword.Password.ToString() == acc.password)
+                        {
+                            //save the account loged-in's id
+                            DataField.Instance.idCurrentAccountLogin = acc.idAccount; 
+                            isLoginSuccess = true;
+                            mwd.Show();
+                            this.Close();
+                        }
+                    }
+                }
+
+                if (!isLoginSuccess)
+                {
+                    txbUser.Text = "";
+                    txbPassword.Password = "";
+                    txbUser.Focus();
+                    notify.Text = "Username or Password was incorrect";
+                    notify.ShowDialog();
+                }
             }
             else
             {

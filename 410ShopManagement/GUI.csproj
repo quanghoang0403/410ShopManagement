@@ -87,8 +87,12 @@
     <Compile Include="401UC\ProductUC.xaml.cs">
       <DependentUpon>ProductUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Account.cs" />
     <Compile Include="Classes\DataField.cs" />
     <Compile Include="Classes\Product.cs" />
+    <Compile Include="Classes\Shipment.cs" />
+    <Compile Include="Classes\ShipmentDetail.cs" />
+    <Compile Include="Classes\Staff.cs" />
     <Compile Include="Windows\BillDetailWindow.xaml.cs">
       <DependentUpon>BillDetailWindow.xaml</DependentUpon>
     </Compile>
