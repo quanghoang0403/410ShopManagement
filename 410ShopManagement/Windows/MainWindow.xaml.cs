@@ -24,7 +24,6 @@ namespace _410ShopManagement
     /// </summary>
     public partial class MainWindow : Window
     {
-        //Yah, this is my type <3
         private static MainWindow instance;
         //Windows
         _401UC.iNotifier notify = new _401UC.iNotifier();

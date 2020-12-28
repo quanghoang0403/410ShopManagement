@@ -20,6 +20,8 @@ namespace _410ShopManagement._401UC
     /// </summary>
     public partial class ProductPreview : UserControl
     {
+        public int idProduct;
+
         public ProductPreview()
         {
             InitializeComponent();

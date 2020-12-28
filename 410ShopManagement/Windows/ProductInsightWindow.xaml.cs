@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using _410ShopManagement.Classes;
 using BLL;
 
 namespace _410ShopManagement
@@ -20,6 +21,10 @@ namespace _410ShopManagement
     /// </summary>
     public partial class ProductInsightWindow : Window
     {
+        public int idProduct;
+        //use for refresh productUC
+        public bool isEditDone = false;
+
         _401UC.iNotifierOKCancel confirmer = new _401UC.iNotifierOKCancel();
         public ProductInsightWindow()
         {
@@ -95,6 +100,28 @@ namespace _410ShopManagement
 
             if (confirmer.result == _401UC.iNotifierOKCancel.Result.OK)
             {
+                foreach (Product prod in DataField.Instance.products)
+                {
+                    if (prod.idProduct == idProduct)
+                    {
+                        prod.nameProduct = productNameTxb.Text;
+                        prod.importPriceProduct = Convert.ToInt32(productBasePriceTbl.Text);
+                        prod.exportPriceProduct = Convert.ToInt32(productPriceTxb.Text);
+                        prod.saleOffset = Convert.ToInt32(saleTxb.Text);
+                        prod.material = materialTxb.Text;
+                        prod.origin = originalTxb.Text;
+                        prod.category = categoryTxb.Text;
+                        prod.size = sizeTxb.Text;
+                        prod.sex = sexTxb.Text;
+                        prod.color = colorTxb.Text;
+                        prod.description = descriptionTxb.Text;
+                        prod.storageQuantity = Convert.ToInt32(storageTxb.Text);
+                        prod.soldQuantity = Convert.ToInt32(soldTxb.Text);
+                        prod.cancelQuantity = Convert.ToInt32(cancelledTxb.Text);
+                    }
+                }
+
+                isEditDone = true;
                 OnOpen();
             }
         }

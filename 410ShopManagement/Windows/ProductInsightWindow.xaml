@@ -123,29 +123,52 @@
                                      materialDesign:HintAssist.IsFloating="True"
                                      materialDesign:HintAssist.FloatingScale=".5"/>
 
-                        <TextBox x:Name="originalTxb"
+                        <ComboBox x:Name="originalTxb"
                             IsEnabled="False"
                                      FontSize="26" FontFamily="Calibri" 
                                      TextElement.Foreground="{StaticResource secondTextForeground}"
-                                     TextAlignment="Left"
-                                     Width="450"
                                      HorizontalAlignment="Left"
-                                     Background="{x:Null}"
                                      materialDesign:HintAssist.Hint="Original"
                                      materialDesign:HintAssist.IsFloating="True"
-                                     materialDesign:HintAssist.FloatingScale=".5"/>
+                                     materialDesign:HintAssist.FloatingScale=".5">
+                            <ComboBoxItem>
+                                Fernweh
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Tokago
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Teelab
+                            </ComboBoxItem>
+                        </ComboBox>
 
-                        <TextBox x:Name="categoryTxb"
+                        <ComboBox x:Name="categoryTxb"
                             IsEnabled="False"
                                      FontSize="26" FontFamily="Calibri" 
                                      TextElement.Foreground="{StaticResource secondTextForeground}"
-                                     TextAlignment="Left"
-                                     Width="450"
                                      HorizontalAlignment="Left"
-                                     Background="{x:Null}"
                                      materialDesign:HintAssist.Hint="Category"
                                      materialDesign:HintAssist.IsFloating="True"
-                                     materialDesign:HintAssist.FloatingScale=".5"/>
+                                     materialDesign:HintAssist.FloatingScale=".5">
+                            <ComboBoxItem>
+                                Cardigan
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Hoodie
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Jacket
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Shirt
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Sweetshirt
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Tshirt
+                            </ComboBoxItem>
+                        </ComboBox>
 
                         <ComboBox x:Name="sexTxb"
                             IsEnabled="False"
