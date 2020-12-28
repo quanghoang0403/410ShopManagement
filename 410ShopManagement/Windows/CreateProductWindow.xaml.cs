@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BLL;
+using Microsoft.Win32;
 
 namespace _410ShopManagement
 {
@@ -23,6 +24,7 @@ namespace _410ShopManagement
         _401UC.iNotifier notify = new _401UC.iNotifier();
         _401UC.iNotifierOKCancel confirmer = new _401UC.iNotifierOKCancel();
 
+        GallaryWindow gallaryWnd = new GallaryWindow();
         double salePercent;
 
         public CreateProductWindow()
@@ -36,6 +38,9 @@ namespace _410ShopManagement
             {
                 salePercent = 0;
             }
+
+            findImageBtn.Visibility = Visibility.Visible;
+            productImg.Visibility = Visibility.Hidden;
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -51,6 +56,8 @@ namespace _410ShopManagement
             sizeTxb.Text = "";
             colorTxb.Text = "";
             descriptionTxb.Text = "";
+            findImageBtn.Visibility = Visibility.Visible;
+            productImg.Visibility = Visibility.Hidden;
             this.Hide();
         }
 
@@ -86,6 +93,8 @@ namespace _410ShopManagement
                     sizeTxb.Text = "";
                     colorTxb.Text = "";
                     descriptionTxb.Text = "";
+                    findImageBtn.Visibility = Visibility.Visible;
+                    productImg.Visibility = Visibility.Hidden;
                     this.Hide();
                 }
             }
@@ -98,7 +107,15 @@ namespace _410ShopManagement
 
         private void findImageBtn_Click(object sender, RoutedEventArgs e)
         {
+            gallaryWnd.ShowDialog();
 
+            findImageBtn.Visibility = Visibility.Hidden;
+            productImg.Visibility = Visibility.Visible;
+
+            if (gallaryWnd.choosedSource != null)
+            {
+                productImg.Source = gallaryWnd.choosedSource;
+            }
         }
 
         private void saleTxb_TextChanged(object sender, TextChangedEventArgs e)

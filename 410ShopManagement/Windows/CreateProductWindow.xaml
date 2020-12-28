@@ -46,12 +46,19 @@
                                    materialDesign:HintAssist.Hint="Product Name"
                                    materialDesign:HintAssist.IsFloating="True"
                                    materialDesign:HintAssist.FloatingScale=".5" />
-                        <Button x:Name="findImageBtn" 
+
+                        <Grid>
+                            <Button x:Name="findImageBtn" 
                                 Width="250" Height="250"
                                 Style="{StaticResource MaterialDesignFlatButton}"
                                 Click="findImageBtn_Click">
-                            <materialDesign:PackIcon Kind="Camera" Width="150" Height="150"/>
-                        </Button>
+                                <materialDesign:PackIcon Kind="Camera" Width="150" Height="150"/>
+                            </Button>
+                            <Image x:Name="productImg" 
+                                   Width="250" Height="250"
+                                   Stretch="Fill"/>
+                        </Grid>
+                        
                         <StackPanel Orientation="Horizontal" 
                                     Margin="0 10 0 0" HorizontalAlignment="Center">
                             <TextBlock Margin="0 3 0 0"

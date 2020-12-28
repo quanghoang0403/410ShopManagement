@@ -96,6 +96,9 @@
     <Compile Include="Windows\CreateProductWindow.xaml.cs">
       <DependentUpon>CreateProductWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\GallaryWindow.xaml.cs">
+      <DependentUpon>GallaryWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\ImportWindow.xaml.cs">
       <DependentUpon>ImportWindow.xaml</DependentUpon>
     </Compile>
@@ -164,6 +167,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\CreateProductWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\GallaryWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -299,7 +306,6 @@
   <ItemGroup>
     <Resource Include="Assets\MainWindow\AvatarCover.png" />
     <Resource Include="Assets\MainWindow\UserAvatar.png" />
-    <Resource Include="Assets\MainWindow\UserProfile.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\MainWindow\LogoutButton.png" />
@@ -329,6 +335,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Products\Jacket_White_Fernweh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\MainWindow\UserProfile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Products\Cardigan_Pink_Fernweh.png" />
+    <Resource Include="Assets\Products\Hoodie_Purple_Fernweh.png" />
+    <Resource Include="Assets\Products\Jacket_Black_Fernweh.png" />
+    <Resource Include="Assets\Products\Shirt_Pink_Tokago.png" />
+    <Resource Include="Assets\Products\Shirt_Satan_Tokago.png" />
+    <Resource Include="Assets\Products\Sweetshirt_Yellow_Fernweh.png" />
+    <Resource Include="Assets\Products\Tshirt_Mint_Tokago.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Products\Tshirt_Mint_Teelab.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets')" />
