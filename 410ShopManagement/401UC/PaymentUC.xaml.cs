@@ -36,6 +36,7 @@ namespace _410ShopManagement._401UC
 
         private void historyBtn_Click(object sender, RoutedEventArgs e)
         {
+            transactionHistoryWnd.OnOpen();
             transactionHistoryWnd.ShowDialog();
         }
     }

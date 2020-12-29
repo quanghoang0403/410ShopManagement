@@ -36,24 +36,24 @@ namespace _410ShopManagement
             this.Left = SystemParameters.PrimaryScreenWidth / 2 - this.Width * 0.63;
             this.Top = SystemParameters.PrimaryScreenHeight / 2 - this.Height * 0.475;
 
-            foreach (Product product in DataField.Instance.products)
-            {
-                productNames.Add(product.nameProduct);
-            }
-            searchProductNameTxb.ItemsSource = productNames;
-
-        }
-
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            searchProductNameTxb.Text = "";
-            this.Hide();
         }
 
         public enum TransferTag
         {
             UpdateProduct = 0,
             CancelProduct = 1
+        }
+
+        public void OnOpen()
+        {
+            productNames.Clear();
+            foreach (Product product in DataField.Instance.products)
+            {
+                productNames.Add(product.nameProduct);
+            }
+            searchProductNameTxb.ItemsSource = productNames;
+
+            searchProductNameTxb.Text = "";
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -119,6 +119,12 @@ namespace _410ShopManagement
                 notify.Text = "Please fill the insert box";
                 notify.ShowDialog();
             }
+        }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            searchProductNameTxb.Text = "";
+            this.Hide();
         }
 
     }

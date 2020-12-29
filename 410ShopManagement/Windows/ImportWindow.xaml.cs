@@ -38,16 +38,11 @@ namespace _410ShopManagement
             importDateTbl.Text = DateTime.Now.ToShortDateString();
             //importDateTbl.Text = DateTime.Now.ToShortTimeString();
 
-            foreach (Product product in DataField.Instance.products)
-            {
-                productNames.Add(product.nameProduct);
-            }
-            searchProductNameTxb.ItemsSource = productNames;
-
         }
 
         public void OnOpen()
         {
+            //Fill current staff's name
             foreach (Account acc in DataField.Instance.accounts)
             {
                 if (acc.idAccount == DataField.Instance.idCurrentAccountLogin)
@@ -62,6 +57,17 @@ namespace _410ShopManagement
                     }
                 }
             }
+
+            //Add combobox children
+            productNames.Clear();
+            foreach (Product product in DataField.Instance.products)
+            {
+                productNames.Add(product.nameProduct);
+            }
+            searchProductNameTxb.ItemsSource = productNames;
+
+            searchProductNameTxb.Text = "";
+            importQuantityTxb.Text = "";
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)

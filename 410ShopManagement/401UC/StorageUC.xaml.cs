@@ -38,12 +38,14 @@ namespace _410ShopManagement._401UC
         private void updateBtn_Click(object sender, RoutedEventArgs e)
         {
             searchProductWnd.tag = SearchProductWindow.TransferTag.UpdateProduct;
+            searchProductWnd.OnOpen();
             searchProductWnd.ShowDialog();
         }
 
         private void cancelBtn_Click(object sender, RoutedEventArgs e)
         {
             searchProductWnd.tag = SearchProductWindow.TransferTag.CancelProduct;
+            searchProductWnd.OnOpen();
             searchProductWnd.ShowDialog();
         }
 

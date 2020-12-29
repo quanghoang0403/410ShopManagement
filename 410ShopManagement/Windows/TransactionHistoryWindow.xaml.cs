@@ -37,7 +37,22 @@ namespace _410ShopManagement
             this.Left = SystemParameters.PrimaryScreenWidth / 2 - this.Width * 0.63;
             this.Top = SystemParameters.PrimaryScreenHeight / 2 - this.Height * 0.475;
 
+            historyLv.SelectionChanged += HistoryLv_SelectionChanged;
+            collectionView = (CollectionView)CollectionViewSource.GetDefaultView(historyLv.ItemsSource);
+        }
+
+        class ListviewFormatHistory
+        {
+            public int IdBill { get; set; }
+            public string NameOfStaff { get; set; }
+            public string Date { get; set; }
+            public int TotalBill { get; set; }
+        }
+
+        public void OnOpen()
+        {
             datePkr.Text = DateTime.Now.ToShortDateString();
+            histories.Clear();
 
             foreach (Bill bill in DataField.Instance.bills)
             {
@@ -59,17 +74,8 @@ namespace _410ShopManagement
                 });
             }
             historyLv.ItemsSource = histories;
+            CollectionViewSource.GetDefaultView(historyLv.ItemsSource).Refresh();
             historyLv.SelectedValuePath = "IdBill";
-            historyLv.SelectionChanged += HistoryLv_SelectionChanged;
-            collectionView = (CollectionView)CollectionViewSource.GetDefaultView(historyLv.ItemsSource);
-        }
-
-        class ListviewFormatHistory
-        {
-            public int IdBill { get; set; }
-            public string NameOfStaff { get; set; }
-            public string Date { get; set; }
-            public int TotalBill { get; set; }
         }
 
         private void GridViewColumnHeader_Click(object sender, RoutedEventArgs e)

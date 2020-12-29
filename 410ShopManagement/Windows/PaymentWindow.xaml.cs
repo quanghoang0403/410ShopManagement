@@ -72,7 +72,7 @@ namespace _410ShopManagement
                         unit.productImg.Source = bimage;
                         unit.productNameTbl.Text = searchProductNameTxb.Text;
                         unit.productQuantityTbl.Text = importQuantityTxb.Text;
-                        unit.productPriceTbl.Text = product.importPrice.ToString();
+                        unit.productPriceTbl.Text = product.exportPrice.ToString();
                         unit.border.ToolTip = (Convert.ToInt32(unit.productQuantityTbl.Text) * Convert.ToInt32(unit.productPriceTbl.Text));
                         unit.RemoveUnitBtn.Tag = reviewPanel.Children.Count.ToString();
                         unit.RemoveUnitBtn.Click += WrapUnitCloseButton_Click;
@@ -156,9 +156,28 @@ namespace _410ShopManagement
                         if (prod.nameProduct == importUnit.productNameTbl.Text)
                         {
                             prod.storageQuantity -= Convert.ToInt32(importUnit.ProductQuantity);
+                            prod.soldQuantity += Convert.ToInt32(importUnit.ProductQuantity);
+
+                            DataField.Instance.billDetails.Add(new BillDetail()
+                            {
+                                idBillDetail = DataField.Instance.billDetails.Count,
+                                idBill = DataField.Instance.bills.Count,
+                                idProduct = prod.idProduct,
+                                priceProduct = prod.exportPrice,
+                                quantityProduct = Convert.ToInt32(importUnit.ProductQuantity),
+                                totalPrice = prod.exportPrice * Convert.ToInt32(importUnit.ProductQuantity)
+                            });
                         }
                     }
                 }
+
+                DataField.Instance.bills.Add(new Bill()
+                {
+                    idBill = DataField.Instance.bills.Count,
+                    idStaff = DataField.Instance.idCurrentAccountLogin,
+                    exportDate = DateTime.Now.ToShortDateString(),
+                    totalBill = Convert.ToInt32(totalTbl.Text)
+                });
 
                 notify.Text = "Payment success !!";
                 notify.ShowDialog();
