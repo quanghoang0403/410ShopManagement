@@ -46,6 +46,7 @@ namespace _410ShopManagement
 
         private void editBtn_Click(object sender, RoutedEventArgs e)
         {
+            isEditDone = false;
             editBtn.Visibility = Visibility.Collapsed;
             applyBtn.Visibility = Visibility.Visible;
 

@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using _410ShopManagement.Classes;
 using BLL;
 
 namespace _410ShopManagement
@@ -20,8 +21,13 @@ namespace _410ShopManagement
     /// </summary>
     public partial class CancelProductWindow : Window
     {
+        //use for editting right product
+        public int idProduct;
+
+        //Windows
         _401UC.iNotifier notify = new _401UC.iNotifier();
         _401UC.iNotifierOKCancel confirmer = new _401UC.iNotifierOKCancel();
+
         public CancelProductWindow()
         {
             InitializeComponent();
@@ -44,7 +50,7 @@ namespace _410ShopManagement
                 //neu khong phai 1 so <10000 thi return
                 if (!InputTester.IsANumber(cancelledTxb.Text, 4))
                 {
-                    notify.Text = "Cancelled Quantity Textbox inserted incorrect format";
+                    notify.Text = "Only cancel < 10000 unit";
                     notify.ShowDialog();
                     return;
                 }
@@ -57,6 +63,18 @@ namespace _410ShopManagement
 
                     if (confirmer.result == _401UC.iNotifierOKCancel.Result.OK)
                     {
+                        foreach (Product prod in DataField.Instance.products)
+                        {
+                            if (prod.idProduct == idProduct)
+                            {
+                                #region Product receive new changes
+                                prod.storageQuantity -= Convert.ToInt32(cancelledTxb.Text);
+                                prod.cancelQuantity += Convert.ToInt32(cancelledTxb.Text);
+                                #endregion
+                                break;
+                            }
+                        }
+
                         notify.Text = "Change success !!";
                         notify.ShowDialog();
                         cancelledTxb.Text = "";

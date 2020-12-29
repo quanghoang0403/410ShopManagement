@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using _410ShopManagement.Classes;
 using BLL;
 
 namespace _410ShopManagement
@@ -21,7 +22,7 @@ namespace _410ShopManagement
     public partial class SearchProductWindow : Window
     {
         public TransferTag tag;
-        public List<string> comboboxChild;
+        public List<string> productNames = new List<string>();
 
         _401UC.iNotifier notify = new _401UC.iNotifier();
         //Windows
@@ -35,9 +36,11 @@ namespace _410ShopManagement
             this.Left = SystemParameters.PrimaryScreenWidth / 2 - this.Width * 0.63;
             this.Top = SystemParameters.PrimaryScreenHeight / 2 - this.Height * 0.475;
 
-            comboboxChild = new List<string>()
-            { "Fernweh White Jacket", "Fernweh Black Jacket", "Cumeo Black Ring"};
-            searchProductNameTxb.ItemsSource = comboboxChild;
+            foreach (Product product in DataField.Instance.products)
+            {
+                productNames.Add(product.nameProduct);
+            }
+            searchProductNameTxb.ItemsSource = productNames;
 
         }
 
@@ -57,15 +60,58 @@ namespace _410ShopManagement
         {
             if (searchProductNameTxb.Text != "")
             {
-                searchProductNameTxb.Text = "";
-                if (tag == TransferTag.UpdateProduct)
+                foreach (Product prod in DataField.Instance.products)
                 {
-                    productInsightWnd.OnOpen();
-                    productInsightWnd.ShowDialog();
-                }
-                else if (tag == TransferTag.CancelProduct)
-                {
-                    cancelProductWnd.ShowDialog();
+                    if (searchProductNameTxb.Text == prod.nameProduct)
+                    {
+                        if (tag == TransferTag.UpdateProduct)
+                        {
+                            #region Receive Product's detail
+                            productInsightWnd.productNameTxb.Text = prod.nameProduct;
+                            BitmapImage bimage = new BitmapImage();
+                            bimage.BeginInit();
+                            bimage.UriSource = new Uri(prod.imagePath, UriKind.Relative);
+                            bimage.EndInit();
+                            productInsightWnd.productImg.Source = bimage;
+                            productInsightWnd.productBasePriceTbl.Text = prod.importPrice.ToString();
+                            productInsightWnd.productPriceTxb.Text = prod.exportPrice.ToString();
+                            productInsightWnd.saleTxb.Text = prod.saleOffset.ToString();
+                            productInsightWnd.materialTxb.Text = prod.material;
+                            productInsightWnd.originalTxb.Text = prod.origin;
+                            productInsightWnd.categoryTxb.Text = prod.category;
+                            productInsightWnd.sizeTxb.Text = prod.size;
+                            productInsightWnd.sexTxb.Text = prod.sex;
+                            productInsightWnd.colorTxb.Text = prod.color;
+                            productInsightWnd.descriptionTxb.Text = prod.description;
+                            productInsightWnd.storageTxb.Text = prod.storageQuantity.ToString();
+                            productInsightWnd.soldTxb.Text = prod.soldQuantity.ToString();
+                            productInsightWnd.cancelledTxb.Text = prod.cancelQuantity.ToString();
+                            #endregion
+
+                            productInsightWnd.idProduct = prod.idProduct;
+                            productInsightWnd.OnOpen();
+                            productInsightWnd.ShowDialog();
+                            searchProductNameTxb.Text = "";
+                            break;
+                        }
+                        else if (tag == TransferTag.CancelProduct)
+                        {
+                            #region Receive Product;s detail
+                            cancelProductWnd.productNameTxb.Text = prod.nameProduct;
+                            BitmapImage bimage = new BitmapImage();
+                            bimage.BeginInit();
+                            bimage.UriSource = new Uri(prod.imagePath, UriKind.Relative);
+                            bimage.EndInit();
+                            cancelProductWnd.productImg.Source = bimage;
+                            cancelProductWnd.storageQuantityTbl.Text = prod.storageQuantity.ToString();
+                            #endregion
+
+                            cancelProductWnd.idProduct = prod.idProduct;
+                            cancelProductWnd.ShowDialog();
+                            searchProductNameTxb.Text = "";
+                            break;
+                        }
+                    }
                 }
             }
             else
