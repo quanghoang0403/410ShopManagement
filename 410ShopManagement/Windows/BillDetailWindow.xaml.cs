@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using _410ShopManagement.Classes;
 using BLL;
 
 namespace _410ShopManagement
@@ -20,7 +21,8 @@ namespace _410ShopManagement
     /// </summary>
     public partial class BillDetailWindow : Window
     {
-        List<TempBill> bills;
+        public int idBill;
+        List<ListviewFormatBillDetail> bills = new List<ListviewFormatBillDetail>();
 
         public BillDetailWindow()
         {
@@ -29,99 +31,50 @@ namespace _410ShopManagement
             this.Left = SystemParameters.PrimaryScreenWidth / 2 - this.Width * 0.63;
             this.Top = SystemParameters.PrimaryScreenHeight / 2 - this.Height * 0.5;
 
-            bills = new List<TempBill>();
-            bills.Add(new TempBill()
-            {
-                Name = "LKP",
-                Value = 10,
-                Quantity = 1
-            });
-            bills.Add(new TempBill()
-            {
-                Name = "PKL",
-                Value = 9,
-                Quantity = 2
-            });
-            bills.Add(new TempBill()
-            {
-                Name = "KLP",
-                Value = 11,
-                Quantity = 9
-            });
-            bills.Add(new TempBill()
-            {
-                Name = "KLP",
-                Value = 11,
-                Quantity = 9
-            });
-            bills.Add(new TempBill()
-            {
-                Name = "KLP",
-                Value = 11,
-                Quantity = 9
-            });
-            bills.Add(new TempBill()
-            {
-                Name = "KLP",
-                Value = 11,
-                Quantity = 9
-            });
-            bills.Add(new TempBill()
-            {
-                Name = "KLP",
-                Value = 11,
-                Quantity = 9
-            });
-            bills.Add(new TempBill()
-            {
-                Name = "KLP",
-                Value = 11,
-                Quantity = 9
-            });
-            bills.Add(new TempBill()
-            {
-                Name = "KLP",
-                Value = 11,
-                Quantity = 9
-            });
-            bills.Add(new TempBill()
-            {
-                Name = "KLP",
-                Value = 11,
-                Quantity = 9
-            });
-            bills.Add(new TempBill()
-            {
-                Name = "KLP",
-                Value = 11,
-                Quantity = 9
-            });
-            bills.Add(new TempBill()
-            {
-                Name = "KLP",
-                Value = 11,
-                Quantity = 9
-            });
-            bills.Add(new TempBill()
-            {
-                Name = "KLP",
-                Value = 11,
-                Quantity = 9
-            });
-            billLv.ItemsSource = bills;
-            billLv.SelectedValuePath = "Name";
-
-            foreach (TempBill bill in bills)
-            {
-                totalTbl.Text = (Convert.ToInt32(totalTbl.Text) + bill.Value).ToString();
-            }
         }
 
-        class TempBill
+        class ListviewFormatBillDetail
         {
             public string Name { get; set; }
             public int Value { get; set; }
             public int Quantity { get; set; }
+            public int Sum { get; set; }
+        }
+
+        public void OnOpen()
+        {
+            bills.Clear();
+            totalTbl.Text = "0";
+            foreach (BillDetail detail in DataField.Instance.billDetails)
+            {
+                if (idBill == detail.idBill)
+                {
+                    string nameProd = "";
+                    foreach (Product prod in DataField.Instance.products)
+                    {
+                        if (detail.idProduct == prod.idProduct)
+                        {
+                            nameProd = prod.nameProduct;
+                        }
+                    }
+                    bills.Add(new ListviewFormatBillDetail()
+                    {
+                        Name = nameProd,
+                        Value = detail.priceProduct,
+                        Quantity = detail.quantityProduct,
+                        Sum = detail.totalPrice
+                    });
+                }
+            }
+            billLv.ItemsSource = bills;
+            CollectionViewSource.GetDefaultView(billLv.ItemsSource).Refresh();
+            billLv.SelectedValuePath = "Name";
+
+            foreach (ListviewFormatBillDetail bill in bills)
+            {
+                totalTbl.Text = (Convert.ToInt32(totalTbl.Text) + bill.Sum).ToString();
+            }
+
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

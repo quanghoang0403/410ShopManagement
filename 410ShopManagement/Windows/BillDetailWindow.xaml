@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="Manual"
         Title="Bill Detail" 
-        Height="750" Width="550" 
+        Height="750" Width="600" 
         WindowStyle="None"
         ResizeMode="NoResize"
         AllowsTransparency="True"
@@ -61,7 +61,8 @@
                                 <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Name}">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Foreground="{StaticResource secondTextForeground}" FontSize="26"/>
+                                            <TextBlock Foreground="{StaticResource secondTextForeground}" FontSize="26"
+                                                       HorizontalAlignment="Center"/>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                     <!--Content phai giong voi ten binding de con sort duoc-->
@@ -74,6 +75,10 @@
                                 </GridViewColumn>
                                 <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Quantity}">
                                     <GridViewColumnHeader Content="Quantity" Width="auto" FontSize="26"
+                                                              Foreground="{StaticResource secondTextForeground}"/>
+                                </GridViewColumn>
+                                <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Sum}">
+                                    <GridViewColumnHeader Content="Sum" Width="auto" FontSize="26"
                                                               Foreground="{StaticResource secondTextForeground}"/>
                                 </GridViewColumn>
                             </GridView>

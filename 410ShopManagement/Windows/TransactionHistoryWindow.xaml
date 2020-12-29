@@ -93,19 +93,14 @@
                                                               Foreground="{StaticResource secondTextForeground}">
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Order}">
+                                    <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdBill}">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <TextBlock Foreground="{StaticResource secondTextForeground}" FontSize="26"/>
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
-                                        <!--Content phai giong voi ten binding de con sort duoc-->
-                                        <GridViewColumnHeader Content="Order" Width="auto" FontSize="26"
+                                        <GridViewColumnHeader Content="IdBill" Width="auto" FontSize="26"
                                                               Click="GridViewColumnHeader_Click" Cursor="Hand"
-                                                              Foreground="{StaticResource secondTextForeground}"/>
-                                    </GridViewColumn>
-                                    <GridViewColumn Width="auto" DisplayMemberBinding="{Binding idBill}">
-                                        <GridViewColumnHeader Content="ID Bill" Width="auto" FontSize="26"
                                                               Foreground="{StaticResource secondTextForeground}"/>
                                     </GridViewColumn>
                                     <GridViewColumn Width="auto" DisplayMemberBinding="{Binding NameOfStaff}">
@@ -118,8 +113,9 @@
                                                               Click="GridViewColumnHeader_Click" Cursor="Hand"
                                                               Foreground="{StaticResource secondTextForeground}"/>
                                     </GridViewColumn>
-                                    <GridViewColumn Width="auto" DisplayMemberBinding="{Binding totalBill}">
-                                        <GridViewColumnHeader Content="Total Bill" Width="auto" FontSize="26"
+                                    <GridViewColumn Width="auto" DisplayMemberBinding="{Binding TotalBill}">
+                                        <GridViewColumnHeader Content="TotalBill" Width="auto" FontSize="26"
+                                                              Click="GridViewColumnHeader_Click" Cursor="Hand"
                                                               Foreground="{StaticResource secondTextForeground}"/>
                                     </GridViewColumn>
                                 </GridView>

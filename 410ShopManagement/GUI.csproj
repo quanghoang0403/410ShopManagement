@@ -88,6 +88,8 @@
       <DependentUpon>ProductUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\Account.cs" />
+    <Compile Include="Classes\Bill.cs" />
+    <Compile Include="Classes\BillDetail.cs" />
     <Compile Include="Classes\DataField.cs" />
     <Compile Include="Classes\Product.cs" />
     <Compile Include="Classes\Shipment.cs" />

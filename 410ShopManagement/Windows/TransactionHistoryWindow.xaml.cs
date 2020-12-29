@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using _410ShopManagement.Classes;
 using BLL;
 
 namespace _410ShopManagement
@@ -21,13 +22,13 @@ namespace _410ShopManagement
     /// </summary>
     public partial class TransactionHistoryWindow : Window
     {
-        _401UC.iNotifier notify = new _401UC.iNotifier();
-        BillDetailWindow billDetailWnd = new BillDetailWindow();
-
-        List<TempHistory> histories;
+        List<ListviewFormatHistory> histories = new List<ListviewFormatHistory>();
         bool isHistoryLvSorted = false;
         CollectionView collectionView;
-        string savedIdBill;
+
+        //Windows
+        _401UC.iNotifier notify = new _401UC.iNotifier();
+        BillDetailWindow billDetailWnd = new BillDetailWindow();
 
         public TransactionHistoryWindow()
         {
@@ -38,44 +39,37 @@ namespace _410ShopManagement
 
             datePkr.Text = DateTime.Now.ToShortDateString();
 
-            histories = new List<TempHistory>();
-            histories.Add(new TempHistory()
+            foreach (Bill bill in DataField.Instance.bills)
             {
-                Order = histories.Count,
-                idBill = 1, 
-                NameOfStaff = "Van A",
-                Date = "90",
-                totalBill = 99
-            }); 
-            histories.Add(new TempHistory()
-            {
-                Order = histories.Count,
-                idBill = 2,
-                NameOfStaff = "QWE",
-                Date = "84",
-                totalBill = 11
-            });
-            histories.Add(new TempHistory()
-            {
-                Order = histories.Count,
-                idBill = 152,
-                NameOfStaff = "asdasdasdas",
-                Date = "asdasdasdasdsad",
-                totalBill = 67
-            });
+                //get staff name
+                string staffName = "";
+                foreach (Staff staff in DataField.Instance.staffs)
+                {
+                    if (bill.idStaff == staff.idStaff)
+                    {
+                        staffName = staff.nameStaff;
+                    }
+                }
+                histories.Add(new ListviewFormatHistory()
+                {
+                    IdBill = bill.idBill,
+                    NameOfStaff = staffName,
+                    Date = bill.exportDate,
+                    TotalBill = bill.totalBill
+                });
+            }
             historyLv.ItemsSource = histories;
-            historyLv.SelectedValuePath = "idBill";
+            historyLv.SelectedValuePath = "IdBill";
             historyLv.SelectionChanged += HistoryLv_SelectionChanged;
             collectionView = (CollectionView)CollectionViewSource.GetDefaultView(historyLv.ItemsSource);
         }
 
-        class TempHistory
+        class ListviewFormatHistory
         {
-            public int Order { get; set; }
-            public int idBill { get; set; }
+            public int IdBill { get; set; }
             public string NameOfStaff { get; set; }
             public string Date { get; set; }
-            public int totalBill { get; set; }
+            public int TotalBill { get; set; }
         }
 
         private void GridViewColumnHeader_Click(object sender, RoutedEventArgs e)
@@ -99,12 +93,11 @@ namespace _410ShopManagement
         {
             if (historyLv.SelectedValue != null)
             {
-                savedIdBill = historyLv.SelectedValue.ToString();
-                billDetailWnd.idBillTbl.Text = savedIdBill;
+                billDetailWnd.idBillTbl.Text = historyLv.SelectedValue.ToString();
+                billDetailWnd.idBill = Convert.ToInt32(historyLv.SelectedValue);
+                billDetailWnd.OnOpen();
                 billDetailWnd.ShowDialog();
             }
-            else
-                savedIdBill = "";
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -114,7 +107,33 @@ namespace _410ShopManagement
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
+            histories.Clear();
 
+            foreach (Bill bill in DataField.Instance.bills)
+            {
+                if (bill.exportDate == datePkr.Text)
+                {
+                    //get staff name
+                    string staffName = "";
+                    foreach (Staff staff in DataField.Instance.staffs)
+                    {
+                        if (bill.idStaff == staff.idStaff)
+                        {
+                            staffName = staff.nameStaff;
+                        }
+                    }
+                    histories.Add(new ListviewFormatHistory()
+                    {
+                        IdBill = bill.idBill,
+                        NameOfStaff = staffName,
+                        Date = bill.exportDate,
+                        TotalBill = bill.totalBill
+                    });
+                }
+            }
+            historyLv.ItemsSource = histories;
+            CollectionViewSource.GetDefaultView(historyLv.ItemsSource).Refresh();
+            historyLv.SelectedValuePath = "IdBill";
         }
     }
 }

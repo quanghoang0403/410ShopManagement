@@ -19,6 +19,8 @@ namespace _410ShopManagement.Classes
         public List<Product> products;
         public List<Staff> staffs;
         public List<Account> accounts;
+        public List<Bill> bills;
+        public List<BillDetail> billDetails;
 
         public int idCurrentAccountLogin;
 
@@ -247,6 +249,80 @@ namespace _410ShopManagement.Classes
                 position = "Saler"
             });
             #endregion
+
+            bills = new List<Bill>();
+            billDetails = new List<BillDetail>();
+            bills.Add(new Bill()
+            {
+                idBill = bills.Count,
+                idStaff = 0,
+                exportDate = "12/1/2020"
+            });
+            bills.Add(new Bill()
+            {
+                idBill = bills.Count,
+                idStaff = 1,
+                exportDate = "12/2/2020"
+            });
+            bills.Add(new Bill()
+            {
+                idBill = bills.Count,
+                idStaff = 1,
+                exportDate = "12/2/2020"
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 0,
+                idProduct = 0,
+                quantityProduct = 10
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 0,
+                idProduct = 1,
+                quantityProduct = 5
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 1,
+                idProduct = 2,
+                quantityProduct = 5
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 1,
+                idProduct = 3,
+                quantityProduct = 4
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 2,
+                idProduct = 4,
+                quantityProduct = 4
+            });
+            foreach (BillDetail item in billDetails)
+            {
+                foreach (Product prod in products)
+                {
+                    if (item.idProduct == prod.idProduct)
+                    {
+                        item.priceProduct = prod.exportPrice;
+                    }
+                }
+                item.totalPrice = item.priceProduct * item.quantityProduct;
+                foreach (Bill bill in bills)
+                {
+                    if (bill.idBill == item.idBill)
+                    {
+                        bill.totalBill += item.totalPrice;
+                    }
+                }
+            }
         }
     }
 }
