@@ -66,29 +66,9 @@
 
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel x:Name="historyPanel">
-                        <!--<Button x:Name="historyInsightBtn"
-                                Style="{StaticResource MaterialDesignIconButton}"
-                                Width="60" Height="60"
-                                BorderBrush="{x:Null}"
-                                Background="{x:Null}"
-                                Click="historyInsightBtn_Click">
-                            <materialDesign:PackIcon Kind="Magnify" Width="50" Height="50" Foreground="#00F988"/>
-                            <Button.Triggers>
-                                <EventTrigger RoutedEvent="Button.MouseEnter">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation
-                                Storyboard.TargetProperty="Opacity"
-                                Duration="0:0:1" 
-                                From="0.25" To="1"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
-                            </Button.Triggers>
-                        </Button>-->
-                        
                         <ListView x:Name="historyLv"
                                       MinHeight="480"
+                                      MaxHeight="480"
                                       HorizontalAlignment="Center"
                                                               Foreground="{StaticResource secondTextForeground}">
                             <ListView.View>

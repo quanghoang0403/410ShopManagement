@@ -250,6 +250,7 @@ namespace _410ShopManagement.Classes
             });
             #endregion
 
+            #region Bill and Bill Detail
             bills = new List<Bill>();
             billDetails = new List<BillDetail>();
             bills.Add(new Bill()
@@ -269,6 +270,90 @@ namespace _410ShopManagement.Classes
                 idBill = bills.Count,
                 idStaff = 1,
                 exportDate = "12/2/2020"
+            });
+            bills.Add(new Bill()
+            {
+                idBill = bills.Count,
+                idStaff = 0,
+                exportDate = "12/5/2020"
+            });
+            bills.Add(new Bill()
+            {
+                idBill = bills.Count,
+                idStaff = 1,
+                exportDate = "12/5/2020"
+            });
+            bills.Add(new Bill()
+            {
+                idBill = bills.Count,
+                idStaff = 0,
+                exportDate = "12/15/2020"
+            });
+            bills.Add(new Bill()
+            {
+                idBill = bills.Count,
+                idStaff = 0,
+                exportDate = "12/15/2020"
+            });
+            bills.Add(new Bill()
+            {
+                idBill = bills.Count,
+                idStaff = 1,
+                exportDate = "12/15/2020"
+            });
+            bills.Add(new Bill()
+            {
+                idBill = bills.Count,
+                idStaff = 1,
+                exportDate = "12/15/2020"
+            });
+            bills.Add(new Bill()
+            {
+                idBill = bills.Count,
+                idStaff = 0,
+                exportDate = "12/29/2020"
+            });
+            bills.Add(new Bill()
+            {
+                idBill = bills.Count,
+                idStaff = 0,
+                exportDate = "12/29/2020"
+            });
+            bills.Add(new Bill()
+            {
+                idBill = bills.Count,
+                idStaff = 0,
+                exportDate = "12/29/2020"
+            });
+            bills.Add(new Bill()
+            {
+                idBill = bills.Count,
+                idStaff = 1,
+                exportDate = "12/29/2020"
+            });
+            bills.Add(new Bill()
+            {
+                idBill = bills.Count,
+                idStaff = 0,
+                exportDate = "12/31/2020"
+            });
+            bills.Add(new Bill()
+            {
+                idBill = bills.Count,
+                idStaff = 0,
+                exportDate = "12/31/2020"
+            });
+            bills.Add(new Bill()
+            {
+                idBill = bills.Count,
+                idStaff = 0,
+                exportDate = "12/31/2020"
+            });
+            bills.Add(new Bill()
+            {
+                idBill = bills.Count,
+                idStaff = 1,
+                exportDate = "12/31/2020"
             });
             billDetails.Add(new BillDetail()
             {
@@ -305,6 +390,260 @@ namespace _410ShopManagement.Classes
                 idProduct = 4,
                 quantityProduct = 4
             });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 3,
+                idProduct = 2,
+                quantityProduct = 2
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 3,
+                idProduct = 4,
+                quantityProduct = 6
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 4,
+                idProduct = 4,
+                quantityProduct = 2
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 4,
+                idProduct = 5,
+                quantityProduct = 6
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 5,
+                idProduct = 7,
+                quantityProduct = 2
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 5,
+                idProduct = 2,
+                quantityProduct = 6
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 6,
+                idProduct = 1,
+                quantityProduct = 2
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 6,
+                idProduct = 0,
+                quantityProduct = 6
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 7,
+                idProduct = 3,
+                quantityProduct = 2
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 7,
+                idProduct = 8,
+                quantityProduct = 6
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 8,
+                idProduct = 7,
+                quantityProduct = 2
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 8,
+                idProduct = 4,
+                quantityProduct = 6
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 9,
+                idProduct = 5,
+                quantityProduct = 2
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 9,
+                idProduct = 4,
+                quantityProduct = 6
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 10,
+                idProduct = 2,
+                quantityProduct = 2
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 10,
+                idProduct = 4,
+                quantityProduct = 6
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 11,
+                idProduct = 2,
+                quantityProduct = 2
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 11,
+                idProduct = 4,
+                quantityProduct = 6
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 12,
+                idProduct = 4,
+                quantityProduct = 2
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 12,
+                idProduct = 7,
+                quantityProduct = 6
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 13,
+                idProduct = 0,
+                quantityProduct = 2
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 13,
+                idProduct = 1,
+                quantityProduct = 6
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 13,
+                idProduct = 2,
+                quantityProduct = 2
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 13,
+                idProduct = 4,
+                quantityProduct = 6
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 14,
+                idProduct = 6,
+                quantityProduct = 2
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 14,
+                idProduct = 3,
+                quantityProduct = 4
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 14,
+                idProduct = 5,
+                quantityProduct = 7
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 14,
+                idProduct = 1,
+                quantityProduct = 2
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 15,
+                idProduct = 5,
+                quantityProduct = 2
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 15,
+                idProduct = 6,
+                quantityProduct = 6
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 15,
+                idProduct = 7,
+                quantityProduct = 5
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 15,
+                idProduct = 8,
+                quantityProduct = 3
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 16,
+                idProduct = 8,
+                quantityProduct = 2
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 16,
+                idProduct = 7,
+                quantityProduct = 7
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 16,
+                idProduct = 3,
+                quantityProduct = 3
+            });
+            billDetails.Add(new BillDetail()
+            {
+                idBillDetail = billDetails.Count,
+                idBill = 16,
+                idProduct = 2,
+                quantityProduct = 4
+            });
+            //Bill Detail get price of product and calculate total price
+            //Bill get Bill Details' total price
             foreach (BillDetail item in billDetails)
             {
                 foreach (Product prod in products)
@@ -323,6 +662,7 @@ namespace _410ShopManagement.Classes
                     }
                 }
             }
+            #endregion
         }
     }
 }
