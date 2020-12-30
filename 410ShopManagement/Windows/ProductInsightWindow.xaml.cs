@@ -59,9 +59,6 @@ namespace _410ShopManagement
             sizeTxb.IsEnabled = true;
             colorTxb.IsEnabled = true;
             descriptionTxb.IsEnabled = true;
-            storageTxb.IsEnabled = true;
-            soldTxb.IsEnabled = true;
-            cancelledTxb.IsEnabled = true;
         }
 
         public void OnOpen()
@@ -78,9 +75,6 @@ namespace _410ShopManagement
             sizeTxb.IsEnabled = false;
             colorTxb.IsEnabled = false;
             descriptionTxb.IsEnabled = false;
-            storageTxb.IsEnabled = false;
-            soldTxb.IsEnabled = false;
-            cancelledTxb.IsEnabled = false;
 
             double basePrice = Convert.ToDouble(productBasePriceTbl.Text);
             double salePercent;

@@ -55,8 +55,6 @@ namespace _410ShopManagement.Windows
 
                 if (!isLoginSuccess)
                 {
-                    txbUser.Text = "";
-                    txbPassword.Password = "";
                     txbUser.Focus();
                     notify.Text = "Username or Password was incorrect";
                     notify.ShowDialog();

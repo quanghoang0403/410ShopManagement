@@ -38,7 +38,6 @@ namespace _410ShopManagement
             this.Top = SystemParameters.PrimaryScreenHeight / 2 - this.Height * 0.475;
 
             historyLv.SelectionChanged += HistoryLv_SelectionChanged;
-            collectionView = (CollectionView)CollectionViewSource.GetDefaultView(historyLv.ItemsSource);
         }
 
         class ListviewFormatHistory
@@ -76,6 +75,7 @@ namespace _410ShopManagement
             historyLv.ItemsSource = histories;
             CollectionViewSource.GetDefaultView(historyLv.ItemsSource).Refresh();
             historyLv.SelectedValuePath = "IdBill";
+            collectionView = (CollectionView)CollectionViewSource.GetDefaultView(historyLv.ItemsSource);
         }
 
         private void GridViewColumnHeader_Click(object sender, RoutedEventArgs e)
