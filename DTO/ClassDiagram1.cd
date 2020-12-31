@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="DTO.AccountDTO" Collapsed="true">
-    <Position X="3.5" Y="0.5" Width="1.5" />
+  <Class Name="DTO.AccountDTO">
+    <Position X="7.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAEAAAABAQAAAAEAAAAAAAACAAAAAgCAAAA=</HashCode>
       <FileName>AccountDTO.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DTO.BillDetailDTO" Collapsed="true">
+  <Class Name="DTO.BillDetailDTO">
     <Position X="3.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IAABACAAAQAAAAAAAABBAAABQAAAAEEAAABAAAABAAA=</HashCode>
       <FileName>BillDetailDTO.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DTO.BillDTO" Collapsed="true">
+  <Class Name="DTO.BillDTO">
     <Position X="1.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAEAAMABAAAAAAAAAAAAAMAAAABAAAAAQAA=</HashCode>
@@ -35,14 +35,14 @@
       <FileName>ShipmentDetailDTO.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DTO.ShipmentDTO" Collapsed="true">
+  <Class Name="DTO.ShipmentDTO">
     <Position X="1.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIACAAAAAAEAAAABAIAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
       <FileName>ShipmentDTO.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DTO.StaffDTO" Collapsed="true">
+  <Class Name="DTO.StaffDTO">
     <Position X="5.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAAAAAAAAAEAAAAhAAAAIAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
